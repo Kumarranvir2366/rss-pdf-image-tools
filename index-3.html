@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6554e8">
+<meta name="description" content="Free browser-based PDF, photo and signature tools. Preview results before downloading.">
+<title>RSS QuickTools - Free PDF & Image Tools</title>
+<style>
+:root{--primary:#6554e8;--ink:#20243a;--muted:#6c7489;--bg:#f5f6fc;--card:#fff;--line:#e6e8f1;--good:#16845b;--bad:#b42318}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#fff;border-bottom:1px solid var(--line);padding:14px 5%;display:flex;justify-content:space-between;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:10px}.logo{background:linear-gradient(135deg,#7657ed,#e14ca9);color:#fff;font-weight:bold;padding:11px;border-radius:13px}.brand h2{margin:0;font-size:19px}.brand p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.badge{color:#5144c9;background:#f0edff;border-radius:20px;padding:8px 11px;font-size:11px;font-weight:bold;white-space:nowrap}
+main{max-width:1150px;margin:auto;padding:24px 15px 45px}
+.hero{text-align:center;padding:42px 18px;border-radius:25px;background:linear-gradient(120deg,#eae5ff,#e2f8ff,#fff0f7);border:1px solid #fff}
+.hero h1{font-size:clamp(27px,5vw,43px);margin:18px 0 12px;background:linear-gradient(90deg,#5e48d9,#c13db3,#257acb);color:transparent;background-clip:text;-webkit-background-clip:text}
+.hero p{color:#5e6680;line-height:1.7;max-width:680px;margin:auto}
+.search{max-width:650px;margin:24px auto;display:flex;gap:8px}.search input{min-width:0;flex:1;padding:14px;border:1px solid #dfe2ee;border-radius:13px;font-size:15px;background:#fff}
+button,.btn{cursor:pointer;border:0;border-radius:10px;padding:12px 16px;font-weight:bold;font-size:14px}
+button:disabled{opacity:.55;cursor:wait}.primary{background:var(--primary);color:#fff}.secondary{background:#eeebff;color:#5143c4}.danger{background:#fff0ef;color:var(--bad)}
+.section-title{font-size:21px;margin:30px 0 15px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tool{--accent:#6554e8;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;cursor:pointer;min-height:145px;padding:0 14px 15px;box-shadow:0 4px 14px #20243a08;transition:transform .18s,box-shadow .18s}
+.tool::before{content:"";display:block;height:4px;background:var(--accent);margin:0 -14px 13px}.tool:hover{transform:translateY(-3px);box-shadow:0 9px 24px #20243a13}
+.icon{width:39px;height:39px;display:grid;place-items:center;border-radius:12px;background:#f0edff;font-size:23px;margin-bottom:10px}
+.tool h3{font-size:14px;line-height:1.4;margin:0 0 7px}.tool p{color:var(--muted);font-size:12px;line-height:1.5;margin:0}
+.panel{display:none;margin-top:25px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 8px 28px #20243a0b}.panel.show{display:block}.panel h2{margin:0 0 8px;font-size:23px}.desc{color:var(--muted);line-height:1.6;font-size:14px}
+.field{margin:15px 0}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px}.field input,.field select{width:100%;padding:12px;border:1px solid #d9ddea;border-radius:10px;background:#fff;font-size:14px}
+.filebox{border:2px dashed #b9b3ed;background:#faf9ff;border-radius:14px;padding:22px 15px;text-align:center}.filebox input{max-width:100%;margin-top:8px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{margin-top:15px;padding:12px;border-radius:10px;background:#f1efff;color:#5143c4;font-size:13px;overflow-wrap:anywhere;line-height:1.5}.status:empty{display:none}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;margin-top:18px}
+.result-card{border:1px solid var(--line);border-radius:14px;padding:13px;background:#fbfaff;min-width:0}
+.result-card img{display:block;max-width:100%;max-height:330px;object-fit:contain;margin:10px auto;border-radius:8px}
+.result-card iframe{width:100%;height:280px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.result-card h3{font-size:14px;overflow-wrap:anywhere}.result-card p{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.result-card button{width:100%;margin-top:5px}.hint{font-size:12px;color:var(--muted);line-height:1.6}
+footer{text-align:center;padding:25px 15px;color:var(--muted);font-size:12px;line-height:1.8}footer a{color:#5143c4}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.tool{min-height:145px;padding-left:12px;padding-right:12px}.tool::before{margin-left:-12px;margin-right:-12px}header{padding:12px}.brand h2{font-size:16px}.badge{font-size:10px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.hero{padding:30px 13px}.search{flex-wrap:wrap}.search input{flex-basis:100%}.panel{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">RSS</div><div><h2>RSS QuickTools</h2><p>Free Online PDF, Photo & Signature Tools</p></div></div><span class="badge">FREE TOOLS</span></header>
+<main>
+<section class="hero"><span class="badge">✨ SIMPLE · FAST · USEFUL</span><h1>PDF aur Photo Tools</h1><p>Resize photos, prepare signatures, convert images and manage PDFs — all in one easy place, designed for mobile and desktop.</p></section>
+<div class="search"><input id="search" type="search" placeholder="🔎 Search tools, e.g. Compress PDF" aria-label="Search tools"><button class="secondary" id="clearSearch">Clear</button></div>
+<h2 class="section-title">🛠️ All Tools</h2><section class="grid" id="toolGrid"></section>
+<section class="panel" id="panel"><h2 id="toolTitle">Select a tool</h2><p class="desc" id="toolDesc"></p>
+<div class="filebox"><div style="font-size:32px">📂</div><p id="filePrompt">Select your file to get started</p><input type="file" id="files" accept="image/*,.pdf" multiple></div>
+<div id="options"></div><div class="actions"><button class="primary" id="run">Process</button><button class="secondary" id="reset">Reset</button></div>
+<div class="status" id="status" role="status" aria-live="polite"></div><div id="previews" aria-live="polite"></div></section>
+</main>
+<footer><strong>RSS QuickTools</strong><br>Free browser-based PDF, photo and signature utilities.<br>Files are processed locally in your browser where supported; selected files are not intentionally uploaded by this page.<br><br><span>Always check official photo/signature requirements before submitting an application. This tool does not guarantee acceptance by any authority.</span></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+"use strict";
+if(window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const toolList=[
+["Image Resizer to KB or MB","📏","Resize an image toward a target file size.","targetImage"],
+["Increase Image Size in KB or MB","📈","Set image dimensions and file-size limits.","increaseImage"],
+["Merge Photo and Signature","🪪","Place a photo and signature on one image.","mergePhotoSig"],
+["PNG to JPG","🟠","Convert a PNG image to JPG.","pngjpg"],
+["JPG to PNG","🟣","Convert a JPG image to PNG.","jpgpng"],
+["Scan to PDF","📷","Combine document photos into a PDF.","scanpdf"],
+["JPG to PDF","📑","Turn one or more images into a PDF.","jpgpdf"],
+["PDF to JPG","🖼️","Preview PDF pages and download them as JPG images.","pdfjpg"],
+["Compress PDF","🗜️","Re-save a PDF; size reduction depends on its contents.","compresspdf"],
+["Merge PDF","📚","Combine multiple PDF files in the selected order.","mergepdf"],
+["Crop Image","✂️","Crop an image from the top-left corner to chosen dimensions.","crop"],
+["Photo Background Remover","🌄","Remove pixels close to a selected solid background color.","bgremove"],
+["Photo & Signature Resizer for Government Exams","📝","Resize selected photo and signature images separately.","govresize"],
+["Passport Size Photo Maker","🛂","Create a 35 × 45 mm-style pixel canvas.","passport"],
+["Signature Resizer","✍️","Resize a signature to chosen pixel dimensions and file-size limits.","signature"]
+];
+const accents=["#6554e8","#0c91a5","#d23f87","#e66c28","#8b43d8","#159b9b","#386de0","#0c99b0","#bd5129","#6554e8","#df5571","#269a64","#8846d9","#1686a6","#a66c18"];
+const $=id=>document.getElementById(id),grid=$("toolGrid"),panel=$("panel"),filesEl=$("files"),optionsEl=$("options"),statusEl=$("status"),previews=$("previews");
+let current=null,objectUrls=[];
+toolList.forEach((t,i)=>{const card=document.createElement("article");card.className="tool";card.style.setProperty("--accent",accents[i]);card.dataset.name=t[0].toLowerCase();const icon=document.createElement("div");icon.className="icon";icon.textContent=t[1];const h=document.createElement("h3");h.textContent=t[0];const p=document.createElement("p");p.textContent=t[2];card.append(icon,h,p);card.addEventListener("click",()=>openTool(t));grid.appendChild(card)});
+$("search").addEventListener("input",e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll(".tool").forEach(c=>c.style.display=c.dataset.name.includes(q)?"":"none")});
+$("clearSearch").onclick=()=>{$("search").value="";document.querySelectorAll(".tool").forEach(c=>c.style.display="")};
+function clearResults(){objectUrls.forEach(u=>URL.revokeObjectURL(u));objectUrls=[];previews.replaceChildren()}
+function openTool(t){clearResults();current=t;$("toolTitle").textContent=t[0];$("toolDesc").textContent=t[2];filesEl.value="";statusEl.textContent="";optionsEl.replaceChildren();panel.classList.add("show");
+const type=t[3];$("run").textContent=["targetImage","increaseImage","signature","govresize"].includes(type)?"Resize Image":({pngjpg:"Convert Image",jpgpng:"Convert Image",jpgpdf:"Create PDF",scanpdf:"Create PDF",mergepdf:"Merge PDF",compresspdf:"Prepare PDF",pdfjpg:"Convert PDF to JPG",crop:"Crop Image",passport:"Create Passport Photo",mergePhotoSig:"Merge Photo & Signature",bgremove:"Remove Background"})[type]||"Process";
+filesEl.multiple=["mergepdf","jpgpdf","scanpdf","mergePhotoSig","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/*";
+$("filePrompt").textContent=filesEl.multiple?"Select files in the order you want to use them":"Select one image or PDF";
+if(["targetImage","increaseImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",50,1);numberField("Maximum size (KB)","maxKB",100,1)}
+if(["increaseImage","signature","govresize"].includes(type)){numberField("Width (pixels)","width",600,1);numberField("Height (pixels)","height",600,1)}
+if(type==="crop"){numberField("Width (pixels)","width",400,1);numberField("Height (pixels)","height",400,1)}
+if(type==="passport"){numberField("Width (pixels)","width",413,1);numberField("Height (pixels)","height",531,1);selectField("Background color","bgcolor",["White","Light blue","Light grey"])}
+if(type==="mergePhotoSig")selectField("Layout","layout",["Side by side","Photo above signature"]);
+if(type==="bgremove")selectField("Background color to remove","bgcolor",["White","Blue","Green","Black"]);
+if(["targetImage","increaseImage","signature","govresize"].includes(type))selectField("Output format","format",["JPEG","PNG"]);
+if(type==="pdfjpg")numberField("Render quality (scale 1–3)","scale",1.5,1);
+if(type==="jpgpdf"||type==="scanpdf"){
+  selectField("PDF layout","pdfLayout",["One photo per page","All photos on one page"]);
+  selectField("Page size","pageSize",["Fit page to photo","A4"]);
+  selectField("Photo arrangement on one page","photoLayout",["Fit side by side","Stack vertically"]);
+}
+panel.scrollIntoView({behavior:"smooth",block:"start"})}
+function numberField(label,id,value,min){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const input=document.createElement("input");input.id=id;input.type="number";input.min=min;input.value=value;w.append(l,input);optionsEl.append(w)}
+function selectField(label,id,items){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const s=document.createElement("select");s.id=id;items.forEach(x=>{const o=document.createElement("option");o.value=x;o.textContent=x;s.append(o)});w.append(l,s);optionsEl.append(w)}
+function val(id,def){const el=$(id);return el?el.value:def}function setStatus(s){statusEl.textContent=s}
+function addUrl(blob){const u=URL.createObjectURL(blob);objectUrls.push(u);return u}
+function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),10000)}
+function addResult({title,blob,name,kind="image",note=""}){const card=document.createElement("article");card.className="result-card";const h=document.createElement("h3");h.textContent=title;card.append(h);
+if(kind==="image"){const img=document.createElement("img");img.src=addUrl(blob);img.alt=title+" preview";card.append(img)}
+else if(kind==="pdf"){const frame=document.createElement("iframe");frame.title=title+" preview";frame.src=addUrl(blob);card.append(frame)}
+const p=document.createElement("p");p.textContent=(blob.size/1024).toFixed(2)+" KB · "+(blob.size/1048576).toFixed(3)+" MB"+(note?" · "+note:"");card.append(p);
+const b=document.createElement("button");b.className="primary";b.textContent=kind==="pdf"?"Download PDF":kind==="image"?"Download Image":"Download File";b.addEventListener("click",()=>downloadBlob(blob,name));card.append(b);previews.append(card)}
+function loadImage(file){return new Promise((resolve,reject)=>{const u=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(u);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(u);reject(Error("Image could not be opened. Please choose a valid image."))};img.src=u})}
+function canvasBlob(canvas,type="image/jpeg",quality=.92){return new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error("Could not create output image.")),type,quality))}
+async function imageCanvas(file,w,h,fit="stretch"){const img=await loadImage(file),canvas=document.createElement("canvas");canvas.width=w||img.naturalWidth;canvas.height=h||img.naturalHeight;const ctx=canvas.getContext("2d");if(fit==="contain"){const scale=Math.min(canvas.width/img.width,canvas.height/img.height),dw=img.width*scale,dh=img.height*scale;ctx.drawImage(img,(canvas.width-dw)/2,(canvas.height-dh)/2,dw,dh)}else ctx.drawImage(img,0,0,canvas.width,canvas.height);return canvas}
+async function resizedBlob(file,targetKB,maxKB,width,height,format){const img=await loadImage(file);let w=width||img.naturalWidth,h=height||img.naturalHeight;w=Math.max(1,Math.min(10000,Math.round(w)));h=Math.max(1,Math.min(10000,Math.round(h)));if(w*h>40000000)throw Error("Requested dimensions are too large. Try smaller width and height.");const c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);const mime=format==="PNG"?"image/png":"image/jpeg";let q=.92,b=await canvasBlob(c,mime,q);if(mime==="image/jpeg"){while(b.size>maxKB*1024&&q>.16){q=Math.max(.12,q-.08);b=await canvasBlob(c,mime,q)}if(targetKB&&b.size<targetKB*1024){while(b.size<targetKB*1024&&q<.98){const nq=Math.min(.98,q+.03),next=await canvasBlob(c,mime,nq);if(next.size>maxKB*1024)break;b=next;q=nq}}}return b}
+function safeStem(name){return name.replace(/\.[^.]+$/,"").replace(/[\\/:*?"<>|]+/g,"_").slice(0,100)||"image"}
+async function processTool(){if(!current)return;const selected=Array.from(filesEl.files||[]);if(!selected.length){setStatus("Please select your file first.");return}const type=current[3];$("run").disabled=true;setStatus("Processing your file…");clearResults();try{
+if(["targetImage","increaseImage","signature","govresize"].includes(type)){const chosen=type==="govresize"?selected.slice(0,2):[selected[0]];if(type==="govresize"&&selected.length<2)throw Error("Select two images: photo first, signature second.");for(let i=0;i<chosen.length;i++){const f=chosen[i],w=Number(val("width",0))||undefined,h=Number(val("height",0))||undefined,b=await resizedBlob(f,Number(val("targetKB",50)),Number(val("maxKB",100)),w,h,val("format","JPEG"));const ext=val("format","JPEG")==="PNG"?"png":"jpg";addResult({title:type==="govresize"?(i===0?"Resized Photo":"Resized Signature"):"Resized Image Preview",blob:b,name:safeStem(f.name)+"_resized."+ext,kind:"image",note:"Actual output size"});}setStatus("Processing complete. Check the preview and actual file size, then tap Download Image. Target sizes may not be exact.");}
+else if(type==="jpgpng"||type==="pngjpg"){const f=selected[0],fmt=type==="jpgpng"?"image/png":"image/jpeg",c=await imageCanvas(f,0,0),b=await canvasBlob(c,fmt,.92);addResult({title:"Converted Image Preview",blob:b,name:safeStem(f.name)+(type==="jpgpng"?".png":".jpg")});setStatus("Conversion complete. Preview the result and tap Download Image.");}
+else if(["jpgpdf","scanpdf"].includes(type)){
+if(!window.PDFLib)throw Error("PDF library could not load. Check your internet connection and retry.");
+const doc=await PDFLib.PDFDocument.create(),images=[];
+for(const f of selected){
+ if(!f.type.startsWith("image/")&&!/\.(png|jpe?g)$/i.test(f.name))continue;
+ const bytes=await f.arrayBuffer();let im;
+ if(/png/i.test(f.type)||/\.png$/i.test(f.name))im=await doc.embedPng(bytes);
+ else{try{im=await doc.embedJpg(bytes)}catch{const c=await imageCanvas(f,0,0);im=await doc.embedJpg(await (await canvasBlob(c,"image/jpeg",.92)).arrayBuffer())}}
+ images.push(im);
+}
+if(!images.length)throw Error("No valid images selected.");
+const layout=val("pdfLayout","One photo per page"),pageChoice=val("pageSize","Fit page to photo"),a4=[595.28,841.89];
+if(layout==="One photo per page"){
+ for(const im of images){
+  let pw=im.width,ph=im.height;
+  if(pageChoice==="A4"){const scale=Math.min(a4[0]/im.width,a4[1]/im.height);pw=a4[0];ph=a4[1];const page=doc.addPage(a4);page.drawImage(im,{x:(pw-im.width*scale)/2,y:(ph-im.height*scale)/2,width:im.width*scale,height:im.height*scale});continue;}
+  const page=doc.addPage([pw,ph]);page.drawImage(im,{x:0,y:0,width:pw,height:ph});
+ }
+}else{
+ const margin=24,gap=12,side=val("photoLayout","Fit side by side")==="Fit side by side";
+ let pw,ph;
+ if(pageChoice==="A4"){pw=a4[0];ph=a4[1]}else if(side){pw=images.reduce((s,x)=>s+x.width,0)+gap*(images.length-1)+margin*2;ph=Math.max(...images.map(x=>x.height))+margin*2}else{pw=Math.max(...images.map(x=>x.width))+margin*2;ph=images.reduce((s,x)=>s+x.height,0)+gap*(images.length-1)+margin*2}
+ const page=doc.addPage([pw,ph]);
+ if(side){
+  const total=images.reduce((s,x)=>s+x.width,0)+gap*(images.length-1),scale=Math.min(1,(pw-margin*2)/total,(ph-margin*2)/Math.max(...images.map(x=>x.height)));
+  let x=(pw-total*scale)/2;
+  for(const im of images){const w=im.width*scale,h=im.height*scale;page.drawImage(im,{x,y:(ph-h)/2,width:w,height:h});x+=w+gap*scale}
+ }else{
+  const totalH=images.reduce((s,x)=>s+x.height,0)+gap*(images.length-1),scale=Math.min(1,(ph-margin*2)/totalH,(pw-margin*2)/Math.max(...images.map(x=>x.width)));
+  let y=ph-(ph-totalH*scale)/2;
+  for(const im of images){const w=im.width*scale,h=im.height*scale;y-=h;page.drawImage(im,{x:(pw-w)/2,y,width:w,height:h});y-=gap*scale}
+ }
+}
+const b=new Blob([await doc.save()],{type:"application/pdf"});
+addResult({title:"Created PDF Preview",blob:b,name:type==="scanpdf"?"scanned-document.pdf":"images.pdf",kind:"pdf"});
+setStatus("PDF created. Review the preview and file size, then tap Download PDF.");
+}
+else if(type==="mergepdf"){if(!window.PDFLib)throw Error("PDF library could not load.");const out=await PDFLib.PDFDocument.create();for(const f of selected){if(!/\.pdf$/i.test(f.name)&&f.type!=="application/pdf")continue;const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer());const pages=await out.copyPages(doc,doc.getPageIndices());pages.forEach(p=>out.addPage(p))}if(!out.getPageCount())throw Error("Please select valid PDF files.");const b=new Blob([await out.save()],{type:"application/pdf"});addResult({title:"Merged PDF Preview",blob:b,name:"merged.pdf",kind:"pdf"});setStatus("PDFs merged. Review and tap Download PDF.");}
+else if(type==="compresspdf"){if(!window.PDFLib)throw Error("PDF library could not load.");const f=selected[0],doc=await PDFLib.PDFDocument.load(await f.arrayBuffer()),bytes=await doc.save({useObjectStreams:true}),b=new Blob([bytes],{type:"application/pdf"});addResult({title:"Prepared PDF Preview",blob:b,name:"compressed.pdf",kind:"pdf",note:"Original: "+(f.size/1024).toFixed(2)+" KB"});setStatus("PDF re-saved. Compare the displayed output size with the original; this basic method may not reduce size.");}
+else if(type==="pdfjpg"){if(!window.pdfjsLib)throw Error("PDF library could not load.");const pdf=await pdfjsLib.getDocument({data:await selected[0].arrayBuffer()}).promise;if(pdf.numPages>20)throw Error("For safety, this demo converts up to 20 pages at once.");const scale=Math.max(1,Math.min(3,Number(val("scale",1.5)||1.5)));for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale}),c=document.createElement("canvas");c.width=Math.ceil(vp.width);c.height=Math.ceil(vp.height);await page.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;const b=await canvasBlob(c,"image/jpeg",.92);addResult({title:"Page "+n+" Preview",blob:b,name:"page-"+n+".jpg"})}setStatus("PDF pages converted. Each page has its own preview and download button.");}
+else if(type==="crop"){const img=await loadImage(selected[0]),w=Math.max(1,Math.min(Number(val("width",400)),img.width)),h=Math.max(1,Math.min(Number(val("height",400)),img.height)),c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(img,0,0,w,h,0,0,w,h);const b=await canvasBlob(c,"image/png");addResult({title:"Cropped Image Preview",blob:b,name:"cropped.png"});setStatus("Image cropped from the top-left corner. Preview and download when ready.");}
+else if(type==="passport"){const w=Math.max(1,Math.min(3000,Number(val("width",413)))),h=Math.max(1,Math.min(3000,Number(val("height",531)))),img=await loadImage(selected[0]),c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d"),colors={"White":"#fff","Light blue":"#d9ecff","Light grey":"#eee"};ctx.fillStyle=colors[val("bgcolor","White")]||"#fff";ctx.fillRect(0,0,w,h);const scale=Math.max(w/img.width,h/img.height),dw=img.width*scale,dh=img.height*scale;ctx.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);const b=await canvasBlob(c,"image/jpeg",.92);addResult({title:"Passport-Style Photo Preview",blob:b,name:"passport-photo.jpg"});setStatus("Preview the photo and check official photo requirements before use.");}
+else if(type==="mergePhotoSig"){if(selected.length<2)throw Error("Select two images: photo first, signature second.");const a=await loadImage(selected[0]),b=await loadImage(selected[1]),side=val("layout","Side by side")==="Side by side",c=document.createElement("canvas");c.width=side?a.width+b.width:Math.max(a.width,b.width);c.height=side?Math.max(a.height,b.height):a.height+b.height;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);if(side){ctx.drawImage(a,0,0);ctx.drawImage(b,a.width,0)}else{ctx.drawImage(a,0,0);ctx.drawImage(b,0,a.height)}const blob=await canvasBlob(c,"image/jpeg",.92);addResult({title:"Photo & Signature Preview",blob,name:"photo-signature.jpg"});setStatus("Combined image ready. Preview it and tap Download Image.");}
+else if(type==="bgremove"){const img=await loadImage(selected[0]),c=document.createElement("canvas");c.width=img.width;c.height=img.height;if(c.width*c.height>40000000)throw Error("Image is too large for this browser tool.");const ctx=c.getContext("2d");ctx.drawImage(img,0,0);const d=ctx.getImageData(0,0,c.width,c.height),colors={"White":[255,255,255],"Blue":[0,0,255],"Green":[0,255,0],"Black":[0,0,0]},target=colors[val("bgcolor","White")];let changed=0;for(let i=0;i<d.data.length;i+=4){const delta=Math.abs(d.data[i]-target[0])+Math.abs(d.data[i+1]-target[1])+Math.abs(d.data[i+2]-target[2]);if(delta<65){d.data[i+3]=0;changed++}}ctx.putImageData(d,0,0);const b=await canvasBlob(c,"image/png");addResult({title:"Background Removal Preview",blob:b,name:"background-removed.png",note:changed+" pixels made transparent"});setStatus("Basic color removal complete. It is not AI and may not cleanly remove complex backgrounds.");}
+else throw Error("This tool is not available yet.");
+}catch(e){console.error(e);setStatus("Error: "+(e.message||"Could not process file."))}finally{$("run").disabled=false}}
+$("run").addEventListener("click",processTool);
+$("reset").addEventListener("click",()=>{clearResults();filesEl.value="";statusEl.textContent="";if(current)openTool(current)});
+</script>
+</body>
+</html>
