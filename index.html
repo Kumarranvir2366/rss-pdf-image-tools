@@ -308,8 +308,8 @@ let current=null,urls=[];
 const standardFilebox=document.getElementById("standardFilebox"),standardActions=document.getElementById("standardActions"),mergeUploadGrid=document.getElementById("mergeUploadGrid"),mergeActions=document.getElementById("mergeActions"),mergePhotoFile=document.getElementById("mergePhotoFile"),mergeSignatureFile=document.getElementById("mergeSignatureFile"),mergeShowcase=document.getElementById("mergeShowcase"),mergeBenefits=document.getElementById("mergeBenefits");
 let mergedOutputUrl=null;
 function setMergeMode(on){
- standardFilebox.style.display=on?"none":"";
- standardActions.style.display=on?"none":"";
+ standardFilebox.hidden=on;standardFilebox.style.display=on?"none":"";
+ standardActions.hidden=on;standardActions.style.display=on?"none":"";
  mergeUploadGrid.hidden=!on;mergeActions.hidden=!on;mergeShowcase.hidden=!on;mergeBenefits.hidden=!on;
  document.getElementById("mergeResult").hidden=true;
 }
@@ -379,7 +379,7 @@ function openTool(t){current=t;document.getElementById("toolTitle").textContent=
 const type=t[3];filesEl.multiple=["mergepdf","jpgpdf","scanpdf","mergePhotoSig","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/*";
 document.getElementById("fileHint").textContent=type==="mergePhotoSig"?"Select photo first and signature second":type==="govresize"?"Select photo and signature images":"Select your file to get started";
 runBtn.textContent=["targetImage","increaseImage","signature","govresize"].includes(type)?"Resize Image":type==="jpgpdf"||type==="scanpdf"?"Create PDF":"Process";
-if(type==="increaseImage"){numberField("Increase Image Size","increaseSize",200,1);selectField("Size unit","increaseUnit",["KB","MB"]);const hint=document.createElement("p");hint.className="hint";hint.textContent="Enter the desired file size. The image dimensions will remain unchanged; exact file size may vary.";optionsEl.append(hint)}
+if(type==="increaseImage"){const row=document.createElement("div");row.className="field";const label=document.createElement("label");label.htmlFor="increaseSize";label.textContent="Increase Image Size";const controls=document.createElement("div");controls.style.display="grid";controls.style.gridTemplateColumns="minmax(0,1fr) 100px";controls.style.gap="8px";const size=document.createElement("input");size.id="increaseSize";size.type="number";size.min="1";size.value="200";size.placeholder="Enter size";const unit=document.createElement("select");unit.id="increaseUnit";["KB","MB"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;unit.append(o)});controls.append(size,unit);row.append(label,controls);optionsEl.append(row);const hint=document.createElement("p");hint.className="hint";hint.textContent="Choose the target file size in KB or MB. Exact size cannot be guaranteed.";optionsEl.append(hint)}
 else if(["targetImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])}
 if(["signature","govresize","crop"].includes(type)){numberField("Width (pixels)","width",type==="signature"?300:600,1);numberField("Height (pixels)","height",type==="signature"?100:600,1)}
 if(type==="jpgpdf"||type==="scanpdf"){selectField("PDF layout","pdfLayout",["One photo per page","All photos on one page"]);selectField("Page size","pageSize",["Fit page to photo","A4"]);selectField("Photo arrangement","photoLayout",["Fit side by side","Stack vertically"])}
