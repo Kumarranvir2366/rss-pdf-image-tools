@@ -225,6 +225,11 @@ footer strong{color:#173b8d}
 .merge-upload-card.photo-upload{background:linear-gradient(145deg,#e9f3ff,#f0f6ff);border:1.5px dashed #9abfff}
 .merge-upload-card.signature-upload{background:linear-gradient(145deg,#f8edff,#fff4ff);border:1.5px dashed #c79bfa}
 .merge-upload-icon{font-size:52px;margin-bottom:5px}
+.merge-upload-preview{display:none;width:96px;height:96px;object-fit:contain;background:#fff;border:3px solid #fff;border-radius:16px;box-shadow:0 5px 16px #23345a20;margin:0 auto 10px}
+.merge-upload-preview.visible{display:block}
+.merge-upload-card.has-preview .merge-upload-icon{display:none}
+.merge-upload-card.has-preview{justify-content:flex-start}
+.merge-picked{overflow-wrap:anywhere;max-width:100%}
 .merge-upload-card h3{font-size:18px;margin:3px 0 5px;color:#10265a}
 .merge-upload-card p{font-size:13px;margin:0 0 14px;color:#65738e}
 .merge-pick{font-size:15px;border-radius:15px!important;padding:14px 8px!important;box-shadow:0 5px 12px #2057c533}
@@ -272,8 +277,8 @@ footer strong{color:#173b8d}
 <div class="filebox" id="standardFilebox"><div style="font-size:32px">📂</div><p id="fileHint">Select your file to get started</p><input type="file" id="files" accept="image/*,.pdf" multiple></div>
 <div class="merge-showcase" id="mergeShowcase" hidden><div class="merge-showcase-art">🖼️➕✍️</div><div><h3>Merge Photo &amp; <span>Signature</span></h3><p>Create a clean, ready-to-download image in seconds.</p><div class="merge-badges"><span class="merge-badge">⚡ Fast &amp; Easy</span><span class="merge-badge blue">🛡 No Signup</span><span class="merge-badge green">👥 No Watermark</span></div></div></div>
 <div class="merge-upload-grid" id="mergeUploadGrid" hidden>
-  <div class="merge-upload-card photo-upload"><div class="merge-upload-icon">🖼️</div><h3>Upload Photo</h3><p>JPG, PNG · Choose your photo</p><label class="merge-pick">⬆ Choose Photo<input id="mergePhotoFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergePhotoName">No photo selected</div></div>
-  <div class="merge-upload-card signature-upload"><div class="merge-upload-icon">✍️</div><h3>Upload Signature</h3><p>JPG, PNG · Choose your signature</p><label class="merge-pick">⬆ Choose Signature<input id="mergeSignatureFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergeSignatureName">No signature selected</div></div>
+  <div class="merge-upload-card photo-upload" id="photoUploadCard"><div class="merge-upload-icon">🖼️</div><img class="merge-upload-preview" id="mergePhotoPreview" alt="Uploaded photo preview"><h3>Upload Photo</h3><p>JPG, PNG · Choose your photo</p><label class="merge-pick">⬆ Choose Photo<input id="mergePhotoFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergePhotoName">No photo selected</div></div>
+  <div class="merge-upload-card signature-upload" id="signatureUploadCard"><div class="merge-upload-icon">✍️</div><img class="merge-upload-preview" id="mergeSignaturePreview" alt="Uploaded signature preview"><h3>Upload Signature</h3><p>JPG, PNG · Choose your signature</p><label class="merge-pick">⬆ Choose Signature<input id="mergeSignatureFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergeSignatureName">No signature selected</div></div>
 </div>
 <div id="options"></div><div class="actions" id="standardActions"><button class="primary" id="run">Process</button><button class="secondary" id="reset">New / Reset</button></div>
 <div id="mergeActions" hidden><button class="primary merge-run" id="mergeRun">✨ Merge Photo &amp; Signature　➜</button><button class="secondary" id="mergeReset" style="margin-top:9px">New / Reset</button></div>
@@ -318,13 +323,16 @@ function clearMergeFiles(){
  mergePhotoFile.value="";mergeSignatureFile.value="";
  document.getElementById("mergePhotoName").textContent="No photo selected";
  document.getElementById("mergeSignatureName").textContent="No signature selected";
+ resetMergeUploadPreview(mergePhotoFile,"mergePhotoPreview","photoUploadCard");
+ resetMergeUploadPreview(mergeSignatureFile,"mergeSignaturePreview","signatureUploadCard");
  document.getElementById("mergeResult").hidden=true;
  document.getElementById("mergeDone").classList.remove("show");
  if(mergedOutputUrl){URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=null;}
 }
-function showMergeName(input,label,emptyText){document.getElementById(label).textContent=input.files&&input.files[0]?("✓ "+input.files[0].name):emptyText;}
-mergePhotoFile.addEventListener("change",()=>showMergeName(mergePhotoFile,"mergePhotoName","No photo selected"));
-mergeSignatureFile.addEventListener("change",()=>showMergeName(mergeSignatureFile,"mergeSignatureName","No signature selected"));
+function resetMergeUploadPreview(input,imgId,cardId){const img=document.getElementById(imgId);img.removeAttribute("src");img.classList.remove("visible");document.getElementById(cardId).classList.remove("has-preview");}
+function showMergeName(input,label,emptyText,imgId,cardId){const file=input.files&&input.files[0],img=document.getElementById(imgId),card=document.getElementById(cardId);document.getElementById(label).textContent=file?("✓ "+file.name):emptyText;if(file){if(img.dataset.objectUrl)URL.revokeObjectURL(img.dataset.objectUrl);img.dataset.objectUrl=URL.createObjectURL(file);img.src=img.dataset.objectUrl;img.classList.add("visible");card.classList.add("has-preview");}else{resetMergeUploadPreview(input,imgId,cardId);}}
+mergePhotoFile.addEventListener("change",()=>showMergeName(mergePhotoFile,"mergePhotoName","No photo selected","mergePhotoPreview","photoUploadCard"));
+mergeSignatureFile.addEventListener("change",()=>showMergeName(mergeSignatureFile,"mergeSignatureName","No signature selected","mergeSignaturePreview","signatureUploadCard"));
 document.getElementById("mergeReset").addEventListener("click",clearMergeFiles);
 document.getElementById("mergeRun").addEventListener("click",async()=>{
  const photo=mergePhotoFile.files&&mergePhotoFile.files[0],sig=mergeSignatureFile.files&&mergeSignatureFile.files[0];
