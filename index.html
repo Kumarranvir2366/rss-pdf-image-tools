@@ -345,25 +345,27 @@ document.getElementById("mergeRun").addEventListener("click",async()=>{
  try{
    const [p,s]=await Promise.all([readImage(photo),readImage(sig)]);
    if(!p.naturalWidth||!p.naturalHeight||!s.naturalWidth||!s.naturalHeight)throw new Error("Invalid image dimensions");
-   const maxSide=1400;
-   const scaleImage=img=>{const scale=Math.min(1,maxSide/Math.max(img.naturalWidth,img.naturalHeight));return {w:Math.max(1,Math.round(img.naturalWidth*scale)),h:Math.max(1,Math.round(img.naturalHeight*scale))};};
-   const pd=scaleImage(p),sd=scaleImage(s);
-   const layout=document.querySelector('#options select')?.value||"Side by side";
-   const vertical=/stack|above|vertical/i.test(layout);
-   const gap=24,canvas=document.createElement("canvas");
-   if(vertical){canvas.width=Math.max(pd.w,sd.w);canvas.height=pd.h+sd.h+gap;}
-   else{canvas.width=pd.w+sd.w+gap;canvas.height=Math.max(pd.h,sd.h);}
-   if(canvas.width>3000||canvas.height>3000)throw new Error("Images are too large");
+   // Output matches the requested format: passport-size portrait on top,
+   // signature directly underneath, both centered on a white canvas.
+   const photoW=413, photoH=531, signatureBandH=115, padding=12;
+   const canvas=document.createElement("canvas");
+   canvas.width=photoW+padding*2;
+   canvas.height=photoH+signatureBandH+padding*2;
    const ctx=canvas.getContext("2d");
    if(!ctx)throw new Error("Canvas is not supported by this browser");
    ctx.fillStyle="#ffffff";ctx.fillRect(0,0,canvas.width,canvas.height);
-   if(vertical){
-     ctx.drawImage(p,(canvas.width-pd.w)/2,0,pd.w,pd.h);
-     ctx.drawImage(s,(canvas.width-sd.w)/2,pd.h+gap,sd.w,sd.h);
-   }else{
-     ctx.drawImage(p,0,(canvas.height-pd.h)/2,pd.w,pd.h);
-     ctx.drawImage(s,pd.w+gap,(canvas.height-sd.h)/2,sd.w,sd.h);
-   }
+   // Fill the passport photo frame while preserving proportions (center crop).
+   const scale=Math.max(photoW/p.naturalWidth,photoH/p.naturalHeight);
+   const drawW=p.naturalWidth*scale, drawH=p.naturalHeight*scale;
+   const cropX=(drawW-photoW)/2, cropY=(drawH-photoH)/2;
+   ctx.save();ctx.beginPath();ctx.rect(padding,padding,photoW,photoH);ctx.clip();
+   ctx.drawImage(p,padding-cropX,padding-cropY,drawW,drawH);ctx.restore();
+   // Fit signature below the photo without stretching it.
+   const maxSigW=photoW, maxSigH=signatureBandH-12;
+   const sigScale=Math.min(maxSigW/s.naturalWidth,maxSigH/s.naturalHeight,1);
+   const sigW=Math.max(1,s.naturalWidth*sigScale),sigH=Math.max(1,s.naturalHeight*sigScale);
+   const sigX=(canvas.width-sigW)/2, sigY=padding+photoH+(signatureBandH-sigH)/2;
+   ctx.drawImage(s,sigX,sigY,sigW,sigH);
    const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("Image export failed")),"image/jpeg",0.92));
    if(!blob||blob.size===0)throw new Error("Empty output image");
    if(mergedOutputUrl)URL.revokeObjectURL(mergedOutputUrl);
@@ -418,7 +420,7 @@ runBtn.textContent=["targetImage","increaseImage","signature","govresize"].inclu
 if(["targetImage","increaseImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])}
 if(["increaseImage","signature","govresize","crop"].includes(type)){numberField("Width (pixels)","width",type==="signature"?300:600,1);numberField("Height (pixels)","height",type==="signature"?100:600,1)}
 if(type==="jpgpdf"||type==="scanpdf"){selectField("PDF layout","pdfLayout",["One photo per page","All photos on one page"]);selectField("Page size","pageSize",["Fit page to photo","A4"]);selectField("Photo arrangement","photoLayout",["Fit side by side","Stack vertically"])}
-if(type==="mergePhotoSig")selectField("Layout","layout",["Side by side","Photo above signature"]);
+if(type==="mergePhotoSig")selectField("Layout","layout",["Photo above signature (Passport size)"]);
 if(type==="bgremove")selectField("Background color to remove","bgcolor",["White","Blue","Green","Black"]);
 if(type==="passport"){numberField("Width (pixels)","width",413,1);numberField("Height (pixels)","height",531,1);selectField("Background color","bgcolor",["White","Light blue","Light grey"])}
 if(type==="pdfjpg")numberField("Render quality (scale 1–3)","scale",1.5,1);
