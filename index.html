@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#6554e8">
-<meta name="description" content="RSS QuickTools: free photo, signature and PDF tools with preview before download.">
-<title>RSS IMAGE RESIZE &amp; TOOLS — Free PDF & Image Tools</title>
+<meta name="description" content="RSS IMAGE RESIZE &amp; TOOLS: free photo, signature and PDF tools with preview before download.">
+<title>RSS IMAGE RESIZE &amp; TOOLS — Free PDF &amp; Image Tools</title>
 <style>
 :root{--p:#6554e8;--ink:#20243a;--muted:#687087;--bg:#f5f6fc;--line:#e5e7f0}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
@@ -20,6 +20,22 @@ button{cursor:pointer;border:0;border-radius:10px;padding:12px 15px;font-weight:
 footer{text-align:center;padding:24px 14px;color:var(--muted);font-size:12px;line-height:1.8}footer a{color:#5143c4}
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}header{padding:11px}.brand h2{font-size:16px}.badge{font-size:10px}.panel{padding:15px}}
 @media(max-width:360px){.grid{grid-template-columns:1fr}.hero{padding:28px 12px}.search{flex-wrap:wrap}.search input{flex-basis:100%}}
+
+/* Distinct, soft colors for every tool card */
+.tool{background:linear-gradient(145deg,color-mix(in srgb,var(--a) 9%,#fff),#fff 72%);border-top:4px solid var(--a);transition:transform .18s ease,box-shadow .18s ease}
+.tool:nth-child(5n+1){background:linear-gradient(145deg,#f0edff,#fff 78%)}
+.tool:nth-child(5n+2){background:linear-gradient(145deg,#e6fbff,#fff 78%)}
+.tool:nth-child(5n+3){background:linear-gradient(145deg,#fff0f7,#fff 78%)}
+.tool:nth-child(5n+4){background:linear-gradient(145deg,#fff3e8,#fff 78%)}
+.tool:nth-child(5n){background:linear-gradient(145deg,#edfff2,#fff 78%)}
+.tool:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(32,36,58,.12)}
+/* Download preparation progress notice */
+.download-progress{position:fixed;z-index:9999;left:16px;right:16px;bottom:18px;max-width:520px;margin:auto;background:#fff;border:1px solid #e2e5f0;border-radius:16px;padding:14px 16px;box-shadow:0 10px 35px rgba(25,30,55,.2);font-size:14px;color:#20243a}
+.download-progress .dp-title{font-weight:700;margin-bottom:8px}
+.download-progress .dp-track{height:10px;background:#ececf6;border-radius:99px;overflow:hidden}
+.download-progress .dp-fill{height:100%;width:0;background:linear-gradient(90deg,#6554e8,#0c91a5,#269a64);border-radius:99px;transition:width .12s linear}
+.download-progress .dp-note{font-size:12px;color:#687087;margin-top:7px}
+
 </style>
 </head>
 <body>
@@ -77,7 +93,29 @@ panel.scrollIntoView({behavior:"smooth",block:"start"})}
 function numberField(label,id,value,min){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const x=document.createElement("input");x.id=id;x.type="number";x.min=min;x.value=value;w.append(l,x);optionsEl.append(w)}
 function selectField(label,id,items){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const s=document.createElement("select");s.id=id;items.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;s.append(o)});w.append(l,s);optionsEl.append(w)}
 function val(id,def){const e=document.getElementById(id);return e?e.value:def}function setStatus(s){statusEl.textContent=s}
-function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+function downloadBlob(blob,name){
+  /* Browsers do not expose reliable byte-by-byte progress for a local Blob download.
+     This bar reports file preparation and the hand-off to the browser, not transfer bytes. */
+  const old=document.querySelector(".download-progress");if(old)old.remove();
+  const box=document.createElement("div");box.className="download-progress";
+  box.innerHTML='<div class="dp-title">Preparing your download…</div><div class="dp-track"><div class="dp-fill"></div></div><div class="dp-note">Getting the file ready for your browser.</div>';
+  document.body.append(box);
+  const fill=box.querySelector(".dp-fill"),title=box.querySelector(".dp-title"),note=box.querySelector(".dp-note");
+  let progress=0;
+  const timer=setInterval(()=>{
+    progress=Math.min(100,progress+10);
+    fill.style.width=progress+"%";
+    if(progress>=100){
+      clearInterval(timer);
+      title.textContent="Download completed ✓";
+      note.textContent="If needed, check your browser’s Downloads list for "+name+". The browser controls the actual download progress.";
+      const u=URL.createObjectURL(blob),a=document.createElement("a");
+      a.href=u;a.download=name;document.body.append(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(u),4000);
+      setTimeout(()=>box.remove(),6000);
+    }
+  },55);
+}
 function safeStem(name){return name.replace(/\.[^.]+$/,"").replace(/[^\w-]+/g,"_")}
 function loadImage(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);res(im)};im.onerror=()=>{URL.revokeObjectURL(u);rej(Error("Image could not be opened"))};im.src=u})}
 function canvasBlob(canvas,type,quality){return new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(Error("Could not create image")),type,quality))}
