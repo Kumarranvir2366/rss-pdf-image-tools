@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#6554e8">
+<meta name="x-site-build" content="all15-merge-preview-fix-2026-10-11">
 <meta name="description" content="RSS IMAGE RESIZE &amp; TOOLS: free photo, signature and PDF tools with preview before download.">
 <title>RSS IMAGE RESIZE &amp; TOOLS — Free PDF &amp; Image Tools</title>
 <style>
@@ -245,6 +246,9 @@ footer strong{color:#173b8d}
 .merge-benefit p{margin:0;font-size:12px;line-height:1.45;color:#58657c}
 @media(max-width:480px){.merge-showcase{padding:20px 15px;gap:10px}.merge-showcase-art{font-size:43px;flex-basis:62px}.merge-showcase p{font-size:12px}.merge-badges{gap:5px}.merge-badge{padding:6px 8px;font-size:10px}.merge-upload-grid{gap:9px}.merge-upload-card{padding:14px 8px;min-height:166px}.merge-upload-icon{font-size:39px}.merge-upload-card h3{font-size:15px}.merge-upload-card p{font-size:11px}.merge-pick{font-size:12px;padding:12px 5px!important}.merge-run{padding:15px 8px!important}.merge-benefits{gap:8px}.merge-benefit{padding:13px 10px;border-radius:17px}.merge-benefit .benefit-icon{font-size:24px}.merge-benefit h4{font-size:13px}.merge-benefit p{font-size:11px}}
 
+/* Critical fix: hidden UI sections must never be shown by component CSS */
+[hidden]{display:none!important}
+.merge-upload-preview[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -339,7 +343,7 @@ function clearMergeFiles(){
  for(const u of [photoPreviewUrl,signaturePreviewUrl,mergedOutputUrl]) if(u) URL.revokeObjectURL(u);
  photoPreviewUrl=null; signaturePreviewUrl=null; mergedOutputUrl=null;
  for(const [id,name] of [["mergePhotoPreview","mergePhotoName"],["mergeSignaturePreview","mergeSignatureName"]]){
-   const img=document.getElementById(id); img.hidden=true; img.removeAttribute("src");
+   const img=document.getElementById(id); img.hidden=true; img.style.display="none"; img.removeAttribute("src");
    document.getElementById(name).textContent=id==="mergePhotoPreview"?"No photo selected":"No signature selected";
  }
  document.getElementById("mergeResult").hidden=true; document.getElementById("mergeResult").style.display="none";
@@ -351,7 +355,7 @@ function previewMergeFile(input,imgId,nameId,isPhoto){
  if(isPhoto)photoPreviewUrl=null;else signaturePreviewUrl=null;
  if(!file){img.hidden=true;img.removeAttribute("src");document.getElementById(nameId).textContent=isPhoto?"No photo selected":"No signature selected";return;}
  const url=URL.createObjectURL(file);if(isPhoto)photoPreviewUrl=url;else signaturePreviewUrl=url;
- img.onload=()=>{img.hidden=false;};img.onerror=()=>{img.hidden=true;};img.src=url;
+ img.onload=()=>{img.hidden=false;img.style.display="block";};img.onerror=()=>{img.hidden=true;img.style.display="none";};img.hidden=false;img.style.display="block";img.src=url;
  document.getElementById(nameId).textContent="✓ "+file.name;
 }
 mergePhotoFile.addEventListener("change",()=>previewMergeFile(mergePhotoFile,"mergePhotoPreview","mergePhotoName",true));
@@ -420,10 +424,11 @@ runBtn.textContent=["targetImage","increaseImage","signature","govresize"].inclu
 if(["targetImage","increaseImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])}
 if(["increaseImage","signature","govresize","crop"].includes(type)){numberField("Width (pixels)","width",type==="signature"?300:600,1);numberField("Height (pixels)","height",type==="signature"?100:600,1)}
 if(type==="jpgpdf"||type==="scanpdf"){selectField("PDF layout","pdfLayout",["One photo per page","All photos on one page"]);selectField("Page size","pageSize",["Fit page to photo","A4"]);selectField("Photo arrangement","photoLayout",["Fit side by side","Stack vertically"])}
-if(type==="mergePhotoSig")selectField("Layout","layout",["Photo above signature (Passport size)"]);
+/* Merge Photo & Signature has a fixed passport layout: photo above signature. */
 if(type==="bgremove")selectField("Background color to remove","bgcolor",["White","Blue","Green","Black"]);
 if(type==="passport"){numberField("Width (pixels)","width",413,1);numberField("Height (pixels)","height",531,1);selectField("Background color","bgcolor",["White","Light blue","Light grey"])}
 if(type==="pdfjpg")numberField("Render quality (scale 1–3)","scale",1.5,1);
+if(type==="mergePhotoSig"){optionsEl.innerHTML="";filesEl.value="";}
 panel.scrollIntoView({behavior:"smooth",block:"start"})}
 function numberField(label,id,value,min){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const x=document.createElement("input");x.id=id;x.type="number";x.min=min;x.value=value;w.append(l,x);optionsEl.append(w)}
 function selectField(label,id,items){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const s=document.createElement("select");s.id=id;items.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;s.append(o)});w.append(l,s);optionsEl.append(w)}
