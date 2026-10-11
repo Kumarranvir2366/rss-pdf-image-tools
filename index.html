@@ -107,14 +107,112 @@ footer a{color:#6654e8}
   .hero{padding:22px 12px}
 }
 
+
+/* Premium blue dashboard inspired by modern online tool sites */
+:root{--navy:#092d83;--blue:#1769ed;--royal:#164bc0;--gold:#ffc943;--soft-blue:#edf4ff}
+body{background:linear-gradient(180deg,#eef3ff 0%,#f7f7ff 46%,#fffaf2 100%)}
+.premium-header{position:sticky;top:0;z-index:20;padding:13px clamp(12px,3vw,30px);display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(115deg,#1556d8 0%,#06358e 58%,#08276e 100%);color:#fff;border:0;box-shadow:0 8px 25px #123f9c30}
+.premium-header:after{display:none}
+.premium-header .brand{min-width:0;gap:12px}
+.premium-header .logo{width:56px;height:56px;display:grid;place-items:center;flex-shrink:0;padding:0;border-radius:17px;border:3px solid #ffd66a;background:linear-gradient(145deg,#7844ff,#3d1db4);box-shadow:0 0 0 3px #ffffff25;font-size:20px}
+.premium-header .brand h2{font-size:clamp(14px,2.5vw,25px);color:#fff;line-height:1.2;letter-spacing:-.45px}
+.premium-header .brand h2 span{color:#ffd35c}
+.premium-header .brand p{font-size:12px;color:#e0eaff;margin-top:5px}
+.premium-header .badge{flex-shrink:0;background:linear-gradient(135deg,#ffe58b,#ffbd29);color:#102c70;border:1px solid #fff0b8;border-radius:999px;padding:10px 14px;box-shadow:0 4px 12px #001b5838}
+.category-nav{position:sticky;top:82px;z-index:15;display:flex;gap:9px;overflow-x:auto;padding:13px clamp(12px,3vw,30px);background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid #e5eaff;scrollbar-width:none}
+.category-nav::-webkit-scrollbar{display:none}
+.category{flex:0 0 auto;border:1px solid #e5eafa;background:#fff;color:#20355f;border-radius:999px;padding:11px 16px;box-shadow:0 4px 12px #193d8310;white-space:nowrap}
+.category.active{background:linear-gradient(135deg,#fff,#f0e9ff);border:1.5px solid #8c53ff;color:#5b24d5;box-shadow:0 5px 15px #6d3be626}
+main{max-width:1250px;padding:22px clamp(12px,3vw,30px) 38px}
+.hero{position:relative;overflow:hidden;text-align:left;display:flex;flex-direction:column;align-items:flex-start;padding:clamp(24px,4vw,44px);background:linear-gradient(115deg,#fff 0%,#edf4ff 46%,#f9eaff 100%);border:1px solid #fff;border-radius:28px;box-shadow:0 15px 40px #153e9913}
+.hero:after{content:"✦";position:absolute;right:5%;top:5%;font-size:100px;color:#8d7cff12;pointer-events:none}
+.hero .badge{background:#fff6d8;border-color:#ffe7a0;color:#785318}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.12;margin:15px 0 10px;background:linear-gradient(90deg,#0b2d77,#215ee0,#a22bd4);color:transparent;background-clip:text;-webkit-background-clip:text}
+.hero p{max-width:760px;margin:0;color:#536482;font-size:clamp(13px,1.6vw,16px)}
+.search{max-width:760px;margin:22px auto 18px;align-items:center}
+.search input{border-radius:999px;padding:15px 18px;border:1px solid #dce5f7;box-shadow:0 6px 20px #163c8010}
+.search button{border-radius:999px}
+.dashboard-strip{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:18px 0 24px;padding:18px 20px;border-radius:22px;background:linear-gradient(110deg,#fff,#f0f5ff 60%,#fff5df);border:1px solid #fff;box-shadow:0 8px 24px #1d3f8210}
+.dash-intro{display:flex;flex-direction:column;gap:5px}
+.dash-kicker{font-size:10px;font-weight:800;letter-spacing:1.4px;color:#6b51d9}
+.dash-intro strong{font-size:clamp(16px,2vw,22px);color:#132c65}
+.dash-intro small{font-size:12px;color:#6b7892}
+.dash-count{display:flex;align-items:center;gap:9px;flex-shrink:0;padding:10px 14px;border-radius:16px;background:linear-gradient(135deg,#175fe8,#552bd3);color:#fff;box-shadow:0 6px 16px #2454c82b}
+.dash-count strong{font-size:30px;line-height:1}
+.dash-count span{font-size:10px;font-weight:800;letter-spacing:.6px;max-width:60px}
+.section-title{font-size:22px;color:#132b61;margin:24px 0 13px}
+.grid{gap:14px}
+.tool{position:relative;min-height:154px;padding:15px 14px 17px;border-radius:20px;box-shadow:0 6px 20px #253d7610;border:1px solid #fff;background:linear-gradient(145deg,#fff,#f7f8ff)}
+.tool:before{height:5px;margin-bottom:13px;border-radius:0 0 5px 5px}
+.tool .icon{width:44px;height:44px;font-size:25px;border-radius:14px;background:linear-gradient(145deg,#fff,#e9edff);box-shadow:0 4px 12px #203c7b13}
+.tool h3{font-size:14px;color:#1b2c51}
+.tool p{font-size:12px;color:#64718a}
+.tool:hover{transform:translateY(-4px);box-shadow:0 14px 28px #1d3c761c}
+.panel{border-radius:26px;box-shadow:0 14px 36px #1d3c7614;border:1px solid #fff;padding:clamp(15px,3vw,26px)}
+.panel h2{color:#132b61}
+.filebox{background:linear-gradient(135deg,#f1f7ff,#fbf5ff);border-color:#9ebdff;border-radius:20px}
+.primary{background:linear-gradient(110deg,#1769ed,#6534e8)!important;box-shadow:0 5px 14px #2a54c52b}
+.secondary{background:linear-gradient(120deg,#fff2c8,#f0eaff);border:1px solid #f1dfb0}
+.green,.result-card .green{background:linear-gradient(100deg,#159c3d,#087e2a)!important}
+.result-card{background:linear-gradient(145deg,#f0fff0,#fff);border-color:#d6f3d4}
+.download-progress{border:1px solid #d9e4ff;background:linear-gradient(135deg,#fff,#f6f8ff)}
+.download-progress .dp-fill{background:linear-gradient(90deg,#1769ed,#8239ed,#18a957)}
+footer{color:#65718b}
+footer strong{color:#173b8d}
+@media(max-width:800px){
+ .premium-header{padding:10px 12px}
+ .premium-header .logo{width:46px;height:46px;border-radius:14px;font-size:17px}
+ .premium-header .brand h2{font-size:15px}
+ .premium-header .brand p{font-size:10px}
+ .premium-header .badge{font-size:9px;padding:8px 10px}
+ .category-nav{top:66px;padding:10px 12px;gap:8px}
+ .category{font-size:12px;padding:10px 13px}
+ .hero{padding:25px 18px}
+ .dashboard-strip{padding:15px;border-radius:18px}
+ .dash-count{padding:9px 11px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .tool{min-height:142px;padding:12px 10px 14px;border-radius:17px}
+ .tool h3{font-size:12px;line-height:1.35}
+ .tool p{font-size:11px;line-height:1.45}
+ .tool .icon{width:39px;height:39px;font-size:22px}
+}
+@media(max-width:380px){
+ .premium-header .brand{gap:8px}
+ .premium-header .brand h2{font-size:12px}
+ .premium-header .brand p{font-size:9px}
+ .premium-header .logo{width:39px;height:39px}
+ .premium-header .badge{padding:7px;font-size:8px}
+ .dashboard-strip{align-items:flex-start}
+ .dash-count{gap:6px;padding:9px}
+ .dash-count strong{font-size:25px}
+ .dash-count span{font-size:8px}
+ .grid{gap:8px}
+ .tool{padding:10px 8px;min-height:138px}
+ .tool h3{font-size:11px}
+}
+
 </style>
 </head>
 <body>
-<header><div class="brand"><div class="logo">RSS</div><div><h2>RSS IMAGE RESIZE &amp; TOOLS</h2><p>Free Online PDF, Photo & Signature Tools</p></div></div><span class="badge">FREE TOOLS</span></header>
+<header class="premium-header">
+  <div class="brand"><div class="logo">RSS</div><div><h2><span>RSS</span> IMAGE RESIZE &amp; TOOLS</h2><p>Free Online PDF, Photo &amp; Signature Tools</p></div></div>
+  <span class="badge">✦ FREE TOOLS</span>
+</header>
+<nav class="category-nav" aria-label="Tool categories">
+  <button class="category active" data-category="all">✨ All Tools</button>
+  <button class="category" data-category="image">🖼️ Image Tools</button>
+  <button class="category" data-category="photo">👤 Photo &amp; Signature</button>
+  <button class="category" data-category="convert">🔄 Convert</button>
+  <button class="category" data-category="pdf">📕 PDF Tools</button>
+</nav>
 <main>
 <section class="hero"><span class="badge">✨ SIMPLE · FAST · USEFUL</span><h1>PDF aur Photo Tools</h1><p>Resize photos, prepare signatures, convert images and manage PDFs — all in one easy place, designed for mobile and desktop.</p></section>
 <div class="search"><input id="search" type="search" placeholder="🔎 Search tools, e.g. Compress PDF"><button class="secondary" id="clearSearch">Clear</button></div>
-<h2 class="section-title">🛠️ All Tools</h2><section class="grid" id="toolGrid"></section>
+<section class="dashboard-strip" aria-label="Dashboard summary">
+  <div class="dash-intro"><span class="dash-kicker">YOUR SMART TOOLKIT</span><strong>Everything you need, in one place</strong><small>Choose a tool below to get started.</small></div>
+  <div class="dash-count"><strong>15</strong><span>FREE TOOLS</span></div>
+</section>
+<h2 class="section-title" id="toolsHeading">🛠️ Explore All Tools</h2><section class="grid" id="toolGrid"></section>
 <section class="panel" id="panel"><h2 id="toolTitle">Select a tool</h2><p class="desc" id="toolDesc"></p>
 <div class="filebox"><div style="font-size:32px">📂</div><p id="fileHint">Select your file to get started</p><input type="file" id="files" accept="image/*,.pdf" multiple></div>
 <div id="options"></div><div class="actions"><button class="primary" id="run">Process</button><button class="secondary" id="reset">New / Reset</button></div><div class="status" id="status" role="status" aria-live="polite"></div><div class="result-grid" id="previews"></div></section>
@@ -144,9 +242,33 @@ const tools=[
 const accents=["#6554e8","#0c91a5","#d23f87","#e66c28","#8b43d8","#159b9b","#386de0","#0c99b0","#bd5129","#6554e8","#df5571","#269a64","#8846d9","#1686a6","#a66c18"];
 const grid=document.getElementById("toolGrid"),panel=document.getElementById("panel"),filesEl=document.getElementById("files"),optionsEl=document.getElementById("options"),statusEl=document.getElementById("status"),previews=document.getElementById("previews"),runBtn=document.getElementById("run");
 let current=null,urls=[];
-tools.forEach((t,i)=>{const c=document.createElement("article");c.className="tool";c.style.setProperty("--a",accents[i]);c.dataset.name=t[0].toLowerCase();c.innerHTML='<div class="icon">'+t[1]+'</div><h3>'+t[0]+'</h3><p>'+t[2]+'</p>';c.onclick=()=>openTool(t);grid.append(c)});
-document.getElementById("search").oninput=e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll(".tool").forEach(c=>c.style.display=c.dataset.name.includes(q)?"":"none")};
-document.getElementById("clearSearch").onclick=()=>{document.getElementById("search").value="";document.querySelectorAll(".tool").forEach(c=>c.style.display="")};
+function categoryFor(type){
+ if(["targetImage","increaseImage","crop","bgremove"].includes(type))return "image";
+ if(["mergePhotoSig","govresize","passport","signature"].includes(type))return "photo";
+ if(["pngjpg","jpgpng"].includes(type))return "convert";
+ return "pdf";
+}
+tools.forEach((t,i)=>{const c=document.createElement("article");c.className="tool";c.style.setProperty("--a",accents[i]);c.dataset.name=t[0].toLowerCase();c.dataset.category=categoryFor(t[3]);c.innerHTML='<div class="icon">'+t[1]+'</div><h3>'+t[0]+'</h3><p>'+t[2]+'</p>';c.onclick=()=>openTool(t);grid.append(c)});
+let activeCategory="all";
+function filterTools(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ let visible=0;
+ document.querySelectorAll(".tool").forEach(c=>{
+   const matchText=c.dataset.name.includes(q);
+   const matchCategory=activeCategory==="all"||c.dataset.category===activeCategory;
+   c.style.display=matchText&&matchCategory?"":"none";
+   if(matchText&&matchCategory)visible++;
+ });
+ document.getElementById("toolsHeading").textContent=(activeCategory==="all"?"🛠️ Explore All Tools":({"image":"🖼️ Image Tools","photo":"👤 Photo & Signature","convert":"🔄 Convert Tools","pdf":"📕 PDF Tools"}[activeCategory]))+" · "+visible;
+}
+document.getElementById("search").oninput=filterTools;
+document.getElementById("clearSearch").onclick=()=>{document.getElementById("search").value="";activeCategory="all";document.querySelectorAll(".category").forEach(b=>b.classList.toggle("active",b.dataset.category==="all"));filterTools()};
+document.querySelectorAll(".category").forEach(b=>b.addEventListener("click",()=>{
+ activeCategory=b.dataset.category;
+ document.querySelectorAll(".category").forEach(x=>x.classList.toggle("active",x===b));
+ filterTools();
+ document.querySelector(".dashboard-strip").scrollIntoView({behavior:"smooth",block:"start"});
+}));
 function clearResults(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];previews.innerHTML=""}
 function objectURL(blob){const u=URL.createObjectURL(blob);urls.push(u);return u}
 function openTool(t){current=t;document.getElementById("toolTitle").textContent=t[0];document.getElementById("toolDesc").textContent=t[2];filesEl.value="";optionsEl.innerHTML="";statusEl.textContent="";clearResults();panel.classList.add("show");
