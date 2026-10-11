@@ -375,8 +375,31 @@ document.getElementById("mergeRun").addEventListener("click",async()=>{
   ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);
   const scale=Math.max(photoW/p.naturalWidth,photoH/p.naturalHeight),drawW=p.naturalWidth*scale,drawH=p.naturalHeight*scale;
   ctx.save();ctx.beginPath();ctx.rect(0,0,photoW,photoH);ctx.clip();ctx.drawImage(p,(photoW-drawW)/2,(photoH-drawH)/2,drawW,drawH);ctx.restore();
-  const maxSigW=photoW-24,maxSigH=signatureBandH-16,sigScale=Math.min(maxSigW/s.naturalWidth,maxSigH/s.naturalHeight),sigW=s.naturalWidth*sigScale,sigH=s.naturalHeight*sigScale;
-  ctx.drawImage(s,(photoW-sigW)/2,photoH+(signatureBandH-sigH)/2,sigW,sigH);
+  // Trim empty white/transparent margins around a scanned signature so it uses
+  // the same output width as the passport photo instead of appearing tiny.
+  const sc=document.createElement("canvas");sc.width=s.naturalWidth;sc.height=s.naturalHeight;
+  const sx=sc.getContext("2d");sx.drawImage(s,0,0);
+  let sigSource={x:0,y:0,w:sc.width,h:sc.height};
+  try{
+    const sd=sx.getImageData(0,0,sc.width,sc.height),px=sd.data;
+    let minX=sc.width,minY=sc.height,maxX=-1,maxY=-1;
+    for(let yy=0;yy<sc.height;yy++)for(let xx=0;xx<sc.width;xx++){
+      const k=(yy*sc.width+xx)*4,a=px[k+3],brightness=(px[k]+px[k+1]+px[k+2])/3;
+      // Include dark ink and colored ink; ignore white paper and transparent padding.
+      if(a>25&&brightness<218){if(xx<minX)minX=xx;if(xx>maxX)maxX=xx;if(yy<minY)minY=yy;if(yy>maxY)maxY=yy;}
+    }
+    if(maxX>=minX&&maxY>=minY){
+      const pad=Math.max(2,Math.round(Math.min(sc.width,sc.height)*.025));
+      minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);
+      maxX=Math.min(sc.width-1,maxX+pad);maxY=Math.min(sc.height-1,maxY+pad);
+      sigSource={x:minX,y:minY,w:maxX-minX+1,h:maxY-minY+1};
+    }
+  }catch(e){console.warn("Signature trimming skipped",e);}
+  const maxSigW=photoW,maxSigH=signatureBandH-10;
+  const sigScale=Math.min(maxSigW/sigSource.w,maxSigH/sigSource.h);
+  const sigW=sigSource.w*sigScale,sigH=sigSource.h*sigScale;
+  ctx.drawImage(sc,sigSource.x,sigSource.y,sigSource.w,sigSource.h,
+    (photoW-sigW)/2,photoH+(signatureBandH-sigH)/2,sigW,sigH);
   const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("Could not export image")),"image/jpeg",.92));
   if(mergedOutputUrl)URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=URL.createObjectURL(blob);
   document.getElementById("mergeResultImage").src=mergedOutputUrl;
@@ -418,7 +441,16 @@ document.querySelectorAll(".category").forEach(b=>b.addEventListener("click",()=
 function clearResults(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];previews.innerHTML=""}
 function objectURL(blob){const u=URL.createObjectURL(blob);urls.push(u);return u}
 function openTool(t){current=t;document.getElementById("toolTitle").textContent=t[0];const isMergeTool=t[3]==="mergePhotoSig";setMergeMode(isMergeTool);if(isMergeTool)clearMergeFiles();else{document.getElementById("mergeResult").hidden=true;document.getElementById("mergeResult").style.display="none";}document.getElementById("toolDesc").textContent=t[2];filesEl.value="";optionsEl.innerHTML="";statusEl.textContent="";clearResults();panel.classList.add("show");
-const type=t[3];filesEl.multiple=["mergepdf","jpgpdf","scanpdf","mergePhotoSig","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/*";
+const type=t[3];
+/* Keep merge-only interface strictly isolated from every other tool. */
+if(type!=="mergePhotoSig"){
+  mergeShowcase.hidden=true;mergeShowcase.style.display="none";
+  mergeUploadGrid.hidden=true;mergeUploadGrid.style.display="none";
+  mergeActions.hidden=true;mergeActions.style.display="none";
+  mergeBenefits.hidden=true;mergeBenefits.style.display="none";
+  const mr=document.getElementById("mergeResult");mr.hidden=true;mr.style.display="none";
+}
+filesEl.multiple=["mergepdf","jpgpdf","scanpdf","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/*";
 document.getElementById("fileHint").textContent=type==="mergePhotoSig"?"Select photo first and signature second":type==="govresize"?"Select photo and signature images":"Select your file to get started";
 runBtn.textContent=["targetImage","increaseImage","signature","govresize"].includes(type)?"Resize Image":type==="jpgpdf"||type==="scanpdf"?"Create PDF":"Process";
 if(["targetImage","increaseImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])}
