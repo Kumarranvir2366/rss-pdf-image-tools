@@ -271,8 +271,8 @@ footer strong{color:#173b8d}
 <div class="filebox" id="standardFilebox"><div style="font-size:32px">📂</div><p id="fileHint">Select your file to get started</p><input type="file" id="files" accept="image/*,.pdf" multiple></div>
 <div class="merge-showcase" id="mergeShowcase" hidden><div class="merge-showcase-art">🖼️➕✍️</div><div><h3>Merge Photo &amp; <span>Signature</span></h3><p>Create a clean, ready-to-download image in seconds.</p><div class="merge-badges"><span class="merge-badge">⚡ Fast &amp; Easy</span><span class="merge-badge blue">🛡 No Signup</span><span class="merge-badge green">👥 No Watermark</span></div></div></div>
 <div class="merge-upload-grid" id="mergeUploadGrid" hidden>
-  <div class="merge-upload-card photo-upload"><div class="merge-upload-icon">🖼️</div><h3>Upload Photo</h3><p>JPG, PNG · Choose your photo</p><label class="merge-pick">⬆ Choose Photo<input id="mergePhotoFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergePhotoName">No photo selected</div></div>
-  <div class="merge-upload-card signature-upload"><div class="merge-upload-icon">✍️</div><h3>Upload Signature</h3><p>JPG, PNG · Choose your signature</p><label class="merge-pick">⬆ Choose Signature<input id="mergeSignatureFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergeSignatureName">No signature selected</div></div>
+  <div class="merge-upload-card photo-upload"><div class="merge-upload-icon">🖼️</div><h3>Upload Photo</h3><p>JPG, PNG · Choose your photo</p><label class="merge-pick">⬆ Choose Photo<input id="mergePhotoFile" type="file" accept="image/jpeg,image/png,image/webp"></label><img class="merge-upload-preview" id="mergePhotoPreview" alt="Selected photo preview" hidden><div class="merge-picked" id="mergePhotoName">No photo selected</div></div>
+  <div class="merge-upload-card signature-upload"><div class="merge-upload-icon">✍️</div><h3>Upload Signature</h3><p>JPG, PNG · Choose your signature</p><label class="merge-pick">⬆ Choose Signature<input id="mergeSignatureFile" type="file" accept="image/jpeg,image/png,image/webp"></label><img class="merge-upload-preview" id="mergeSignaturePreview" alt="Selected signature preview" hidden><div class="merge-picked" id="mergeSignatureName">No signature selected</div></div>
 </div>
 <div id="options"></div><div class="actions" id="standardActions"><button class="primary" id="run">Process</button><button class="secondary" id="reset">New / Reset</button></div>
 <div id="mergeActions" hidden><button class="primary merge-run" id="mergeRun">✨ Merge Photo &amp; Signature　➜</button><button class="secondary" id="mergeReset" style="margin-top:9px">New / Reset</button></div>
@@ -306,43 +306,81 @@ const accents=["#6554e8","#0c91a5","#d23f87","#e66c28","#8b43d8","#159b9b","#386
 const grid=document.getElementById("toolGrid"),panel=document.getElementById("panel"),filesEl=document.getElementById("files"),optionsEl=document.getElementById("options"),statusEl=document.getElementById("status"),previews=document.getElementById("previews"),runBtn=document.getElementById("run");
 let current=null,urls=[];
 const standardFilebox=document.getElementById("standardFilebox"),standardActions=document.getElementById("standardActions"),mergeUploadGrid=document.getElementById("mergeUploadGrid"),mergeActions=document.getElementById("mergeActions"),mergePhotoFile=document.getElementById("mergePhotoFile"),mergeSignatureFile=document.getElementById("mergeSignatureFile"),mergeShowcase=document.getElementById("mergeShowcase"),mergeBenefits=document.getElementById("mergeBenefits");
-let mergedOutputUrl=null;
+let mergedOutputUrl=null, photoPreviewUrl=null, signaturePreviewUrl=null;
 function setMergeMode(on){
- standardFilebox.style.display=on?"none":"";
- standardActions.style.display=on?"none":"";
- mergeUploadGrid.hidden=!on;mergeActions.hidden=!on;mergeShowcase.hidden=!on;mergeBenefits.hidden=!on;
- document.getElementById("mergeResult").hidden=true;
+ // Reset both layouts explicitly: merge-only UI is visible only for the merge tool.
+ const mergeOnly=[mergeUploadGrid,mergeActions,mergeShowcase,mergeBenefits,document.getElementById("mergeResult")];
+ standardFilebox.hidden=!!on;
+ standardFilebox.style.display=on?"none":"block";
+ standardActions.hidden=!!on;
+ standardActions.style.display=on?"none":"flex";
+ mergeUploadGrid.hidden=!on;
+ mergeUploadGrid.style.display=on?"grid":"none";
+ mergeActions.hidden=!on;
+ mergeActions.style.display=on?"block":"none";
+ mergeShowcase.hidden=!on;
+ mergeShowcase.style.display=on?"flex":"none";
+ mergeBenefits.hidden=!on;
+ mergeBenefits.style.display=on?"grid":"none";
+ const result=document.getElementById("mergeResult");
+ result.hidden=true;
+ result.style.display="none";
+ // Defend against hidden attributes being overridden by any later CSS rule.
+ mergeOnly.forEach(el=>{if(!on){el.hidden=true;el.style.display="none";}});
+ if(on){
+   mergeUploadGrid.hidden=false;mergeUploadGrid.style.display="grid";
+   mergeActions.hidden=false;mergeActions.style.display="block";
+   mergeShowcase.hidden=false;mergeShowcase.style.display="flex";
+   mergeBenefits.hidden=false;mergeBenefits.style.display="grid";
+ }
 }
 function clearMergeFiles(){
- mergePhotoFile.value="";mergeSignatureFile.value="";
- document.getElementById("mergePhotoName").textContent="No photo selected";
- document.getElementById("mergeSignatureName").textContent="No signature selected";
- document.getElementById("mergeResult").hidden=true;
+ mergePhotoFile.value=""; mergeSignatureFile.value="";
+ for(const u of [photoPreviewUrl,signaturePreviewUrl,mergedOutputUrl]) if(u) URL.revokeObjectURL(u);
+ photoPreviewUrl=null; signaturePreviewUrl=null; mergedOutputUrl=null;
+ for(const [id,name] of [["mergePhotoPreview","mergePhotoName"],["mergeSignaturePreview","mergeSignatureName"]]){
+   const img=document.getElementById(id); img.hidden=true; img.removeAttribute("src");
+   document.getElementById(name).textContent=id==="mergePhotoPreview"?"No photo selected":"No signature selected";
+ }
+ document.getElementById("mergeResult").hidden=true; document.getElementById("mergeResult").style.display="none";
  document.getElementById("mergeDone").classList.remove("show");
- if(mergedOutputUrl){URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=null;}
 }
-function showMergeName(input,label,emptyText){document.getElementById(label).textContent=input.files&&input.files[0]?("✓ "+input.files[0].name):emptyText;}
-mergePhotoFile.addEventListener("change",()=>showMergeName(mergePhotoFile,"mergePhotoName","No photo selected"));
-mergeSignatureFile.addEventListener("change",()=>showMergeName(mergeSignatureFile,"mergeSignatureName","No signature selected"));
+function previewMergeFile(input,imgId,nameId,isPhoto){
+ const file=input.files&&input.files[0],img=document.getElementById(imgId);
+ const old=isPhoto?photoPreviewUrl:signaturePreviewUrl; if(old)URL.revokeObjectURL(old);
+ if(isPhoto)photoPreviewUrl=null;else signaturePreviewUrl=null;
+ if(!file){img.hidden=true;img.removeAttribute("src");document.getElementById(nameId).textContent=isPhoto?"No photo selected":"No signature selected";return;}
+ const url=URL.createObjectURL(file);if(isPhoto)photoPreviewUrl=url;else signaturePreviewUrl=url;
+ img.onload=()=>{img.hidden=false;};img.onerror=()=>{img.hidden=true;};img.src=url;
+ document.getElementById(nameId).textContent="✓ "+file.name;
+}
+mergePhotoFile.addEventListener("change",()=>previewMergeFile(mergePhotoFile,"mergePhotoPreview","mergePhotoName",true));
+mergeSignatureFile.addEventListener("change",()=>previewMergeFile(mergeSignatureFile,"mergeSignaturePreview","mergeSignatureName",false));
 document.getElementById("mergeReset").addEventListener("click",clearMergeFiles);
 document.getElementById("mergeRun").addEventListener("click",async()=>{
  const photo=mergePhotoFile.files&&mergePhotoFile.files[0],sig=mergeSignatureFile.files&&mergeSignatureFile.files[0];
  if(!photo||!sig){alert("Please choose both a photo and a signature first.");return;}
- const readImage=file=>new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Image could not be opened."))};img.src=url;});
+ const btn=document.getElementById("mergeRun");btn.disabled=true;btn.textContent="Preparing image…";
+ const readImage=file=>new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Could not open "+file.name));};img.src=url;});
  try{
   const [p,s]=await Promise.all([readImage(photo),readImage(sig)]);
-  const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),maxW=900;
-  const ps=Math.min(1,maxW/p.width),pw=Math.round(p.width*ps),ph=Math.round(p.height*ps),ss=Math.min(1,maxW/s.width),sw=Math.round(s.width*ss),sh=Math.round(s.height*ss);
-  const layout=document.querySelector('#options select')?.value||"Side by side";
-  if(/stack|above|vertical/i.test(layout)){canvas.width=Math.max(pw,sw);canvas.height=ph+sh+24;ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(p,(canvas.width-pw)/2,0,pw,ph);ctx.drawImage(s,(canvas.width-sw)/2,ph+24,sw,sh);}
-  else{canvas.width=pw+sw+24;canvas.height=Math.max(ph,sh);ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(p,0,(canvas.height-ph)/2,pw,ph);ctx.drawImage(s,pw+24,(canvas.height-sh)/2,sw,sh);}
-  const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.92));if(!blob)throw new Error("Could not create image");
+  // Passport-style output: 413 × 531 px photo, with signature directly underneath.
+  const photoW=413,photoH=531,signatureBandH=115,canvas=document.createElement("canvas");
+  canvas.width=photoW;canvas.height=photoH+signatureBandH;
+  const ctx=canvas.getContext("2d");if(!ctx)throw new Error("Canvas is not supported in this browser");
+  ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);
+  const scale=Math.max(photoW/p.naturalWidth,photoH/p.naturalHeight),drawW=p.naturalWidth*scale,drawH=p.naturalHeight*scale;
+  ctx.save();ctx.beginPath();ctx.rect(0,0,photoW,photoH);ctx.clip();ctx.drawImage(p,(photoW-drawW)/2,(photoH-drawH)/2,drawW,drawH);ctx.restore();
+  const maxSigW=photoW-24,maxSigH=signatureBandH-16,sigScale=Math.min(maxSigW/s.naturalWidth,maxSigH/s.naturalHeight),sigW=s.naturalWidth*sigScale,sigH=s.naturalHeight*sigScale;
+  ctx.drawImage(s,(photoW-sigW)/2,photoH+(signatureBandH-sigH)/2,sigW,sigH);
+  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("Could not export image")),"image/jpeg",.92));
   if(mergedOutputUrl)URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=URL.createObjectURL(blob);
   document.getElementById("mergeResultImage").src=mergedOutputUrl;
   const dl=document.getElementById("mergeDownload");dl.href=mergedOutputUrl;dl.download="photo_signature_merged.jpg";
-  document.getElementById("mergeResult").hidden=false;document.getElementById("mergeDone").classList.remove("show");
-  document.getElementById("mergeResult").scrollIntoView({behavior:"smooth",block:"nearest"});
- }catch(e){alert("Image merge failed. Please try another JPG or PNG image.");}
+  const result=document.getElementById("mergeResult");result.hidden=false;result.style.display="block";
+  document.getElementById("mergeDone").classList.remove("show");result.scrollIntoView({behavior:"smooth",block:"nearest"});
+ }catch(e){console.error(e);alert("Image merge failed. Please try a standard JPG or PNG image. "+(e.message||""));}
+ finally{btn.disabled=false;btn.textContent="✨ Merge Photo & Signature ➜";}
 });
 document.getElementById("mergeDownload").addEventListener("click",()=>setTimeout(()=>document.getElementById("mergeDone").classList.add("show"),500));
 
@@ -375,14 +413,14 @@ document.querySelectorAll(".category").forEach(b=>b.addEventListener("click",()=
 }));
 function clearResults(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];previews.innerHTML=""}
 function objectURL(blob){const u=URL.createObjectURL(blob);urls.push(u);return u}
-function openTool(t){current=t;document.getElementById("toolTitle").textContent=t[0];setMergeMode(t[3]==="mergePhotoSig");if(t[3]==="mergePhotoSig")clearMergeFiles();document.getElementById("toolDesc").textContent=t[2];filesEl.value="";optionsEl.innerHTML="";statusEl.textContent="";clearResults();panel.classList.add("show");
+function openTool(t){current=t;document.getElementById("toolTitle").textContent=t[0];const isMergeTool=t[3]==="mergePhotoSig";setMergeMode(isMergeTool);if(isMergeTool)clearMergeFiles();else{document.getElementById("mergeResult").hidden=true;document.getElementById("mergeResult").style.display="none";}document.getElementById("toolDesc").textContent=t[2];filesEl.value="";optionsEl.innerHTML="";statusEl.textContent="";clearResults();panel.classList.add("show");
 const type=t[3];filesEl.multiple=["mergepdf","jpgpdf","scanpdf","mergePhotoSig","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/*";
 document.getElementById("fileHint").textContent=type==="mergePhotoSig"?"Select photo first and signature second":type==="govresize"?"Select photo and signature images":"Select your file to get started";
 runBtn.textContent=["targetImage","increaseImage","signature","govresize"].includes(type)?"Resize Image":type==="jpgpdf"||type==="scanpdf"?"Create PDF":"Process";
 if(["targetImage","increaseImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])}
 if(["increaseImage","signature","govresize","crop"].includes(type)){numberField("Width (pixels)","width",type==="signature"?300:600,1);numberField("Height (pixels)","height",type==="signature"?100:600,1)}
 if(type==="jpgpdf"||type==="scanpdf"){selectField("PDF layout","pdfLayout",["One photo per page","All photos on one page"]);selectField("Page size","pageSize",["Fit page to photo","A4"]);selectField("Photo arrangement","photoLayout",["Fit side by side","Stack vertically"])}
-if(type==="mergePhotoSig")selectField("Layout","layout",["Side by side","Photo above signature"]);
+if(type==="mergePhotoSig")selectField("Layout","layout",["Photo above signature (Passport size)"]);
 if(type==="bgremove")selectField("Background color to remove","bgcolor",["White","Blue","Green","Black"]);
 if(type==="passport"){numberField("Width (pixels)","width",413,1);numberField("Height (pixels)","height",531,1);selectField("Background color","bgcolor",["White","Light blue","Light grey"])}
 if(type==="pdfjpg")numberField("Render quality (scale 1–3)","scale",1.5,1);
