@@ -249,6 +249,31 @@ footer strong{color:#173b8d}
 /* Critical fix: hidden UI sections must never be shown by component CSS */
 [hidden]{display:none!important}
 .merge-upload-preview[hidden]{display:none!important}
+
+/* Final containment fix: uploaded previews stay inside their own upload cards */
+#mergeUploadGrid .merge-upload-card{position:relative;overflow:hidden;min-width:0}
+#mergeUploadGrid .merge-upload-card .merge-upload-preview,
+#mergeUploadGrid img.merge-upload-preview{
+  display:block;
+  width:auto!important;
+  height:auto!important;
+  max-width:110px!important;
+  max-height:125px!important;
+  object-fit:contain!important;
+  position:static!important;
+  inset:auto!important;
+  transform:none!important;
+  margin:10px auto 6px!important;
+  padding:5px!important;
+  box-sizing:border-box!important;
+  border:1px solid #e5e7eb!important;
+  border-radius:12px!important;
+  background:#fff!important;
+}
+#mergeUploadGrid .merge-upload-preview[hidden]{display:none!important}
+#mergeUploadGrid .merge-pick{position:relative;overflow:hidden;max-width:100%}
+#mergeUploadGrid .merge-picked{max-width:100%;overflow-wrap:anywhere}
+
 </style>
 </head>
 <body>
