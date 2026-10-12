@@ -394,38 +394,52 @@ document.getElementById("mergeRun").addEventListener("click",async()=>{
   await Promise.all([p.decode ? p.decode() : Promise.resolve(), s.decode ? s.decode() : Promise.resolve()]);
   if(!p.naturalWidth || !p.naturalHeight) throw new Error("Photo preview is not ready. Please choose the photo again.");
   if(!s.naturalWidth || !s.naturalHeight) throw new Error("Signature preview is not ready. Please choose the signature again.");
-  // Passport-style output: 413 × 531 px photo, with signature directly underneath.
-  const photoW=413,photoH=531,signatureBandH=115,canvas=document.createElement("canvas");
+  // Passport-style output: photo above a clean white signature strip.
+  // Only this Merge Photo & Signature routine is changed; other tools are untouched.
+  const photoW=413,photoH=531,signatureBandH=150,canvas=document.createElement("canvas");
   canvas.width=photoW;canvas.height=photoH+signatureBandH;
   const ctx=canvas.getContext("2d");if(!ctx)throw new Error("Canvas is not supported in this browser");
   ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);
   const scale=Math.max(photoW/p.naturalWidth,photoH/p.naturalHeight),drawW=p.naturalWidth*scale,drawH=p.naturalHeight*scale;
   ctx.save();ctx.beginPath();ctx.rect(0,0,photoW,photoH);ctx.clip();ctx.drawImage(p,(photoW-drawW)/2,(photoH-drawH)/2,drawW,drawH);ctx.restore();
-  // Trim empty white/transparent margins around a scanned signature so it uses
-  // the same output width as the passport photo instead of appearing tiny.
+  // Find the handwriting area, excluding the photographed paper/background.
   const sc=document.createElement("canvas");sc.width=s.naturalWidth;sc.height=s.naturalHeight;
-  const sx=sc.getContext("2d");sx.drawImage(s,0,0);
+  const sx=sc.getContext("2d",{willReadFrequently:true});sx.drawImage(s,0,0);
   let sigSource={x:0,y:0,w:sc.width,h:sc.height};
   try{
     const sd=sx.getImageData(0,0,sc.width,sc.height),px=sd.data;
     let minX=sc.width,minY=sc.height,maxX=-1,maxY=-1;
     for(let yy=0;yy<sc.height;yy++)for(let xx=0;xx<sc.width;xx++){
-      const k=(yy*sc.width+xx)*4,a=px[k+3],brightness=(px[k]+px[k+1]+px[k+2])/3;
-      // Include dark ink and colored ink; ignore white paper and transparent padding.
-      if(a>25&&brightness<218){if(xx<minX)minX=xx;if(xx>maxX)maxX=xx;if(yy<minY)minY=yy;if(yy>maxY)maxY=yy;}
+      const k=(yy*sc.width+xx)*4,a=px[k+3],r=px[k],g=px[k+1],b=px[k+2],brightness=(r+g+b)/3;
+      const blueInk=b>r*1.12&&b>g*1.04&&brightness<205;
+      const darkInk=brightness<105;
+      if(a>25&&(blueInk||darkInk)){if(xx<minX)minX=xx;if(xx>maxX)maxX=xx;if(yy<minY)minY=yy;if(yy>maxY)maxY=yy;}
     }
     if(maxX>=minX&&maxY>=minY){
-      const pad=Math.max(2,Math.round(Math.min(sc.width,sc.height)*.025));
+      const pad=Math.max(3,Math.round(Math.min(sc.width,sc.height)*.035));
       minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);
       maxX=Math.min(sc.width-1,maxX+pad);maxY=Math.min(sc.height-1,maxY+pad);
       sigSource={x:minX,y:minY,w:maxX-minX+1,h:maxY-minY+1};
     }
   }catch(e){console.warn("Signature trimming skipped",e);}
-  const maxSigW=photoW,maxSigH=signatureBandH-10;
-  const sigScale=Math.min(maxSigW/sigSource.w,maxSigH/sigSource.h);
-  const sigW=sigSource.w*sigScale,sigH=sigSource.h*sigScale;
-  ctx.drawImage(sc,sigSource.x,sigSource.y,sigSource.w,sigSource.h,
-    (photoW-sigW)/2,photoH+(signatureBandH-sigH)/2,sigW,sigH);
+  // Render the selected signature on pure white and remove grey paper/shadows.
+  const clean=document.createElement("canvas");clean.width=sigSource.w;clean.height=sigSource.h;
+  const cleanCtx=clean.getContext("2d",{willReadFrequently:true});
+  cleanCtx.fillStyle="#fff";cleanCtx.fillRect(0,0,clean.width,clean.height);
+  const raw=sx.getImageData(sigSource.x,sigSource.y,sigSource.w,sigSource.h),data=raw.data;
+  for(let i=0;i<data.length;i+=4){
+    const r=data[i],g=data[i+1],b=data[i+2],brightness=(r+g+b)/3;
+    const blueInk=b>r*1.12&&b>g*1.04&&brightness<205;
+    if(blueInk){data[i]=Math.min(255,Math.round(r*.72+20));data[i+1]=Math.min(255,Math.round(g*.72+20));data[i+2]=Math.min(255,Math.round(b*.82+10));data[i+3]=255;}
+    else if(brightness<105){const v=Math.max(0,Math.round(brightness*.55));data[i]=v;data[i+1]=v;data[i+2]=v;data[i+3]=255;}
+    else {data[i]=255;data[i+1]=255;data[i+2]=255;data[i+3]=255;}
+  }
+  cleanCtx.putImageData(raw,0,0);
+  const maxSigW=photoW-24,maxSigH=signatureBandH-16;
+  const sigScale=Math.min(maxSigW/clean.width,maxSigH/clean.height);
+  const sigW=clean.width*sigScale,sigH=clean.height*sigScale;
+  ctx.fillStyle="#fff";ctx.fillRect(0,photoH,photoW,signatureBandH);
+  ctx.drawImage(clean,(photoW-sigW)/2,photoH+(signatureBandH-sigH)/2,sigW,sigH);
   const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("Could not export image")),"image/jpeg",.92));
   if(mergedOutputUrl)URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=URL.createObjectURL(blob);
   document.getElementById("mergeResultImage").src=mergedOutputUrl;
