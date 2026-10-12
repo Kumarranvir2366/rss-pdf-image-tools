@@ -381,9 +381,14 @@ document.getElementById("mergeRun").addEventListener("click",async()=>{
  const photo=mergePhotoFile.files&&mergePhotoFile.files[0],sig=mergeSignatureFile.files&&mergeSignatureFile.files[0];
  if(!photo||!sig){alert("Please choose both a photo and a signature first.");return;}
  const btn=document.getElementById("mergeRun");btn.disabled=true;btn.textContent="Preparing image…";
- const readImage=file=>new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Could not open "+file.name));};img.src=url;});
  try{
-  const [p,s]=await Promise.all([readImage(photo),readImage(sig)]);
+  // Reuse the already-loaded preview images instead of reopening the files.
+  // This avoids mobile-browser object-URL decode failures during processing.
+  const p=document.getElementById("mergePhotoPreview");
+  const s=document.getElementById("mergeSignaturePreview");
+  await Promise.all([p.decode ? p.decode() : Promise.resolve(), s.decode ? s.decode() : Promise.resolve()]);
+  if(!p.naturalWidth || !p.naturalHeight) throw new Error("Photo preview is not ready. Please choose the photo again.");
+  if(!s.naturalWidth || !s.naturalHeight) throw new Error("Signature preview is not ready. Please choose the signature again.");
   // Passport-style output: 413 × 531 px photo, with signature directly underneath.
   const photoW=413,photoH=531,signatureBandH=115,canvas=document.createElement("canvas");
   canvas.width=photoW;canvas.height=photoH+signatureBandH;
