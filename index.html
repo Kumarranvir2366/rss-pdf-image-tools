@@ -306,112 +306,7 @@ footer strong{color:#173b8d}
 <div id="mergeResult" class="merge-preview" hidden><h3>👁 Preview Result</h3><img id="mergeResultImage" alt="Merged photo and signature preview"><a id="mergeDownload" class="merge-download" download="photo_signature_merged.jpg" style="display:block;text-align:center;text-decoration:none">⬇ Download Image</a><div id="mergeDone" class="merge-done">✅ Download completed ✓</div></div>
 <div class="merge-benefits" id="mergeBenefits" hidden><div class="merge-benefit"><div class="benefit-icon">☁️</div><h4>Easy Upload</h4><p>Simply upload your photo and signature.</p></div><div class="merge-benefit"><div class="benefit-icon">👁️</div><h4>Instant Preview</h4><p>See the merged image before downloading.</p></div><div class="merge-benefit"><div class="benefit-icon">🛡️</div><h4>Private &amp; Secure</h4><p>Your files are processed in your browser.</p></div></div></section>
 </main>
-<footer class="site-footer">
-  <strong>RSS IMAGE RESIZE &amp; TOOLS</strong>
-
-  <p>Free Online PDF, Photo &amp; Signature Tools</p>
-
-  <p>
-    Resize photos, prepare signatures, convert images
-    and manage PDF files with our free online tools.
-  </p>
-
-  <nav class="footer-links" aria-label="Footer navigation">
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms &amp; Conditions</a>
-    <a href="disclaimer.html">Disclaimer</a>
-  </nav>
-
-  <p class="footer-privacy">
-    Files are processed in your browser where supported.
-    This page does not intentionally upload your files.
-  </p>
-
-  <p class="footer-note">
-    Always check official photo and signature requirements
-    before submitting an application.
-  </p>
-
-  <p class="footer-copyright">
-    &copy; <span id="footerYear"></span>
-    RSS IMAGE RESIZE &amp; TOOLS. All rights reserved.
-  </p>
-</footer>
-
-<style>
-.site-footer {
-  margin-top: 30px;
-  padding: 30px 16px;
-  text-align: center;
-  background: linear-gradient(
-    135deg,
-    #edf4ff,
-    #f8f0ff,
-    #fff8e9
-  );
-  border-top: 1px solid #e2e8f5;
-  color: #52617d;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-.site-footer > strong {
-  color: #173b8d;
-  font-size: 16px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  margin: 20px 0;
-}
-
-.footer-links a {
-  color: #2856c5;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.footer-links a:hover {
-  color: #7b32d6;
-  text-decoration: underline;
-}
-
-.footer-privacy,
-.footer-note,
-.footer-copyright {
-  max-width: 750px;
-  margin: 12px auto;
-}
-
-.footer-copyright {
-  padding-top: 12px;
-  border-top: 1px solid #dce3f1;
-  font-size: 12px;
-}
-
-@media (max-width: 480px) {
-  .site-footer {
-    padding: 24px 12px;
-    font-size: 12px;
-  }
-
-  .footer-links {
-    gap: 10px 14px;
-  }
-}
-</style>
-
-<script>
-document.getElementById("footerYear").textContent =
-  new Date().getFullYear();
-</script>
+<footer><strong>RSS IMAGE RESIZE &amp; TOOLS</strong><br>Free browser-based PDF, photo and signature utilities.<br>Files are processed in your browser where supported; they are not intentionally uploaded by this page.<br><br><a href="#privacy">Privacy</a> · <a href="#about">About</a><p id="privacy">Privacy: selected files are processed locally by this demo page where supported.</p><p id="about">Always check official photo and signature requirements before submitting an application.</p></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
@@ -602,6 +497,12 @@ if(type==="jpgpdf"||type==="scanpdf"){selectField("PDF layout","pdfLayout",["One
 /* Merge Photo & Signature has a fixed passport layout: photo above signature. */
 if(type==="bgremove"){selectField("New background color","bgcolor",["White","Blue","Light Blue","Green","Black"]);const sizeRow=document.createElement("div");sizeRow.className="field";const sizeLabel=document.createElement("label");sizeLabel.htmlFor="bgTargetSize";sizeLabel.textContent="Optional download size (leave blank to keep normal quality)";const sizeControls=document.createElement("div");sizeControls.style.display="grid";sizeControls.style.gridTemplateColumns="minmax(0,1fr) 100px";sizeControls.style.gap="8px";const sizeInput=document.createElement("input");sizeInput.id="bgTargetSize";sizeInput.type="number";sizeInput.min="1";sizeInput.placeholder="KB or MB target";const unit=document.createElement("select");unit.id="bgTargetUnit";["KB","MB"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;unit.append(o)});sizeControls.append(sizeInput,unit);sizeRow.append(sizeLabel,sizeControls);optionsEl.append(sizeRow);const hint=document.createElement("p");hint.className="hint";hint.textContent="Background AI se alag kiya jayega. Original photo ki pixel width/height same rahegi. KB/MB target optional hai; bahut chhota target quality ghata sakta hai aur exact file size guarantee nahi hota.";optionsEl.append(hint)}
 if(type==="passport"){numberField("Width (pixels)","width",413,1);numberField("Height (pixels)","height",531,1);selectField("Background color","bgcolor",["White","Light blue","Light grey"])}
+if(type==="compresspdf"){
+  selectField("Compression mode","pdfCompressionMode",["Standard — preserve text and layout","Strong — smaller scanned PDF (pages become images)"]);
+  const compressionHint=document.createElement("p");compressionHint.className="hint";
+  compressionHint.textContent="Standard mode keeps searchable/selectable text where supported, but size reduction may be small. Strong mode can reduce scanned PDFs more, but converts pages to images: text will no longer be selectable and links/forms may be lost. Always check the output before using it.";
+  optionsEl.append(compressionHint);
+}
 if(type==="pdfjpg")numberField("Render quality (scale 1–3)","scale",1.5,1);
 if(type==="mergePhotoSig"){optionsEl.innerHTML="";filesEl.value="";}
 panel.scrollIntoView({behavior:"smooth",block:"start"})}
@@ -720,7 +621,37 @@ outctx.drawImage(subjectCanvas,0,0,w,h);
 const target=Number(val("bgTargetSize","")||0),unit=val("bgTargetUnit","KB"),targetBytes=target>0?target*(unit==="MB"?1048576:1024):0;let quality=.92;blob=await canvasBlob(c,"image/jpeg",quality);if(targetBytes>0){while(blob.size>targetBytes&&quality>.12){quality=Math.max(.12,quality-.06);blob=await canvasBlob(c,"image/jpeg",quality)}if(blob.size<targetBytes){let q=quality;while(blob.size<targetBytes&&q<.98){q=Math.min(.98,q+.02);const next=await canvasBlob(c,"image/jpeg",q);if(next.size>targetBytes)break;blob=next;quality=q}}if(Math.abs(blob.size-targetBytes)>targetBytes*.12)outputNote=" Requested KB/MB size is approximate; image pixel dimensions were preserved."}name=safeStem(f.name)+"_background.jpg";if(segmenter.close)segmenter.close();}addResult({title:"Result Preview",blob,name,originalFile:f,compare:true});setStatus(type==="bgremove"?"Background changed. Check the face, hair and clothing in the preview before downloading.":"Done. Review the preview and actual file size, then download when ready."+outputNote)}
 else if(["jpgpdf","scanpdf"].includes(type)){if(!window.PDFLib)throw Error("PDF library could not load. Check internet and retry.");const doc=await PDFLib.PDFDocument.create(),ims=[];for(const f of fs){const bytes=await f.arrayBuffer();let im;if(f.type==="image/png"||/\.png$/i.test(f.name))im=await doc.embedPng(bytes);else{try{im=await doc.embedJpg(bytes)}catch{const c=await makeCanvas(f);im=await doc.embedJpg(await(await canvasBlob(c,"image/jpeg",.92)).arrayBuffer())}}ims.push(im)}if(!ims.length)throw Error("Select valid image files.");const layout=val("pdfLayout","One photo per page"),a4=[595.28,841.89],side=val("photoLayout","Fit side by side")==="Fit side by side";if(layout==="One photo per page"){for(const im of ims){if(val("pageSize","Fit page to photo")==="A4"){const page=doc.addPage(a4),s=Math.min(a4[0]/im.width,a4[1]/im.height),w=im.width*s,h=im.height*s;page.drawImage(im,{x:(a4[0]-w)/2,y:(a4[1]-h)/2,width:w,height:h})}else{const page=doc.addPage([im.width,im.height]);page.drawImage(im,{x:0,y:0,width:im.width,height:im.height})}}}else{const margin=24,gap=12;let pw,ph;if(val("pageSize","Fit page to photo")==="A4"){pw=a4[0];ph=a4[1]}else if(side){pw=ims.reduce((s,x)=>s+x.width,0)+gap*(ims.length-1)+2*margin;ph=Math.max(...ims.map(x=>x.height))+2*margin}else{pw=Math.max(...ims.map(x=>x.width))+2*margin;ph=ims.reduce((s,x)=>s+x.height,0)+gap*(ims.length-1)+2*margin}const page=doc.addPage([pw,ph]);if(side){const total=ims.reduce((s,x)=>s+x.width,0)+gap*(ims.length-1),scale=Math.min(1,(pw-2*margin)/total,(ph-2*margin)/Math.max(...ims.map(x=>x.height)));let x=(pw-total*scale)/2;for(const im of ims){const w=im.width*scale,h=im.height*scale;page.drawImage(im,{x,y:(ph-h)/2,width:w,height:h});x+=w+gap*scale}}else{const total=ims.reduce((s,x)=>s+x.height,0)+gap*(ims.length-1),scale=Math.min(1,(ph-2*margin)/total,(pw-2*margin)/Math.max(...ims.map(x=>x.width)));let y=ph-(ph-total*scale)/2;for(const im of ims){const w=im.width*scale,h=im.height*scale;y-=h;page.drawImage(im,{x:(pw-w)/2,y,width:w,height:h});y-=gap*scale}}}const blob=new Blob([await doc.save()],{type:"application/pdf"});addResult({title:"Created PDF Preview",blob,name:type==="scanpdf"?"scanned-document.pdf":"images.pdf",kind:"pdf"});setStatus("PDF created. Review the preview and file size, then tap Download PDF.")}
 else if(type==="mergepdf"){if(!window.PDFLib)throw Error("PDF library could not load.");const doc=await PDFLib.PDFDocument.create();for(const f of fs){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),pages=await doc.copyPages(src,src.getPageIndices());pages.forEach(p=>doc.addPage(p))}const blob=new Blob([await doc.save()],{type:"application/pdf"});addResult({title:"Merged PDF Preview",blob,name:"merged.pdf",kind:"pdf"});setStatus("PDFs merged. Preview and download when ready.")}
-else if(type==="compresspdf"){if(!window.PDFLib)throw Error("PDF library could not load.");const doc=await PDFLib.PDFDocument.load(await fs[0].arrayBuffer()),blob=new Blob([await doc.save({useObjectStreams:true})],{type:"application/pdf"});addResult({title:"PDF Preview",blob,name:"compressed.pdf",kind:"pdf",note:"Basic re-save; size reduction is not guaranteed"});setStatus("PDF processed. Review and download when ready.")}
+else if(type==="compresspdf"){
+ if(!window.PDFLib)throw Error("PDF library could not load.");
+ const sourceFile=fs[0],mode=val("pdfCompressionMode","Standard — preserve text and layout");
+ let blob,compressionNote="";
+ if(mode.startsWith("Strong")){
+  if(!window.pdfjsLib)throw Error("PDF rendering library could not load. Check internet and retry.");
+  const pdf=await pdfjsLib.getDocument({data:await sourceFile.arrayBuffer()}).promise;
+  if(pdf.numPages>50)throw Error("Strong compression supports up to 50 pages at a time. Use Standard mode for larger PDFs.");
+  const compressedDoc=await PDFLib.PDFDocument.create();
+  for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
+   setStatus("Compressing page "+pageNo+" of "+pdf.numPages+"…");
+   const page=await pdf.getPage(pageNo),viewport=page.getViewport({scale:1.25});
+   const canvas=document.createElement("canvas");canvas.width=Math.max(1,Math.round(viewport.width));canvas.height=Math.max(1,Math.round(viewport.height));
+   const context=canvas.getContext("2d");if(!context)throw Error("Canvas is not supported in this browser.");
+   await page.render({canvasContext:context,viewport}).promise;
+   const jpg=await canvasBlob(canvas,"image/jpeg",.68),embedded=await compressedDoc.embedJpg(await jpg.arrayBuffer());
+   const outPage=compressedDoc.addPage([embedded.width,embedded.height]);outPage.drawImage(embedded,{x:0,y:0,width:embedded.width,height:embedded.height});
+   canvas.width=1;canvas.height=1;
+  }
+  blob=new Blob([await compressedDoc.save({useObjectStreams:true})],{type:"application/pdf"});
+  compressionNote="Strong image compression; text is not selectable and interactive PDF elements may be lost";
+ }else{
+  const doc=await PDFLib.PDFDocument.load(await sourceFile.arrayBuffer());
+  blob=new Blob([await doc.save({useObjectStreams:true,addDefaultPage:false,objectsPerTick:50})],{type:"application/pdf"});
+  compressionNote="Standard optimization; reduction depends on the original PDF";
+ }
+ const difference=((sourceFile.size-blob.size)/sourceFile.size*100);
+ const sizeNote="Original "+(sourceFile.size/1024).toFixed(1)+" KB; output "+(blob.size/1024).toFixed(1)+" KB; "+(difference>=0?difference.toFixed(1)+"% smaller":Math.abs(difference).toFixed(1)+"% larger")+". "+compressionNote;
+ addResult({title:"Compressed PDF Preview",blob,name:"compressed.pdf",kind:"pdf",originalFile:sourceFile,note:sizeNote});
+ setStatus("PDF processing complete. Compare the original and output sizes shown below. If the output is larger, try Strong mode only for scanned/image-based PDFs. Review the PDF before downloading.");
+}
 else if(type==="pdfjpg"){if(!window.pdfjsLib)throw Error("PDF library could not load.");const pdf=await pdfjsLib.getDocument({data:await fs[0].arrayBuffer()}).promise;if(pdf.numPages>20)throw Error("For safety, up to 20 pages can be converted at once.");for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:Math.min(3,Math.max(1,Number(val("scale",1.5))))}),c=document.createElement("canvas");c.width=vp.width;c.height=vp.height;await page.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;const blob=await canvasBlob(c,"image/jpeg",.92);addResult({title:"Page "+n+" Preview",blob,name:"page-"+n+".jpg"})}setStatus("Pages converted. Download each image using its button.")}
 else if(type==="mergePhotoSig"){if(fs.length<2)throw Error("Select photo first and signature second.");const a=await loadImage(fs[0]),b=await loadImage(fs[1]),side=val("layout","Side by side")==="Side by side",c=document.createElement("canvas");c.width=side?a.width+b.width:Math.max(a.width,b.width);c.height=side?Math.max(a.height,b.height):a.height+b.height;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);if(side){ctx.drawImage(a,0,0);ctx.drawImage(b,a.width,0)}else{ctx.drawImage(a,0,0);ctx.drawImage(b,0,a.height)}const blob=await canvasBlob(c,"image/jpeg",.92);addResult({title:"Photo + Signature Preview",blob,name:"photo-signature.jpg"});setStatus("Combined image ready. Preview and download when ready.")}
 else throw Error("This tool is not implemented yet.");
