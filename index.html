@@ -1,31 +1,27 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<meta name="theme-color" content="#6554e8">  
-<meta name="x-site-build" content="all15-merge-containment-increase-restored-2026-10-12">  
-<meta name="description" content="RSS IMAGE RESIZE &amp; TOOLS: free photo, signature and PDF tools with preview before download.">  
-<title>RSS IMAGE RESIZE &amp; TOOLS — Free PDF &amp; Image Tools</title>  
-<style>  
-:root{--p:#6554e8;--ink:#20243a;--muted:#687087;--bg:#f5f6fc;--line:#e5e7f0}  
-*{box-sizing:border-box} [hidden]{display:none!important} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}  
-header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px}  
-.brand{display:flex;align-items:center;gap:10px}.logo{background:linear-gradient(135deg,#7657ed,#e14ca9);color:#fff;font-weight:800;padding:11px;border-radius:13px}.brand h2{font-size:18px;margin:0}.brand p{font-size:11px;color:var(--muted);margin:4px 0 0}.badge{font-size:11px;font-weight:bold;background:#f0edff;color:#5143c4;padding:8px 11px;border-radius:20px}  
-main{max-width:1150px;margin:auto;padding:22px 14px 45px}.hero{text-align:center;padding:38px 16px;border-radius:24px;background:linear-gradient(120deg,#eae5ff,#e2f8ff,#fff0f7);border:1px solid white}.hero h1{font-size:clamp(27px,5vw,42px);margin:16px 0 10px;background:linear-gradient(90deg,#5e48d9,#c13db3,#257acb);color:transparent;background-clip:text;-webkit-background-clip:text}.hero p{color:#5e6680;line-height:1.65;max-width:680px;margin:auto}  
-.search{max-width:650px;margin:22px auto;display:flex;gap:8px}.search input{min-width:0;flex:1;padding:13px;border:1px solid #dfe2ee;border-radius:12px;font-size:15px}  
-button{cursor:pointer;border:0;border-radius:10px;padding:12px 15px;font-weight:bold;font-size:14px}.primary{background:var(--p);color:white}.secondary{background:#eeebff;color:#5143c4}.green{background:#4b9d0b;color:white}button:disabled{opacity:.55;cursor:wait}  
-.section-title{font-size:21px;margin:28px 0 14px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.tool{--a:#6554e8;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;min-height:140px;padding:0 13px 15px;box-shadow:0 4px 14px #20243a08}.tool:before{content:"";display:block;height:4px;background:var(--a);margin:0 -13px 12px}.tool:active{transform:scale(.99)}.icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#f0edff;font-size:22px;margin-bottom:9px}.tool h3{font-size:14px;line-height:1.4;margin:0 0 6px}.tool p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}  
-.panel{display:none;margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 28px #20243a0b}.panel.show{display:block}.panel h2{margin:0 0 8px;font-size:23px}.desc{color:var(--muted);font-size:14px;line-height:1.6}.filebox{border:2px dashed #b9b3ed;background:#faf9ff;border-radius:14px;padding:20px 13px;text-align:center}.filebox input{max-width:100%;margin-top:8px}.field{margin:13px 0}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px}.field input,.field select{width:100%;padding:12px;border:1px solid #d9ddea;border-radius:10px;background:white;font-size:14px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.status{margin-top:14px;padding:11px;border-radius:10px;background:#f1efff;color:#5143c4;font-size:13px;overflow-wrap:anywhere}.status:empty{display:none}  
-.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin-top:17px}.result-card{min-width:0;border:1px solid #dfe8d5;border-radius:15px;padding:14px;background:#f4ffe8;box-shadow:0 4px 16px #20243a0a}.result-card h3{font-size:15px;overflow-wrap:anywhere;margin:4px 0 8px}.result-card img{display:block;max-width:100%;max-height:330px;object-fit:contain;margin:10px auto;border-radius:8px;background:white}.result-card iframe{width:100%;height:280px;border:1px solid var(--line);border-radius:8px;background:white}.result-card p{font-size:12px;color:#46516a;line-height:1.6;overflow-wrap:anywhere;font-weight:bold}.result-card button{width:100%;margin-top:7px}.result-card .green{background:#4b9d0b}.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.compare-grid>div{min-width:0;text-align:center;font-size:11px}.compare-grid img{max-height:180px}.hint{font-size:12px;color:var(--muted);line-height:1.6}  
-footer{text-align:center;padding:24px 14px;color:var(--muted);font-size:12px;line-height:1.8}  
-.crop-workspace{margin:14px 0;padding:12px;border:1px solid #e5e2f4;border-radius:16px;background:linear-gradient(135deg,#fbfaff,#fffdf5)}  
-.crop-workspace .crop-instructions{font-size:13px;line-height:1.55;color:#5f6078;margin:0 0 10px}  
-.crop-canvas-wrap{position:relative;width:100%;overflow:hidden;border-radius:10px;background:#eceaf5;touch-action:none;line-height:0}  
-.crop-canvas-wrap canvas{display:block;width:100%;height:auto;max-height:65vh;object-fit:contain;touch-action:none;cursor:crosshair}  
-.crop-selection-info{font-size:12px;color:#5143a0;margin:9px 0 0;line-height:1.5}  
-footer a{color:#5143c4}  
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}header{padding:11px}.brand h2{font-size:16px}.badge{font-size:10px}.panel{padding:15px}}  
-@media(max-width:360px){.grid{grid-template-columns:1fr}.hero{padding:28px 12px}.search{flex-wrap:wrap}.search input{flex-basis:100%}}  /* Distinct, soft colors for every tool card /
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6554e8">
+<meta name="description" content="RSS IMAGE RESIZE &amp; TOOLS: free photo, signature and PDF tools with preview before download.">
+<title>RSS IMAGE RESIZE &amp; TOOLS — Free PDF &amp; Image Tools</title>
+<style>
+:root{--p:#6554e8;--ink:#20243a;--muted:#687087;--bg:#f5f6fc;--line:#e5e7f0}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px}.logo{background:linear-gradient(135deg,#7657ed,#e14ca9);color:#fff;font-weight:800;padding:11px;border-radius:13px}.brand h2{font-size:18px;margin:0}.brand p{font-size:11px;color:var(--muted);margin:4px 0 0}.badge{font-size:11px;font-weight:bold;background:#f0edff;color:#5143c4;padding:8px 11px;border-radius:20px}
+main{max-width:1150px;margin:auto;padding:22px 14px 45px}.hero{text-align:center;padding:38px 16px;border-radius:24px;background:linear-gradient(120deg,#eae5ff,#e2f8ff,#fff0f7);border:1px solid white}.hero h1{font-size:clamp(27px,5vw,42px);margin:16px 0 10px;background:linear-gradient(90deg,#5e48d9,#c13db3,#257acb);color:transparent;background-clip:text;-webkit-background-clip:text}.hero p{color:#5e6680;line-height:1.65;max-width:680px;margin:auto}
+.search{max-width:650px;margin:22px auto;display:flex;gap:8px}.search input{min-width:0;flex:1;padding:13px;border:1px solid #dfe2ee;border-radius:12px;font-size:15px}
+button{cursor:pointer;border:0;border-radius:10px;padding:12px 15px;font-weight:bold;font-size:14px}.primary{background:var(--p);color:white}.secondary{background:#eeebff;color:#5143c4}.green{background:#4b9d0b;color:white}button:disabled{opacity:.55;cursor:wait}
+.section-title{font-size:21px;margin:28px 0 14px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.tool{--a:#6554e8;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;min-height:140px;padding:0 13px 15px;box-shadow:0 4px 14px #20243a08}.tool:before{content:"";display:block;height:4px;background:var(--a);margin:0 -13px 12px}.tool:active{transform:scale(.99)}.icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:#f0edff;font-size:22px;margin-bottom:9px}.tool h3{font-size:14px;line-height:1.4;margin:0 0 6px}.tool p{font-size:12px;color:var(--muted);line-height:1.5;margin:0}
+.panel{display:none;margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 28px #20243a0b}.panel.show{display:block}.panel h2{margin:0 0 8px;font-size:23px}.desc{color:var(--muted);font-size:14px;line-height:1.6}.filebox{border:2px dashed #b9b3ed;background:#faf9ff;border-radius:14px;padding:20px 13px;text-align:center}.filebox input{max-width:100%;margin-top:8px}.field{margin:13px 0}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:7px}.field input,.field select{width:100%;padding:12px;border:1px solid #d9ddea;border-radius:10px;background:white;font-size:14px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.status{margin-top:14px;padding:11px;border-radius:10px;background:#f1efff;color:#5143c4;font-size:13px;overflow-wrap:anywhere}.status:empty{display:none}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin-top:17px}.result-card{min-width:0;border:1px solid #dfe8d5;border-radius:15px;padding:14px;background:#f4ffe8;box-shadow:0 4px 16px #20243a0a}.result-card h3{font-size:15px;overflow-wrap:anywhere;margin:4px 0 8px}.result-card img{display:block;max-width:100%;max-height:330px;object-fit:contain;margin:10px auto;border-radius:8px;background:white}.result-card iframe{width:100%;height:280px;border:1px solid var(--line);border-radius:8px;background:white}.result-card p{font-size:12px;color:#46516a;line-height:1.6;overflow-wrap:anywhere;font-weight:bold}.result-card button{width:100%;margin-top:7px}.result-card .green{background:#4b9d0b}.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.compare-grid>div{min-width:0;text-align:center;font-size:11px}.compare-grid img{max-height:180px}.hint{font-size:12px;color:var(--muted);line-height:1.6}
+footer{text-align:center;padding:24px 14px;color:var(--muted);font-size:12px;line-height:1.8}footer a{color:#5143c4}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}header{padding:11px}.brand h2{font-size:16px}.badge{font-size:10px}.panel{padding:15px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.hero{padding:28px 12px}.search{flex-wrap:wrap}.search input{flex-basis:100%}}
+
+/* Distinct, soft colors for every tool card */
 .tool{background:linear-gradient(145deg,color-mix(in srgb,var(--a) 9%,#fff),#fff 72%);border-top:4px solid var(--a);transition:transform .18s ease,box-shadow .18s ease}
 .tool:nth-child(5n+1){background:linear-gradient(145deg,#f0edff,#fff 78%)}
 .tool:nth-child(5n+2){background:linear-gradient(145deg,#e6fbff,#fff 78%)}
@@ -33,12 +29,13 @@ footer a{color:#5143c4}
 .tool:nth-child(5n+4){background:linear-gradient(145deg,#fff3e8,#fff 78%)}
 .tool:nth-child(5n){background:linear-gradient(145deg,#edfff2,#fff 78%)}
 .tool:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(32,36,58,.12)}
-/ Download preparation progress notice */
+/* Download preparation progress notice */
 .download-progress{position:fixed;z-index:9999;left:16px;right:16px;bottom:18px;max-width:520px;margin:auto;background:#fff;border:1px solid #e2e5f0;border-radius:16px;padding:14px 16px;box-shadow:0 10px 35px rgba(25,30,55,.2);font-size:14px;color:#20243a}
 .download-progress .dp-title{font-weight:700;margin-bottom:8px}
 .download-progress .dp-track{height:10px;background:#ececf6;border-radius:99px;overflow:hidden}
 .download-progress .dp-fill{height:100%;width:0;background:linear-gradient(90deg,#6554e8,#0c91a5,#269a64);border-radius:99px;transition:width .12s linear}
 .download-progress .dp-note{font-size:12px;color:#687087;margin-top:7px}
+
 
 /* Premium gold + violet visual refresh */
 :root{--gold:#d6a637;--gold-light:#fff4cf;--violet:#6654e8;--ink:#20243a;--muted:#687087;--bg:#f7f7fc}
@@ -74,41 +71,42 @@ input,select{border-radius:13px!important;border-color:#e5e3f0!important;min-hei
 footer{color:#737087}
 footer a{color:#6654e8}
 @media(max-width:600px){
-body{font-size:14px}
-header{padding:10px 12px;position:sticky;top:0}
-.brand{gap:9px}
-.brand .logo{width:42px;height:42px;border-radius:14px}
-.brand h2{font-size:15px;line-height:1.2}
-.brand p{font-size:10px}
-main{padding:14px 12px 28px}
-.hero{padding:26px 15px;border-radius:22px;margin-bottom:14px}
-.hero h1{font-size:clamp(25px,7vw,34px);line-height:1.12;margin:8px 0}
-.hero p{font-size:13px;line-height:1.55}
-.search{gap:8px;margin:14px 0 20px}
-.search input{min-width:0;width:100%;padding:12px;font-size:14px}
-.section-title{font-size:19px;margin:20px 0 12px}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.tool{padding:12px 10px;min-height:124px;border-radius:16px}
-.tool h3{font-size:12px;line-height:1.35}
-.tool p{font-size:11px;line-height:1.4}
-.tool .icon{font-size:22px;margin-bottom:8px}
-.panel{padding:15px 12px;margin-top:18px;border-radius:20px}
-.panel h2{font-size:19px;line-height:1.3}
-.desc{font-size:12px;line-height:1.5}
-.filebox{padding:18px 10px}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-.actions button{flex:1 1 120px}
-.result-grid{grid-template-columns:1fr}
-.result-card{padding:12px}
-.download-progress{left:12px;right:12px;bottom:12px;padding:13px;border-radius:17px}
-footer{padding:26px 14px;font-size:11px;line-height:1.6}
+  body{font-size:14px}
+  header{padding:10px 12px;position:sticky;top:0}
+  .brand{gap:9px}
+  .brand .logo{width:42px;height:42px;border-radius:14px}
+  .brand h2{font-size:15px;line-height:1.2}
+  .brand p{font-size:10px}
+  main{padding:14px 12px 28px}
+  .hero{padding:26px 15px;border-radius:22px;margin-bottom:14px}
+  .hero h1{font-size:clamp(25px,7vw,34px);line-height:1.12;margin:8px 0}
+  .hero p{font-size:13px;line-height:1.55}
+  .search{gap:8px;margin:14px 0 20px}
+  .search input{min-width:0;width:100%;padding:12px;font-size:14px}
+  .section-title{font-size:19px;margin:20px 0 12px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .tool{padding:12px 10px;min-height:124px;border-radius:16px}
+  .tool h3{font-size:12px;line-height:1.35}
+  .tool p{font-size:11px;line-height:1.4}
+  .tool .icon{font-size:22px;margin-bottom:8px}
+  .panel{padding:15px 12px;margin-top:18px;border-radius:20px}
+  .panel h2{font-size:19px;line-height:1.3}
+  .desc{font-size:12px;line-height:1.5}
+  .filebox{padding:18px 10px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .actions button{flex:1 1 120px}
+  .result-grid{grid-template-columns:1fr}
+  .result-card{padding:12px}
+  .download-progress{left:12px;right:12px;bottom:12px;padding:13px;border-radius:17px}
+  footer{padding:26px 14px;font-size:11px;line-height:1.6}
 }
 @media(max-width:360px){
-.grid{gap:8px}
-.tool{padding:10px 8px}
-.tool h3{font-size:11px}
-.hero{padding:22px 12px}
+  .grid{gap:8px}
+  .tool{padding:10px 8px}
+  .tool h3{font-size:11px}
+  .hero{padding:22px 12px}
 }
+
 
 /* Premium blue dashboard inspired by modern online tool sites */
 :root{--navy:#092d83;--blue:#1769ed;--royal:#164bc0;--gold:#ffc943;--soft-blue:#edf4ff}
@@ -180,36 +178,37 @@ main{max-width:1250px;padding:22px clamp(12px,3vw,30px) 38px}
 footer{color:#65718b}
 footer strong{color:#173b8d}
 @media(max-width:800px){
-.premium-header{padding:10px 12px}
-.premium-header .logo{width:46px;height:46px;border-radius:14px;font-size:17px}
-.premium-header .brand h2{font-size:15px}
-.premium-header .brand p{font-size:10px}
-.premium-header .badge{font-size:9px;padding:8px 10px}
-.category-nav{top:66px;padding:10px 12px;gap:8px}
-.category{font-size:12px;padding:10px 13px}
-.hero{padding:25px 18px}
-.dashboard-strip{padding:15px;border-radius:18px}
-.dash-count{padding:9px 11px}
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.tool{min-height:142px;padding:12px 10px 14px;border-radius:17px}
-.tool h3{font-size:12px;line-height:1.35}
-.tool p{font-size:11px;line-height:1.45}
-.tool .icon{width:39px;height:39px;font-size:22px}
+ .premium-header{padding:10px 12px}
+ .premium-header .logo{width:46px;height:46px;border-radius:14px;font-size:17px}
+ .premium-header .brand h2{font-size:15px}
+ .premium-header .brand p{font-size:10px}
+ .premium-header .badge{font-size:9px;padding:8px 10px}
+ .category-nav{top:66px;padding:10px 12px;gap:8px}
+ .category{font-size:12px;padding:10px 13px}
+ .hero{padding:25px 18px}
+ .dashboard-strip{padding:15px;border-radius:18px}
+ .dash-count{padding:9px 11px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .tool{min-height:142px;padding:12px 10px 14px;border-radius:17px}
+ .tool h3{font-size:12px;line-height:1.35}
+ .tool p{font-size:11px;line-height:1.45}
+ .tool .icon{width:39px;height:39px;font-size:22px}
 }
 @media(max-width:380px){
-.premium-header .brand{gap:8px}
-.premium-header .brand h2{font-size:12px}
-.premium-header .brand p{font-size:9px}
-.premium-header .logo{width:39px;height:39px}
-.premium-header .badge{padding:7px;font-size:8px}
-.dashboard-strip{align-items:flex-start}
-.dash-count{gap:6px;padding:9px}
-.dash-count strong{font-size:25px}
-.dash-count span{font-size:8px}
-.grid{gap:8px}
-.tool{padding:10px 8px;min-height:138px}
-.tool h3{font-size:11px}
+ .premium-header .brand{gap:8px}
+ .premium-header .brand h2{font-size:12px}
+ .premium-header .brand p{font-size:9px}
+ .premium-header .logo{width:39px;height:39px}
+ .premium-header .badge{padding:7px;font-size:8px}
+ .dashboard-strip{align-items:flex-start}
+ .dash-count{gap:6px;padding:9px}
+ .dash-count strong{font-size:25px}
+ .dash-count span{font-size:8px}
+ .grid{gap:8px}
+ .tool{padding:10px 8px;min-height:138px}
+ .tool h3{font-size:11px}
 }
+
 
 /* Reference-matched Merge Photo & Signature screen */
 .merge-showcase{margin:0 0 16px;padding:24px 20px 20px;border-radius:24px;background:linear-gradient(115deg,#f0edff 0%,#f8eaff 100%);display:flex;align-items:center;gap:18px}
@@ -246,358 +245,183 @@ footer strong{color:#173b8d}
 .merge-benefit p{margin:0;font-size:12px;line-height:1.45;color:#58657c}
 @media(max-width:480px){.merge-showcase{padding:20px 15px;gap:10px}.merge-showcase-art{font-size:43px;flex-basis:62px}.merge-showcase p{font-size:12px}.merge-badges{gap:5px}.merge-badge{padding:6px 8px;font-size:10px}.merge-upload-grid{gap:9px}.merge-upload-card{padding:14px 8px;min-height:166px}.merge-upload-icon{font-size:39px}.merge-upload-card h3{font-size:15px}.merge-upload-card p{font-size:11px}.merge-pick{font-size:12px;padding:12px 5px!important}.merge-run{padding:15px 8px!important}.merge-benefits{gap:8px}.merge-benefit{padding:13px 10px;border-radius:17px}.merge-benefit .benefit-icon{font-size:24px}.merge-benefit h4{font-size:13px}.merge-benefit p{font-size:11px}}
 
-/* Critical fix: hidden UI sections must never be shown by component CSS */
-[hidden]{display:none!important}
-.merge-upload-preview[hidden]{display:none!important}
-
-/* Merge Photo & Signature only: keep both selected previews inside their own cards. */
-#mergeUploadGrid .merge-upload-card{position:relative;overflow:hidden;min-width:0;max-width:100%;}
-#mergeUploadGrid .merge-upload-card .merge-upload-preview,
-#mergeUploadGrid img.merge-upload-preview{
-display:block!important; width:auto!important; height:auto!important;
-max-width:100%!important; max-height:150px!important; min-width:0!important;
-object-fit:contain!important; position:static!important; inset:auto!important;
-transform:none!important; margin:10px auto 6px!important; padding:4px!important;
-box-sizing:border-box!important; border:1px solid #e5e7eb!important;
-border-radius:10px!important; background:#fff!important;
-}
-#mergeUploadGrid .merge-upload-preview[hidden]{display:none!important}
-#mergeUploadGrid .merge-pick{position:relative;overflow:hidden;max-width:100%;}
-#mergeUploadGrid .merge-picked{max-width:100%;overflow-wrap:anywhere;word-break:break-word;}
-@media(max-width:560px){#mergeUploadGrid .merge-upload-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}#mergeUploadGrid .merge-upload-card{padding:12px 8px;}}
 </style>
+</head>
+<body>
+<header class="premium-header">
+  <div class="brand"><div class="logo">RSS</div><div><h2><span>RSS</span> IMAGE RESIZE &amp; TOOLS</h2><p>Free Online PDF, Photo &amp; Signature Tools</p></div></div>
+  <span class="badge">✦ FREE TOOLS</span>
+</header>
+<nav class="category-nav" aria-label="Tool categories">
+  <button class="category active" data-category="all">✨ All Tools</button>
+  <button class="category" data-category="image">🖼️ Image Tools</button>
+  <button class="category" data-category="photo">👤 Photo &amp; Signature</button>
+  <button class="category" data-category="convert">🔄 Convert</button>
+  <button class="category" data-category="pdf">📕 PDF Tools</button>
+</nav>
+<main>
+<section class="hero"><span class="badge">✨ SIMPLE · FAST · USEFUL</span><h1>PDF aur Photo Tools</h1><p>Resize photos, prepare signatures, convert images and manage PDFs — all in one easy place, designed for mobile and desktop.</p></section>
+<div class="search"><input id="search" type="search" placeholder="🔎 Search tools, e.g. Compress PDF"><button class="secondary" id="clearSearch">Clear</button></div>
+<section class="dashboard-strip" aria-label="Dashboard summary">
+  <div class="dash-intro"><span class="dash-kicker">YOUR SMART TOOLKIT</span><strong>Everything you need, in one place</strong><small>Choose a tool below to get started.</small></div>
+  <div class="dash-count"><strong>13</strong><span>FREE TOOLS</span></div>
+</section>
+<h2 class="section-title" id="toolsHeading">🛠️ Explore All Tools</h2><section class="grid" id="toolGrid"></section>
+<section class="panel" id="panel"><h2 id="toolTitle">Select a tool</h2><p class="desc" id="toolDesc"></p>
+<div class="filebox" id="standardFilebox"><div style="font-size:32px">📂</div><p id="fileHint">Select your file to get started</p><input type="file" id="files" accept="image/*,.pdf" multiple></div>
+<div class="merge-showcase" id="mergeShowcase" hidden><div class="merge-showcase-art">🖼️➕✍️</div><div><h3>Merge Photo &amp; <span>Signature</span></h3><p>Create a clean, ready-to-download image in seconds.</p><div class="merge-badges"><span class="merge-badge">⚡ Fast &amp; Easy</span><span class="merge-badge blue">🛡 No Signup</span><span class="merge-badge green">👥 No Watermark</span></div></div></div>
+<div class="merge-upload-grid" id="mergeUploadGrid" hidden>
+  <div class="merge-upload-card photo-upload"><div class="merge-upload-icon">🖼️</div><h3>Upload Photo</h3><p>JPG, PNG · Choose your photo</p><label class="merge-pick">⬆ Choose Photo<input id="mergePhotoFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergePhotoName">No photo selected</div></div>
+  <div class="merge-upload-card signature-upload"><div class="merge-upload-icon">✍️</div><h3>Upload Signature</h3><p>JPG, PNG · Choose your signature</p><label class="merge-pick">⬆ Choose Signature<input id="mergeSignatureFile" type="file" accept="image/jpeg,image/png,image/webp"></label><div class="merge-picked" id="mergeSignatureName">No signature selected</div></div>
+</div>
+<div id="options"></div><div class="actions" id="standardActions"><button class="primary" id="run">Process</button><button class="secondary" id="reset">New / Reset</button></div>
+<div id="mergeActions" hidden><button class="primary merge-run" id="mergeRun">✨ Merge Photo &amp; Signature　➜</button><button class="secondary" id="mergeReset" style="margin-top:9px">New / Reset</button></div>
+<div class="status" id="status" role="status" aria-live="polite"></div><div class="result-grid" id="previews"></div>
+<div id="mergeResult" class="merge-preview" hidden><h3>👁 Preview Result</h3><img id="mergeResultImage" alt="Merged photo and signature preview"><a id="mergeDownload" class="merge-download" download="photo_signature_merged.jpg" style="display:block;text-align:center;text-decoration:none">⬇ Download Image</a><div id="mergeDone" class="merge-done">✅ Download completed ✓</div></div>
+<div class="merge-benefits" id="mergeBenefits" hidden><div class="merge-benefit"><div class="benefit-icon">☁️</div><h4>Easy Upload</h4><p>Simply upload your photo and signature.</p></div><div class="merge-benefit"><div class="benefit-icon">👁️</div><h4>Instant Preview</h4><p>See the merged image before downloading.</p></div><div class="merge-benefit"><div class="benefit-icon">🛡️</div><h4>Private &amp; Secure</h4><p>Your files are processed in your browser.</p></div></div></section>
+</main>
+<footer><strong>RSS IMAGE RESIZE &amp; TOOLS</strong><br>Free browser-based PDF, photo and signature utilities.<br>Files are processed in your browser where supported; they are not intentionally uploaded by this page.<br><br><a href="#privacy">Privacy</a> · <a href="#about">About</a><p id="privacy">Privacy: selected files are processed locally by this demo page where supported.</p><p id="about">Always check official photo and signature requirements before submitting an application.</p></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+"use strict";
+if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const tools=[
+["Image Resizer to KB or MB","📏","Resize an image toward a target file size.","targetImage"],
+["Increase Image Size in KB or MB","📈","Change dimensions or create a larger JPEG.","increaseImage"],
+["Merge Photo and Signature","🪪","Place a photo and signature on one image.","mergePhotoSig"],
+["PNG to JPG","🟠","Convert PNG images to JPG.","pngjpg"],
+["JPG to PNG","🟣","Convert JPG images to PNG.","jpgpng"],
+["Scan to PDF","📷","Combine document photos into a PDF.","scanpdf"],
+["JPG to PDF","📑","Convert images to PDF with layout options.","jpgpdf"],
+["PDF to JPG","🖼️","Preview PDF pages and download JPG images.","pdfjpg"],
+["Compress PDF","🗜️","Re-save a PDF; size reduction depends on source.","compresspdf"],
+["Merge PDF","📚","Combine multiple PDF files in order.","mergepdf"],
+["Crop Image","✂️","Crop an image to requested dimensions.","crop"],
+["Passport Size Photo Maker","🛂","Create a passport-style photo canvas.","passport"],
+["Signature Resizer","✍️","Resize a signature to chosen dimensions and file size.","signature"]];
+const accents=["#6554e8","#0c91a5","#d23f87","#e66c28","#8b43d8","#159b9b","#386de0","#0c99b0","#bd5129","#6554e8","#df5571","#8846d9","#1686a6"];
+const grid=document.getElementById("toolGrid"),panel=document.getElementById("panel"),filesEl=document.getElementById("files"),optionsEl=document.getElementById("options"),statusEl=document.getElementById("status"),previews=document.getElementById("previews"),runBtn=document.getElementById("run");
+let current=null,urls=[];
+const standardFilebox=document.getElementById("standardFilebox"),standardActions=document.getElementById("standardActions"),mergeUploadGrid=document.getElementById("mergeUploadGrid"),mergeActions=document.getElementById("mergeActions"),mergePhotoFile=document.getElementById("mergePhotoFile"),mergeSignatureFile=document.getElementById("mergeSignatureFile"),mergeShowcase=document.getElementById("mergeShowcase"),mergeBenefits=document.getElementById("mergeBenefits");
+let mergedOutputUrl=null;
+function setMergeMode(on){
+ standardFilebox.style.display=on?"none":"";
+ standardActions.style.display=on?"none":"";
+ mergeUploadGrid.hidden=!on;mergeActions.hidden=!on;mergeShowcase.hidden=!on;mergeBenefits.hidden=!on;
+ document.getElementById("mergeResult").hidden=true;
+}
+function clearMergeFiles(){
+ mergePhotoFile.value="";mergeSignatureFile.value="";
+ document.getElementById("mergePhotoName").textContent="No photo selected";
+ document.getElementById("mergeSignatureName").textContent="No signature selected";
+ document.getElementById("mergeResult").hidden=true;
+ document.getElementById("mergeDone").classList.remove("show");
+ if(mergedOutputUrl){URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=null;}
+}
+function showMergeName(input,label,emptyText){document.getElementById(label).textContent=input.files&&input.files[0]?("✓ "+input.files[0].name):emptyText;}
+mergePhotoFile.addEventListener("change",()=>showMergeName(mergePhotoFile,"mergePhotoName","No photo selected"));
+mergeSignatureFile.addEventListener("change",()=>showMergeName(mergeSignatureFile,"mergeSignatureName","No signature selected"));
+document.getElementById("mergeReset").addEventListener("click",clearMergeFiles);
+document.getElementById("mergeRun").addEventListener("click",async()=>{
+ const photo=mergePhotoFile.files&&mergePhotoFile.files[0],sig=mergeSignatureFile.files&&mergeSignatureFile.files[0];
+ if(!photo||!sig){alert("Please choose both a photo and a signature first.");return;}
+ const readImage=file=>new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("Image could not be opened."))};img.src=url;});
+ try{
+  const [p,s]=await Promise.all([readImage(photo),readImage(sig)]);
+  const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),maxW=900;
+  const ps=Math.min(1,maxW/p.width),pw=Math.round(p.width*ps),ph=Math.round(p.height*ps),ss=Math.min(1,maxW/s.width),sw=Math.round(s.width*ss),sh=Math.round(s.height*ss);
+  const layout=document.querySelector('#options select')?.value||"Side by side";
+  if(/stack|above|vertical/i.test(layout)){canvas.width=Math.max(pw,sw);canvas.height=ph+sh+24;ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(p,(canvas.width-pw)/2,0,pw,ph);ctx.drawImage(s,(canvas.width-sw)/2,ph+24,sw,sh);}
+  else{canvas.width=pw+sw+24;canvas.height=Math.max(ph,sh);ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(p,0,(canvas.height-ph)/2,pw,ph);ctx.drawImage(s,pw+24,(canvas.height-sh)/2,sw,sh);}
+  const blob=await new Promise(resolve=>canvas.toBlob(resolve,"image/jpeg",.92));if(!blob)throw new Error("Could not create image");
+  if(mergedOutputUrl)URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=URL.createObjectURL(blob);
+  document.getElementById("mergeResultImage").src=mergedOutputUrl;
+  const dl=document.getElementById("mergeDownload");dl.href=mergedOutputUrl;dl.download="photo_signature_merged.jpg";
+  document.getElementById("mergeResult").hidden=false;document.getElementById("mergeDone").classList.remove("show");
+  document.getElementById("mergeResult").scrollIntoView({behavior:"smooth",block:"nearest"});
+ }catch(e){alert("Image merge failed. Please try another JPG or PNG image.");}
+});
+document.getElementById("mergeDownload").addEventListener("click",()=>setTimeout(()=>document.getElementById("mergeDone").classList.add("show"),500));
 
-</head>  
-<body>  
-<header class="premium-header">  
-  <div class="brand"><div class="logo">RSS</div><div><h2><span>RSS</span> IMAGE RESIZE &amp; TOOLS</h2><p>Free Online PDF, Photo &amp; Signature Tools</p></div></div>  
-  <span class="badge">✦ FREE TOOLS</span>  
-</header>  
-<nav class="category-nav" aria-label="Tool categories">  
-  <button class="category active" data-category="all">✨ All Tools</button>  
-  <button class="category" data-category="image">🖼️ Image Tools</button>  
-  <button class="category" data-category="photo">👤 Photo &amp; Signature</button>  
-  <button class="category" data-category="convert">🔄 Convert</button>  
-  <button class="category" data-category="pdf">📕 PDF Tools</button>  
-</nav>  
-<main>  
-<section class="hero"><span class="badge">✨ SIMPLE · FAST · USEFUL</span><h1>PDF aur Photo Tools</h1><p>Resize photos, prepare signatures, convert images and manage PDFs — all in one easy place, designed for mobile and desktop.</p></section>  
-<div class="search"><input id="search" type="search" placeholder="🔎 Search tools, e.g. Compress PDF"><button class="secondary" id="clearSearch">Clear</button></div>  
-<section class="dashboard-strip" aria-label="Dashboard summary">  
-  <div class="dash-intro"><span class="dash-kicker">YOUR SMART TOOLKIT</span><strong>Everything you need, in one place</strong><small>Choose a tool below to get started.</small></div>  
-  <div class="dash-count"><strong>14</strong><span>FREE TOOLS</span></div>  
-</section>  
-<h2 class="section-title" id="toolsHeading">🛠️ Explore All Tools</h2><section class="grid" id="toolGrid"></section>  
-<section class="panel" id="panel"><h2 id="toolTitle">Select a tool</h2><p class="desc" id="toolDesc"></p>  
-<div class="filebox" id="standardFilebox"><div style="font-size:32px">📂</div><p id="fileHint">Select your file to get started</p><input type="file" id="files" accept="image/*,.pdf" multiple></div>  
-<div class="merge-showcase" id="mergeShowcase" hidden><div class="merge-showcase-art">🖼️➕✍️</div><div><h3>Merge Photo &amp; <span>Signature</span></h3><p>Create a clean, ready-to-download image in seconds.</p><div class="merge-badges"><span class="merge-badge">⚡ Fast &amp; Easy</span><span class="merge-badge blue">🛡 No Signup</span><span class="merge-badge green">👥 No Watermark</span></div></div></div>  
-<div class="merge-upload-grid" id="mergeUploadGrid" hidden>  
-  <div class="merge-upload-card photo-upload"><div class="merge-upload-icon">🖼️</div><h3>Upload Photo</h3><p>JPG, PNG · Choose your photo</p><label class="merge-pick">⬆ Choose Photo<input id="mergePhotoFile" type="file" accept="image/jpeg,image/png,image/webp"></label><img class="merge-upload-preview" id="mergePhotoPreview" alt="Selected photo preview" hidden><div class="merge-picked" id="mergePhotoName">No photo selected</div></div>  
-  <div class="merge-upload-card signature-upload"><div class="merge-upload-icon">✍️</div><h3>Upload Signature</h3><p>JPG, PNG · Choose your signature</p><label class="merge-pick">⬆ Choose Signature<input id="mergeSignatureFile" type="file" accept="image/jpeg,image/png,image/webp"></label><img class="merge-upload-preview" id="mergeSignaturePreview" alt="Selected signature preview" hidden><div class="merge-picked" id="mergeSignatureName">No signature selected</div></div>  
-</div>  
-<div id="options"></div><div id="cropWorkspace" class="crop-workspace" hidden><p class="crop-instructions"><strong>Image crop:</strong> Image upload karne ke baad mobile ki tarah ungli/mouse se kheenchkar crop area select karein. Output size optional hai.</p><div class="crop-canvas-wrap"><canvas id="cropCanvas" aria-label="Drag on image to select crop area"></canvas></div><p class="crop-selection-info" id="cropSelectionInfo">Image select karne par crop area yahan dikhega.</p><button type="button" class="secondary" id="cropResetSelection">Reset crop selection</button></div><div class="actions" id="standardActions"><button class="primary" id="run">Process</button><button class="secondary" id="reset">New / Reset</button></div>  
-<div id="mergeActions" hidden><button class="primary merge-run" id="mergeRun">✨ Merge Photo &amp; Signature　➜</button><button class="secondary" id="mergeReset" style="margin-top:9px">New / Reset</button></div>  
-<div class="status" id="status" role="status" aria-live="polite"></div><div class="result-grid" id="previews"></div>  
-<div id="mergeResult" class="merge-preview" hidden><h3>👁 Preview Result</h3><img id="mergeResultImage" alt="Merged photo and signature preview"><a id="mergeDownload" class="merge-download" download="photo_signature_merged.jpg" style="display:block;text-align:center;text-decoration:none">⬇ Download Image</a><div id="mergeDone" class="merge-done">✅ Download completed ✓</div></div>  
-<div class="merge-benefits" id="mergeBenefits" hidden><div class="merge-benefit"><div class="benefit-icon">☁️</div><h4>Easy Upload</h4><p>Simply upload your photo and signature.</p></div><div class="merge-benefit"><div class="benefit-icon">👁️</div><h4>Instant Preview</h4><p>See the merged image before downloading.</p></div><div class="merge-benefit"><div class="benefit-icon">🛡️</div><h4>Private &amp; Secure</h4><p>Your files are processed in your browser.</p></div></div></section>  
-</main>  
-<footer><strong>RSS IMAGE RESIZE &amp; TOOLS</strong><br>Free browser-based PDF, photo and signature utilities.<br>Files are processed in your browser where supported; they are not intentionally uploaded by this page.<br><br><a href="about.html">About Us</a> ·  
-<a href="contact.html">Contact Us</a> ·  
-<a href="privacy.html">Privacy Policy</a> ·  
-<a href="terms.html">Terms &amp; Conditions</a> ·  
-<a href="disclaimer.html">Disclaimer</a><p id="privacy">Privacy: selected files are processed locally by this demo page where supported.</p><p id="about">Always check official photo and signature requirements before submitting an application.</p></footer>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>  
-<script>  
-"use strict";  
-if(window.pdfjsLib)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";  
-const tools=[  
-["Image Resizer to KB or MB","📏","Resize an image toward a target file size.","targetImage"],  
-["Increase Image Size in KB or MB","📈","Change dimensions or create a larger JPEG.","increaseImage"],  
-["Merge Photo and Signature","🪪","Place a photo and signature on one image.","mergePhotoSig"],  
-["PNG to JPG","🟠","Convert PNG images to JPG.","pngjpg"],  
-["JPG to PNG","🟣","Convert JPG images to PNG.","jpgpng"],  
-["Scan to PDF","📷","Combine document photos into a PDF.","scanpdf"],  
-["JPG to PDF","📑","Convert images to PDF with layout options.","jpgpdf"],  
-["PDF to JPG","🖼️","Preview PDF pages and download JPG images.","pdfjpg"],  
-["Compress PDF","🗜️","Re-save a PDF; size reduction depends on source.","compresspdf"],  
-["Merge PDF","📚","Combine multiple PDF files in order.","mergepdf"],  
-["Crop Image","✂️","Crop an image to requested dimensions.","crop"],  
-["Photo & Signature Resizer for Government Exams","📝","Resize photo and signature separately.","govresize"],  
-["Passport Size Photo Maker","🛂","Create a passport-style photo canvas.","passport"],  
-["Signature Resizer","✍️","Resize a signature to chosen dimensions and file size.","signature"]];  
-const accents=["#6554e8","#0c91a5","#d23f87","#e66c28","#8b43d8","#159b9b","#386de0","#0c99b0","#bd5129","#6554e8","#df5571","#269a64","#8846d9","#1686a6","#a66c18"];  
-const grid=document.getElementById("toolGrid"),panel=document.getElementById("panel"),filesEl=document.getElementById("files"),optionsEl=document.getElementById("options"),statusEl=document.getElementById("status"),previews=document.getElementById("previews"),runBtn=document.getElementById("run");  
-let current=null,urls=[];  
-const standardFilebox=document.getElementById("standardFilebox"),standardActions=document.getElementById("standardActions"),mergeUploadGrid=document.getElementById("mergeUploadGrid"),mergeActions=document.getElementById("mergeActions"),mergePhotoFile=document.getElementById("mergePhotoFile"),mergeSignatureFile=document.getElementById("mergeSignatureFile"),mergeShowcase=document.getElementById("mergeShowcase"),mergeBenefits=document.getElementById("mergeBenefits");  
-let mergedOutputUrl=null, photoPreviewUrl=null, signaturePreviewUrl=null;  
-function setMergeMode(on){  
- // Reset both layouts explicitly: merge-only UI is visible only for the merge tool.  
- const mergeOnly=[mergeUploadGrid,mergeActions,mergeShowcase,mergeBenefits,document.getElementById("mergeResult")];  
- standardFilebox.hidden=!!on;  
- standardFilebox.style.display=on?"none":"block";  
- standardActions.hidden=!!on;  
- standardActions.style.display=on?"none":"flex";  
- mergeUploadGrid.hidden=!on;  
- mergeUploadGrid.style.display=on?"grid":"none";  
- mergeActions.hidden=!on;  
- mergeActions.style.display=on?"block":"none";  
- mergeShowcase.hidden=!on;  
- mergeShowcase.style.display=on?"flex":"none";  
- mergeBenefits.hidden=!on;  
- mergeBenefits.style.display=on?"grid":"none";  
- const result=document.getElementById("mergeResult");  
- result.hidden=true;  
- result.style.display="none";  
- // Defend against hidden attributes being overridden by any later CSS rule.  
- mergeOnly.forEach(el=>{if(!on){el.hidden=true;el.style.display="none";}});  
- if(on){  
-   mergeUploadGrid.hidden=false;mergeUploadGrid.style.display="grid";  
-   mergeActions.hidden=false;mergeActions.style.display="block";  
-   mergeShowcase.hidden=false;mergeShowcase.style.display="flex";  
-   mergeBenefits.hidden=false;mergeBenefits.style.display="grid";  
- }  
-}  
-function clearMergeFiles(){  
- mergePhotoFile.value=""; mergeSignatureFile.value="";  
- for(const u of [photoPreviewUrl,signaturePreviewUrl,mergedOutputUrl]) if(u) URL.revokeObjectURL(u);  
- photoPreviewUrl=null; signaturePreviewUrl=null; mergedOutputUrl=null;  
- for(const [id,name] of [["mergePhotoPreview","mergePhotoName"],["mergeSignaturePreview","mergeSignatureName"]]){  
-   const img=document.getElementById(id); img.hidden=true; img.style.display="none"; img.removeAttribute("src");  
-   document.getElementById(name).textContent=id==="mergePhotoPreview"?"No photo selected":"No signature selected";  
- }  
- document.getElementById("mergeResult").hidden=true; document.getElementById("mergeResult").style.display="none";  
- document.getElementById("mergeDone").classList.remove("show");  
-}  
-function previewMergeFile(input,imgId,nameId,isPhoto){  
- const file=input.files&&input.files[0],img=document.getElementById(imgId);  
- const old=isPhoto?photoPreviewUrl:signaturePreviewUrl; if(old)URL.revokeObjectURL(old);  
- if(isPhoto)photoPreviewUrl=null;else signaturePreviewUrl=null;  
- if(!file){img.hidden=true;img.removeAttribute("src");document.getElementById(nameId).textContent=isPhoto?"No photo selected":"No signature selected";return;}  
- const url=URL.createObjectURL(file);if(isPhoto)photoPreviewUrl=url;else signaturePreviewUrl=url;  
- img.onload=()=>{img.hidden=false;img.style.display="block";};img.onerror=()=>{img.hidden=true;img.style.display="none";};img.hidden=false;img.style.display="block";img.src=url;  
- document.getElementById(nameId).textContent="✓ "+file.name;  
-}  
-mergePhotoFile.addEventListener("change",()=>previewMergeFile(mergePhotoFile,"mergePhotoPreview","mergePhotoName",true));  
-mergeSignatureFile.addEventListener("change",()=>previewMergeFile(mergeSignatureFile,"mergeSignaturePreview","mergeSignatureName",false));  
-document.getElementById("mergeReset").addEventListener("click",clearMergeFiles);  
-document.getElementById("mergeRun").addEventListener("click",async()=>{  
- const photo=mergePhotoFile.files&&mergePhotoFile.files[0],sig=mergeSignatureFile.files&&mergeSignatureFile.files[0];  
- if(!photo||!sig){alert("Please choose both a photo and a signature first.");return;}  
- const btn=document.getElementById("mergeRun");btn.disabled=true;btn.textContent="Preparing image…";  
- try{  
-  // Reuse the already-loaded preview images instead of reopening the files.  
-  // This avoids mobile-browser object-URL decode failures during processing.  
-  const p=document.getElementById("mergePhotoPreview");  
-  const s=document.getElementById("mergeSignaturePreview");  
-  await Promise.all([p.decode ? p.decode() : Promise.resolve(), s.decode ? s.decode() : Promise.resolve()]);  
-  if(!p.naturalWidth || !p.naturalHeight) throw new Error("Photo preview is not ready. Please choose the photo again.");  
-  if(!s.naturalWidth || !s.naturalHeight) throw new Error("Signature preview is not ready. Please choose the signature again.");  
-  // Passport-style output: photo above a clean white signature strip.  
-  // Only this Merge Photo & Signature routine is changed; other tools are untouched.  
-  const photoW=413,photoH=531,signatureBandH=150,canvas=document.createElement("canvas");  
-  canvas.width=photoW;canvas.height=photoH+signatureBandH;  
-  const ctx=canvas.getContext("2d");if(!ctx)throw new Error("Canvas is not supported in this browser");  
-  ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);  
-  const scale=Math.max(photoW/p.naturalWidth,photoH/p.naturalHeight),drawW=p.naturalWidth*scale,drawH=p.naturalHeight*scale;  
-  ctx.save();ctx.beginPath();ctx.rect(0,0,photoW,photoH);ctx.clip();ctx.drawImage(p,(photoW-drawW)/2,(photoH-drawH)/2,drawW,drawH);ctx.restore();  
-  // Find the handwriting area, excluding the photographed paper/background.  
-  const sc=document.createElement("canvas");sc.width=s.naturalWidth;sc.height=s.naturalHeight;  
-  const sx=sc.getContext("2d",{willReadFrequently:true});sx.drawImage(s,0,0);  
-  let sigSource={x:0,y:0,w:sc.width,h:sc.height};  
-  try{  
-    const sd=sx.getImageData(0,0,sc.width,sc.height),px=sd.data;  
-    let minX=sc.width,minY=sc.height,maxX=-1,maxY=-1;  
-    for(let yy=0;yy<sc.height;yy++)for(let xx=0;xx<sc.width;xx++){  
-      const k=(yy*sc.width+xx)*4,a=px[k+3],r=px[k],g=px[k+1],b=px[k+2],brightness=(r+g+b)/3;  
-      const blueInk=b>r*1.12&&b>g*1.04&&brightness<205;  
-      const darkInk=brightness<105;  
-      if(a>25&&(blueInk||darkInk)){if(xx<minX)minX=xx;if(xx>maxX)maxX=xx;if(yy<minY)minY=yy;if(yy>maxY)maxY=yy;}  
-    }  
-    if(maxX>=minX&&maxY>=minY){  
-      const pad=Math.max(3,Math.round(Math.min(sc.width,sc.height)*.035));  
-      minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);  
-      maxX=Math.min(sc.width-1,maxX+pad);maxY=Math.min(sc.height-1,maxY+pad);  
-      sigSource={x:minX,y:minY,w:maxX-minX+1,h:maxY-minY+1};  
-    }  
-  }catch(e){console.warn("Signature trimming skipped",e);}  
-  // Render the selected signature on pure white and remove grey paper/shadows.  
-  const clean=document.createElement("canvas");clean.width=sigSource.w;clean.height=sigSource.h;  
-  const cleanCtx=clean.getContext("2d",{willReadFrequently:true});  
-  cleanCtx.fillStyle="#fff";cleanCtx.fillRect(0,0,clean.width,clean.height);  
-  const raw=sx.getImageData(sigSource.x,sigSource.y,sigSource.w,sigSource.h),data=raw.data;  
-  for(let i=0;i<data.length;i+=4){  
-    const r=data[i],g=data[i+1],b=data[i+2],brightness=(r+g+b)/3;  
-    const blueInk=b>r*1.12&&b>g*1.04&&brightness<205;  
-    if(blueInk){data[i]=Math.min(255,Math.round(r*.72+20));data[i+1]=Math.min(255,Math.round(g*.72+20));data[i+2]=Math.min(255,Math.round(b*.82+10));data[i+3]=255;}  
-    else if(brightness<105){const v=Math.max(0,Math.round(brightness*.55));data[i]=v;data[i+1]=v;data[i+2]=v;data[i+3]=255;}  
-    else {data[i]=255;data[i+1]=255;data[i+2]=255;data[i+3]=255;}  
-  }  
-  cleanCtx.putImageData(raw,0,0);  
-  const maxSigW=photoW-24,maxSigH=signatureBandH-16;  
-  const sigScale=Math.min(maxSigW/clean.width,maxSigH/clean.height);  
-  const sigW=clean.width*sigScale,sigH=clean.height*sigScale;  
-  ctx.fillStyle="#fff";ctx.fillRect(0,photoH,photoW,signatureBandH);  
-  ctx.drawImage(clean,(photoW-sigW)/2,photoH+(signatureBandH-sigH)/2,sigW,sigH);  
-  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(new Error("Could not export image")),"image/jpeg",.92));  
-  if(mergedOutputUrl)URL.revokeObjectURL(mergedOutputUrl);mergedOutputUrl=URL.createObjectURL(blob);  
-  document.getElementById("mergeResultImage").src=mergedOutputUrl;  
-  const dl=document.getElementById("mergeDownload");dl.href=mergedOutputUrl;dl.download="photo_signature_merged.jpg";  
-  const result=document.getElementById("mergeResult");result.hidden=false;result.style.display="block";  
-  document.getElementById("mergeDone").classList.remove("show");result.scrollIntoView({behavior:"smooth",block:"nearest"});  
- }catch(e){console.error(e);alert("Image merge failed. Please try a standard JPG or PNG image. "+(e.message||""));}  
- finally{btn.disabled=false;btn.textContent="✨ Merge Photo & Signature ➜";}  
-});  
-document.getElementById("mergeDownload").addEventListener("click",()=>setTimeout(()=>document.getElementById("mergeDone").classList.add("show"),500));  function categoryFor(type){
-if(["targetImage","increaseImage","crop","bgremove"].includes(type))return "image";
-if(["mergePhotoSig","govresize","passport","signature"].includes(type))return "photo";
-if(["pngjpg","jpgpng"].includes(type))return "convert";
-return "pdf";
+function categoryFor(type){
+ if(["targetImage","increaseImage","crop","bgremove"].includes(type))return "image";
+ if(["mergePhotoSig","govresize","passport","signature"].includes(type))return "photo";
+ if(["pngjpg","jpgpng"].includes(type))return "convert";
+ return "pdf";
 }
 tools.forEach((t,i)=>{const c=document.createElement("article");c.className="tool";c.style.setProperty("--a",accents[i]);c.dataset.name=t[0].toLowerCase();c.dataset.category=categoryFor(t[3]);c.innerHTML='<div class="icon">'+t[1]+'</div><h3>'+t[0]+'</h3><p>'+t[2]+'</p>';c.onclick=()=>openTool(t);grid.append(c)});
 let activeCategory="all";
 function filterTools(){
-const q=document.getElementById("search").value.toLowerCase().trim();
-let visible=0;
-document.querySelectorAll(".tool").forEach(c=>{
-const matchText=c.dataset.name.includes(q);
-const matchCategory=activeCategory==="all"||c.dataset.category===activeCategory;
-c.style.display=matchText&&matchCategory?"":"none";
-if(matchText&&matchCategory)visible++;
-});
-document.getElementById("toolsHeading").textContent=(activeCategory==="all"?"🛠️ Explore All Tools":({"image":"🖼️ Image Tools","photo":"👤 Photo & Signature","convert":"🔄 Convert Tools","pdf":"📕 PDF Tools"}[activeCategory]))+" · "+visible;
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ let visible=0;
+ document.querySelectorAll(".tool").forEach(c=>{
+   const matchText=c.dataset.name.includes(q);
+   const matchCategory=activeCategory==="all"||c.dataset.category===activeCategory;
+   c.style.display=matchText&&matchCategory?"":"none";
+   if(matchText&&matchCategory)visible++;
+ });
+ document.getElementById("toolsHeading").textContent=(activeCategory==="all"?"🛠️ Explore All Tools":({"image":"🖼️ Image Tools","photo":"👤 Photo & Signature","convert":"🔄 Convert Tools","pdf":"📕 PDF Tools"}[activeCategory]))+" · "+visible;
 }
 document.getElementById("search").oninput=filterTools;
 document.getElementById("clearSearch").onclick=()=>{document.getElementById("search").value="";activeCategory="all";document.querySelectorAll(".category").forEach(b=>b.classList.toggle("active",b.dataset.category==="all"));filterTools()};
 document.querySelectorAll(".category").forEach(b=>b.addEventListener("click",()=>{
-activeCategory=b.dataset.category;
-document.querySelectorAll(".category").forEach(x=>x.classList.toggle("active",x===b));
-filterTools();
-document.querySelector(".dashboard-strip").scrollIntoView({behavior:"smooth",block:"start"});
+ activeCategory=b.dataset.category;
+ document.querySelectorAll(".category").forEach(x=>x.classList.toggle("active",x===b));
+ filterTools();
+ document.querySelector(".dashboard-strip").scrollIntoView({behavior:"smooth",block:"start"});
 }));
 function clearResults(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];previews.innerHTML=""}
 function objectURL(blob){const u=URL.createObjectURL(blob);urls.push(u);return u}
-const cropCanvas=document.getElementById("cropCanvas"),cropCtx=cropCanvas.getContext("2d"),cropWorkspace=document.getElementById("cropWorkspace"),cropSelectionInfo=document.getElementById("cropSelectionInfo");
-let cropImage=null,cropSelection=null,cropDragStart=null,cropOriginalFile=null;
-function drawCropCanvas(){if(!cropImage)return;if(cropCanvas.width!==(cropImage.naturalWidth||cropImage.width)||cropCanvas.height!==(cropImage.naturalHeight||cropImage.height)){cropCanvas.width=cropImage.naturalWidth||cropImage.width;cropCanvas.height=cropImage.naturalHeight||cropImage.height;}cropCtx.clearRect(0,0,cropCanvas.width,cropCanvas.height);cropCtx.drawImage(cropImage,0,0,cropCanvas.width,cropCanvas.height);if(cropSelection){const r=cropSelection;cropCtx.save();cropCtx.fillStyle="rgba(22,18,45,.48)";cropCtx.fillRect(0,0,cropCanvas.width,cropCanvas.height);cropCtx.clearRect(r.x,r.y,r.w,r.h);cropCtx.drawImage(cropImage,r.x,r.y,r.w,r.h,r.x,r.y,r.w,r.h);cropCtx.strokeStyle="#ffd34f";cropCtx.lineWidth=Math.max(2,cropCanvas.width/500);cropCtx.setLineDash([Math.max(5,cropCanvas.width/100),Math.max(3,cropCanvas.width/180)]);cropCtx.strokeRect(r.x,r.y,r.w,r.h);cropCtx.restore();cropSelectionInfo.textContent=Selected area: ${Math.round(r.w)} × ${Math.round(r.h)} pixels;}}
-function setCropImage(file){cropImage=null;cropSelection=null;cropDragStart=null;cropOriginalFile=file||null;if(!file){cropCtx.clearRect(0,0,cropCanvas.width,cropCanvas.height);cropSelectionInfo.textContent="Image select karne par crop area yahan dikhega.";return}const u=URL.createObjectURL(file),img=new Image();img.onload=()=>{URL.revokeObjectURL(u);if(current&&current[3]==="crop"&&filesEl.files&&filesEl.files[0]===file){cropImage=img;cropSelection={x:Math.round(img.naturalWidth*.1),y:Math.round(img.naturalHeight*.1),w:Math.round(img.naturalWidth*.8),h:Math.round(img.naturalHeight*.8)};drawCropCanvas();cropSelectionInfo.textContent="Crop area ko drag karke adjust karein. Selected area: "+cropSelection.w+" × "+cropSelection.h+" pixels."}};img.onerror=()=>{URL.revokeObjectURL(u);setStatus("Image preview could not be loaded. Please choose another image.")};img.src=u;}
-function cropPoint(e){const r=cropCanvas.getBoundingClientRect();return{x:Math.max(0,Math.min(cropCanvas.width,(e.clientX-r.left)*cropCanvas.width/r.width)),y:Math.max(0,Math.min(cropCanvas.height,(e.clientY-r.top)*cropCanvas.height/r.height))}}
-cropCanvas.addEventListener("pointerdown",e=>{if(!cropImage)return;e.preventDefault();cropCanvas.setPointerCapture(e.pointerId);cropDragStart=cropPoint(e);cropSelection={x:cropDragStart.x,y:cropDragStart.y,w:0,h:0};drawCropCanvas()});
-cropCanvas.addEventListener("pointermove",e=>{if(!cropImage||!cropDragStart)return;const p=cropPoint(e);cropSelection={x:Math.min(cropDragStart.x,p.x),y:Math.min(cropDragStart.y,p.y),w:Math.abs(p.x-cropDragStart.x),h:Math.abs(p.y-cropDragStart.y)};drawCropCanvas()});
-function endCropDrag(){if(!cropDragStart)return;cropDragStart=null;if(cropSelection&&(cropSelection.w<2||cropSelection.h<2)){cropSelection=null;drawCropCanvas();cropSelectionInfo.textContent="Crop area bahut chhota hai. Image par dobara drag karein."}else drawCropCanvas()}
-cropCanvas.addEventListener("pointerup",endCropDrag);cropCanvas.addEventListener("pointercancel",endCropDrag);
-document.getElementById("cropResetSelection").addEventListener("click",()=>{if(!cropImage)return;cropSelection={x:0,y:0,w:cropImage.naturalWidth||cropImage.width,h:cropImage.naturalHeight||cropImage.height};drawCropCanvas();cropSelectionInfo.textContent="Full image selected. Crop karne ke liye image par drag karein."});
-filesEl.addEventListener("change",()=>{const f=filesEl.files&&filesEl.files[0];if(current&&current[3]==="crop")setCropImage(f);if(current&&current[3]==="bgremove"){const thumb=document.getElementById("bgUploadPreview");if(thumb){if(f&&f.type.startsWith("image/")){if(thumb.dataset.url)URL.revokeObjectURL(thumb.dataset.url);const u=URL.createObjectURL(f);thumb.dataset.url=u;thumb.onload=()=>{thumb.style.display="block"};thumb.onerror=()=>{thumb.style.display="none"};thumb.src=u;}else{thumb.style.display="none";}}}});
-
-function openTool(t){current=t;document.getElementById("toolTitle").textContent=t[0];const isMergeTool=t[3]==="mergePhotoSig";setMergeMode(isMergeTool);if(isMergeTool)clearMergeFiles();else{document.getElementById("mergeResult").hidden=true;document.getElementById("mergeResult").style.display="none";}document.getElementById("toolDesc").textContent=t[2];filesEl.value="";optionsEl.innerHTML="";statusEl.textContent="";clearResults();panel.classList.add("show");
-const type=t[3];cropWorkspace.hidden=type!=="crop";if(type!=="crop")setCropImage(null);
-/* Keep merge-only interface strictly isolated from every other tool. /
-if(type!=="mergePhotoSig"){
-mergeShowcase.hidden=true;mergeShowcase.style.display="none";
-mergeUploadGrid.hidden=true;mergeUploadGrid.style.display="none";
-mergeActions.hidden=true;mergeActions.style.display="none";
-mergeBenefits.hidden=true;mergeBenefits.style.display="none";
-const mr=document.getElementById("mergeResult");mr.hidden=true;mr.style.display="none";
-}
-filesEl.multiple=["mergepdf","jpgpdf","scanpdf","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/";
+function openTool(t){current=t;document.getElementById("toolTitle").textContent=t[0];setMergeMode(t[3]==="mergePhotoSig");if(t[3]==="mergePhotoSig")clearMergeFiles();document.getElementById("toolDesc").textContent=t[2];filesEl.value="";optionsEl.innerHTML="";statusEl.textContent="";clearResults();panel.classList.add("show");
+const type=t[3];filesEl.multiple=["mergepdf","jpgpdf","scanpdf","mergePhotoSig","govresize"].includes(type);filesEl.accept=["mergepdf","compresspdf","pdfjpg"].includes(type)?".pdf,application/pdf":"image/*";
 document.getElementById("fileHint").textContent=type==="mergePhotoSig"?"Select photo first and signature second":type==="govresize"?"Select photo and signature images":"Select your file to get started";
-runBtn.textContent=type==="bgremove"?"Change Background":(["targetImage","increaseImage","signature","govresize"].includes(type)?"Resize Image":type==="jpgpdf"||type==="scanpdf"?"Create PDF":"Process");
-const bgPreviewOld=document.getElementById("bgUploadPreview");if(bgPreviewOld)bgPreviewOld.remove();if(type==="bgremove"){const thumb=document.createElement("img");thumb.id="bgUploadPreview";thumb.alt="Uploaded photo preview";thumb.style.cssText="display:none;max-width:140px;max-height:150px;object-fit:contain;margin:12px auto 0;border:1px solid #dce2ed;border-radius:10px;background:#fff;padding:4px;";document.getElementById("standardFilebox").append(thumb);}
-if(type==="increaseImage"){const row=document.createElement("div");row.className="field";const label=document.createElement("label");label.htmlFor="increaseSize";label.textContent="Increase Image Size";const controls=document.createElement("div");controls.style.display="grid";controls.style.gridTemplateColumns="minmax(0,1fr) 100px";controls.style.gap="8px";const size=document.createElement("input");size.id="increaseSize";size.type="number";size.min="1";size.value="200";size.placeholder="Enter size";const unit=document.createElement("select");unit.id="increaseUnit";["KB","MB"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;unit.append(o)});controls.append(size,unit);row.append(label,controls);optionsEl.append(row);const hint=document.createElement("p");hint.className="hint";hint.textContent="Choose the target file size in KB or MB. Exact size cannot be guaranteed.";optionsEl.append(hint)} else if(["targetImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])} if(["signature","govresize"].includes(type)){numberField("Width (pixels)","width",type==="signature"?300:600,1);numberField("Height (pixels)","height",type==="signature"?100:600,1)}
-if(type==="crop"){const sizeRow=document.createElement("div");sizeRow.className="field";const sizeLabel=document.createElement("label");sizeLabel.htmlFor="cropTargetSize";sizeLabel.textContent="Optional output file size";const sizeControls=document.createElement("div");sizeControls.style.display="grid";sizeControls.style.gridTemplateColumns="minmax(0,1fr) 100px";sizeControls.style.gap="8px";const sizeInput=document.createElement("input");sizeInput.id="cropTargetSize";sizeInput.type="number";sizeInput.min="1";sizeInput.placeholder="Leave blank for original crop quality";const unit=document.createElement("select");unit.id="cropTargetUnit";["KB","MB"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;unit.append(o)});sizeControls.append(sizeInput,unit);sizeRow.append(sizeLabel,sizeControls);optionsEl.append(sizeRow);selectField("Output format","cropFormat",["JPEG","PNG"]);const hint=document.createElement("p");hint.className="hint";hint.textContent="Mobile ki tarah image par ungli se drag karke crop area chunein. Width/Height ki zaroorat nahi. File size optional hai; exact size har image mein guarantee nahi hota.";optionsEl.append(hint);document.getElementById("cropWorkspace").hidden=false;}
+runBtn.textContent=["targetImage","increaseImage","signature","govresize"].includes(type)?"Resize Image":type==="jpgpdf"||type==="scanpdf"?"Create PDF":"Process";
+if(["targetImage","increaseImage","signature","govresize"].includes(type)){numberField("Target size (KB)","targetKB",type==="signature"?20:200,1);numberField("Maximum size (KB)","maxKB",type==="signature"?50:300,1);selectField("Output format","format",["JPEG","PNG"])}
+if(["increaseImage","signature","govresize","crop"].includes(type)){numberField("Width (pixels)","width",type==="signature"?300:600,1);numberField("Height (pixels)","height",type==="signature"?100:600,1)}
 if(type==="jpgpdf"||type==="scanpdf"){selectField("PDF layout","pdfLayout",["One photo per page","All photos on one page"]);selectField("Page size","pageSize",["Fit page to photo","A4"]);selectField("Photo arrangement","photoLayout",["Fit side by side","Stack vertically"])}
-/* Merge Photo & Signature has a fixed passport layout: photo above signature. /
-if(type==="bgremove"){selectField("New background color","bgcolor",["White","Blue","Light Blue","Green","Black"]);const sizeRow=document.createElement("div");sizeRow.className="field";const sizeLabel=document.createElement("label");sizeLabel.htmlFor="bgTargetSize";sizeLabel.textContent="Optional download size (leave blank to keep normal quality)";const sizeControls=document.createElement("div");sizeControls.style.display="grid";sizeControls.style.gridTemplateColumns="minmax(0,1fr) 100px";sizeControls.style.gap="8px";const sizeInput=document.createElement("input");sizeInput.id="bgTargetSize";sizeInput.type="number";sizeInput.min="1";sizeInput.placeholder="KB or MB target";const unit=document.createElement("select");unit.id="bgTargetUnit";["KB","MB"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;unit.append(o)});sizeControls.append(sizeInput,unit);sizeRow.append(sizeLabel,sizeControls);optionsEl.append(sizeRow);const hint=document.createElement("p");hint.className="hint";hint.textContent="Background AI se alag kiya jayega. Original photo ki pixel width/height same rahegi. KB/MB target optional hai; bahut chhota target quality ghata sakta hai aur exact file size guarantee nahi hota.";optionsEl.append(hint)}
+if(type==="mergePhotoSig")selectField("Layout","layout",["Side by side","Photo above signature"]);
+if(type==="bgremove")selectField("Background color to remove","bgcolor",["White","Blue","Green","Black"]);
 if(type==="passport"){numberField("Width (pixels)","width",413,1);numberField("Height (pixels)","height",531,1);selectField("Background color","bgcolor",["White","Light blue","Light grey"])}
 if(type==="pdfjpg")numberField("Render quality (scale 1–3)","scale",1.5,1);
-if(type==="mergePhotoSig"){optionsEl.innerHTML="";filesEl.value="";}
 panel.scrollIntoView({behavior:"smooth",block:"start"})}
 function numberField(label,id,value,min){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const x=document.createElement("input");x.id=id;x.type="number";x.min=min;x.value=value;w.append(l,x);optionsEl.append(w)}
 function selectField(label,id,items){const w=document.createElement("div");w.className="field";const l=document.createElement("label");l.htmlFor=id;l.textContent=label;const s=document.createElement("select");s.id=id;items.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;s.append(o)});w.append(l,s);optionsEl.append(w)}
 function val(id,def){const e=document.getElementById(id);return e?e.value:def}function setStatus(s){statusEl.textContent=s}
 function downloadBlob(blob,name){
-/ Browsers do not expose reliable byte-by-byte progress for a local Blob download.
-This bar reports file preparation and the hand-off to the browser, not transfer bytes. /
-const old=document.querySelector(".download-progress");if(old)old.remove();
-const box=document.createElement("div");box.className="download-progress";
-box.innerHTML='<div class="dp-title">Preparing your download…</div><div class="dp-track"><div class="dp-fill"></div></div><div class="dp-note">Getting the file ready for your browser.</div>';
-document.body.append(box);
-const fill=box.querySelector(".dp-fill"),title=box.querySelector(".dp-title"),note=box.querySelector(".dp-note");
-let progress=0;
-const timer=setInterval(()=>{
-progress=Math.min(100,progress+10);
-fill.style.width=progress+"%";
-if(progress>=100){
-clearInterval(timer);
-title.textContent="Download completed ✓";
-note.textContent="If needed, check your browser’s Downloads list for "+name+". The browser controls the actual download progress.";
-const u=URL.createObjectURL(blob),a=document.createElement("a");
-a.href=u;a.download=name;document.body.append(a);a.click();a.remove();
-setTimeout(()=>URL.revokeObjectURL(u),4000);
-setTimeout(()=>box.remove(),6000);
+  /* Browsers do not expose reliable byte-by-byte progress for a local Blob download.
+     This bar reports file preparation and the hand-off to the browser, not transfer bytes. */
+  const old=document.querySelector(".download-progress");if(old)old.remove();
+  const box=document.createElement("div");box.className="download-progress";
+  box.innerHTML='<div class="dp-title">Preparing your download…</div><div class="dp-track"><div class="dp-fill"></div></div><div class="dp-note">Getting the file ready for your browser.</div>';
+  document.body.append(box);
+  const fill=box.querySelector(".dp-fill"),title=box.querySelector(".dp-title"),note=box.querySelector(".dp-note");
+  let progress=0;
+  const timer=setInterval(()=>{
+    progress=Math.min(100,progress+10);
+    fill.style.width=progress+"%";
+    if(progress>=100){
+      clearInterval(timer);
+      title.textContent="Download completed ✓";
+      note.textContent="If needed, check your browser’s Downloads list for "+name+". The browser controls the actual download progress.";
+      const u=URL.createObjectURL(blob),a=document.createElement("a");
+      a.href=u;a.download=name;document.body.append(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(u),4000);
+      setTimeout(()=>box.remove(),6000);
+    }
+  },55);
 }
-},55);
-}
-function safeStem(name){return name.replace(/.[^.]+$/,"").replace(/[^\w-]+/g,"_")}
+function safeStem(name){return name.replace(/\.[^.]+$/,"").replace(/[^\w-]+/g,"_")}
 function loadImage(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);res(im)};im.onerror=()=>{URL.revokeObjectURL(u);rej(Error("Image could not be opened"))};im.src=u})}
-function loadImageForBackground(file){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=()=>reject(Error("Photo file could not be read. Select the photo again."));reader.onload=()=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error("Photo could not be decoded. Please choose a standard JPG or PNG image."));im.src=String(reader.result)};reader.readAsDataURL(file)})}
 function canvasBlob(canvas,type,quality){return new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(Error("Could not create image")),type,quality))}
 async function makeCanvas(file,w,h){const im=await loadImage(file),c=document.createElement("canvas");c.width=w||im.width;c.height=h||im.height;c.getContext("2d").drawImage(im,0,0,c.width,c.height);return c}
-async function resizedBlob(file,targetKB,maxKB,width,height,format){const im=await loadImage(file),w=width||im.width,h=height||im.height,c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(im,0,0,w,h);const mime=format==="PNG"?"image/png":"image/jpeg";let q=.92,b=await canvasBlob(c,mime,q);if(mime==="image/jpeg"){while(b.size>maxKB1024&&q>.12){q=Math.max(.12,q-.07);b=await canvasBlob(c,mime,q)}while(b.size<targetKB1024&&q<.98){const nq=Math.min(.98,q+.025),next=await canvasBlob(c,mime,nq);if(next.size>maxKB1024)break;b=next;q=nq}}return b}
+async function resizedBlob(file,targetKB,maxKB,width,height,format){const im=await loadImage(file),w=width||im.width,h=height||im.height,c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(im,0,0,w,h);const mime=format==="PNG"?"image/png":"image/jpeg";let q=.92,b=await canvasBlob(c,mime,q);if(mime==="image/jpeg"){while(b.size>maxKB*1024&&q>.12){q=Math.max(.12,q-.07);b=await canvasBlob(c,mime,q)}while(b.size<targetKB*1024&&q<.98){const nq=Math.min(.98,q+.025),next=await canvasBlob(c,mime,nq);if(next.size>maxKB*1024)break;b=next;q=nq}}return b}
 function addResult({title,blob,name,kind="image",originalFile=null,compare=false,note=""}){const card=document.createElement("article");card.className="result-card";const h=document.createElement("h3");h.textContent=title;card.append(h);if(kind==="image"){const im=document.createElement("img");im.src=objectURL(blob);im.alt=title+" preview";card.append(im);if(compare&&originalFile){const cb=document.createElement("button");cb.className="secondary";cb.textContent="Compare Before / After";cb.onclick=()=>{let box=card.querySelector(".compare-grid");if(box){box.remove();return}box=document.createElement("div");box.className="compare-grid";for(const [label,file] of [["Before",originalFile],["After",blob]]){const cell=document.createElement("div"),strong=document.createElement("strong"),pic=document.createElement("img");strong.textContent=label+" · "+(file.size/1024).toFixed(2)+" KB";pic.src=objectURL(file);pic.alt=label+" image";cell.append(strong,pic);box.append(cell)}cb.after(box)};card.append(cb)}}else if(kind==="pdf"){const frame=document.createElement("iframe");frame.title=title+" preview";frame.src=objectURL(blob);card.append(frame)}const p=document.createElement("p");p.textContent=(originalFile?"Original: "+(originalFile.size/1024).toFixed(2)+" KB → ":"")+"Output: "+(blob.size/1024).toFixed(2)+" KB · "+(blob.size/1048576).toFixed(3)+" MB"+(note?" · "+note:"");card.append(p);const b=document.createElement("button");b.className="green";b.textContent=kind==="pdf"?"⬇ Download PDF":kind==="image"?"⬇ Download Image":"⬇ Download File";b.onclick=()=>downloadBlob(blob,name);card.append(b);previews.append(card)}
-function embedImage(doc,file){return file.type==="image/png"||/.png$/i.test(file.name)?doc.embedPng(file._bytes):doc.embedJpg(file._bytes)}
-async function processTool(){if(!current)return;const fs=Array.from(filesEl.files||[]);if(!fs.length){setStatus("Please select your file first.");return}const type=current[3];runBtn.disabled=true;clearResults();setStatus("Processing…");try{let outputNote="";
-if(type==="increaseImage"){const f=fs[0],entered=Number(val("increaseSize",200)),unit=val("increaseUnit","KB");if(!Number.isFinite(entered)||entered<=0)throw Error("Enter a valid image size.");const targetKB=entered*(unit==="MB"?1024:1);if(targetKB>50000)throw Error("Please enter a size up to 50 MB.");const im=await loadImage(f),c=document.createElement("canvas");c.width=im.width;c.height=im.height;c.getContext("2d").drawImage(im,0,0);let q=.92,blob=await canvasBlob(c,"image/jpeg",q);while(blob.size<targetKB1024&&q<.999){q=Math.min(.999,q+.01);const next=await canvasBlob(c,"image/jpeg",q);if(next.size<=blob.size&&q>=.999)break;blob=next}if(blob.size<targetKB1024){let scale=1;for(let i=0;i<8&&blob.size<targetKB1024;i++){scale=1.15;const larger=document.createElement("canvas");larger.width=Math.round(im.widthscale);larger.height=Math.round(im.heightscale);larger.getContext("2d").drawImage(im,0,0,larger.width,larger.height);const next=await canvasBlob(larger,"image/jpeg",.999);if(next.size<=blob.size)break;blob=next}}addResult({title:"Resized Image Preview",blob,name:safeStem(f.name)+"_resized.jpg",originalFile:f,compare:true});setStatus("Image processed. Check the preview and actual output size, then tap Download Image. Exact target size cannot be guaranteed.")}
-else if(["targetImage","signature","govresize"].includes(type)){const list=type==="govresize"?fs.slice(0,2):[fs[0]];if(type==="govresize"&&fs.length<2)throw Error("Select photo and signature images together.");for(let i=0;i<list.length;i++){const f=list[i],blob=await resizedBlob(f,Number(val("targetKB",200)),Number(val("maxKB",300)),Number(val("width",0))||undefined,Number(val("height",0))||undefined,val("format","JPEG"));addResult({title:type==="govresize"?(i===0?"Resized Photo":"Resized Signature"):"Resized Image Preview",blob,name:safeStem(f.name)+"_resized."+(val("format","JPEG")==="PNG"?"png":"jpg"),originalFile:f,compare:true})}setStatus("Resize complete. Check the preview and actual output size, then tap Download Image. Exact target sizes cannot be guaranteed.")} else if(["jpgpng","pngjpg","crop","passport","bgremove"].includes(type)){const f=fs[0],im=(type==="crop"&&cropImage)?cropImage:(type==="bgremove"?await loadImageForBackground(f):await loadImage(f));let c,blob,name;if(type==="jpgpng"||type==="pngjpg"){c=await makeCanvas(f);if(type==="jpgpng"){blob=await canvasBlob(c,"image/png");let scaled=false;if(blob.size>f.size){let scale=0.92;for(let i=0;i<18&&blob.size>f.size&&Math.min(c.width,c.height)>320;i++){const smaller=document.createElement("canvas");smaller.width=Math.max(1,Math.round(im.widthscale));smaller.height=Math.max(1,Math.round(im.heightscale));smaller.getContext("2d").drawImage(im,0,0,smaller.width,smaller.height);const next=await canvasBlob(smaller,"image/png");c=smaller;blob=next;scaled=true;scale*=0.92;}}name=safeStem(f.name)+".png";if(scaled)outputNote=" PNG size optimized to avoid a large file; resolution may be lower than the original."}else{blob=await canvasBlob(c,"image/jpeg",.92);name=safeStem(f.name)+".jpg"}}else if(type==="crop"){if(!cropImage||!cropSelection)throw Error("Image load hone ke baad crop area ko ungli se drag karke select karein.");const r=cropSelection;if(r.w<2||r.h<2)throw Error("Crop area bahut chhota hai. Image par dobara drag karein.");c=document.createElement("canvas");c.width=Math.max(1,Math.round(r.w));c.height=Math.max(1,Math.round(r.h));c.getContext("2d").drawImage(cropImage,Math.round(r.x),Math.round(r.y),Math.round(r.w),Math.round(r.h),0,0,c.width,c.height);const fmt=val("cropFormat","JPEG"),target=Number(val("cropTargetSize","")||0),unit=val("cropTargetUnit","KB"),targetBytes=target>0?target*(unit==="MB"?1048576:1024):0;if(fmt==="PNG"){blob=await canvasBlob(c,"image/png");name="cropped.png";if(targetBytes&&blob.size>targetBytes)outputNote=" PNG target size is approximate; PNG compression is limited."}else{const jc=document.createElement("canvas");jc.width=c.width;jc.height=c.height;const jctx=jc.getContext("2d");jctx.fillStyle="#fff";jctx.fillRect(0,0,jc.width,jc.height);jctx.drawImage(c,0,0);let q=.92;blob=await canvasBlob(jc,"image/jpeg",q);if(targetBytes){while(blob.size>targetBytes&&q>.12){q=Math.max(.12,q-.06);blob=await canvasBlob(jc,"image/jpeg",q)}if(blob.size>targetBytes){let scale=1;for(let i=0;i<10&&blob.size>targetBytes&&jc.widthscale>120;i++){scale=.9;const smaller=document.createElement("canvas");smaller.width=Math.max(1,Math.round(jc.widthscale));smaller.height=Math.max(1,Math.round(jc.heightscale));smaller.getContext("2d").drawImage(jc,0,0,smaller.width,smaller.height);const next=await canvasBlob(smaller,"image/jpeg",q);if(next.size<blob.size){blob=next}else break}}if(blob.size>targetBytes)outputNote=" Requested file size could not be reached exactly."}name="cropped.jpg"}}else if(type==="passport"){const w=Number(val("width",413)),h=Number(val("height",531));c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d"),colors={"White":"#fff","Light blue":"#d9ecff","Light grey":"#eee"};ctx.fillStyle=colors[val("bgcolor","White")];ctx.fillRect(0,0,w,h);const s=Math.max(w/im.width,h/im.height),dw=im.widths,dh=im.heights;ctx.drawImage(im,(w-dw)/2,(h-dh)/2,dw,dh);blob=await canvasBlob(c,"image/jpeg",.92);name="passport-photo.jpg"}else{
-// Photo Background Remover: use person segmentation rather than edge-colour guessing,
-// so clothing/skin is preserved and only the background is replaced.
-const loaded=im;const w=loaded.naturalWidth||loaded.width,h=loaded.naturalHeight||loaded.height;
-if(!window.SelfieSegmentation){await new Promise((resolve,reject)=>{const sc=document.createElement("script");sc.src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js";sc.onload=resolve;sc.onerror=()=>reject(Error("Background segmentation library could not load. Internet connection check karke dobara try karein."));document.head.appendChild(sc)});}
-if(!window.SelfieSegmentation)throw Error("Person segmentation library is unavailable. Internet connection check karein.");
-const segmenter=new SelfieSegmentation({locateFile:(file)=>https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/${file}});segmenter.setOptions({modelSelection:1});
-const segmented=await new Promise((resolve,reject)=>{let settled=false;segmenter.onResults(results=>{if(!settled){settled=true;resolve(results)}});segmenter.send({image:loaded}).catch(reject)});
-// Build a proper soft alpha mask from the segmentation result. Keep the original
-// canvas pixel dimensions exactly; do not crop or resize the uploaded photo.
-const maskCanvas=document.createElement("canvas");maskCanvas.width=w;maskCanvas.height=h;
-const mctx=maskCanvas.getContext("2d",{willReadFrequently:true});
-// Start transparent so the segmentation mask's real pixel values are preserved.
-mctx.clearRect(0,0,w,h);mctx.drawImage(segmented.segmentationMask,0,0,w,h);
-const maskData=mctx.getImageData(0,0,w,h).data;
-const alphaCanvas=document.createElement("canvas");alphaCanvas.width=w;alphaCanvas.height=h;
-const actx=alphaCanvas.getContext("2d");const alphaImage=actx.createImageData(w,h);
-let foreground=0;
-for(let i=0;i<wh;i++){
-const k=i4;
-// MediaPipe's segmentation mask is grayscale: brighter pixels indicate the person.
-const gray=(maskData[k]+maskData[k+1]+maskData[k+2])/3;
-// Smooth the transition instead of hard-cutting hair and clothing edges.
-let a=Math.max(0,Math.min(1,(gray-28)/170));
-a=aa(3-2a);
-alphaImage.data[k]=255;alphaImage.data[k+1]=255;alphaImage.data[k+2]=255;
-alphaImage.data[k+3]=Math.round(a255);
-if(a>0.5)foreground++;
-}
-// If the model/browser exposes the mask inverted, invert it instead of returning a blank image.
-if(foreground < Math.max(10,Math.floor(wh0.002))){
-foreground=0;
-for(let i=0;i<wh;i++){
-const k=i4,gray=(maskData[k]+maskData[k+1]+maskData[k+2])/3;
-let a=Math.max(0,Math.min(1,((255-gray)-28)/170));a=aa(3-2a);
-alphaImage.data[k+3]=Math.round(a255);if(a>0.5)foreground++;
-}
-}
-if(foreground < Math.max(10,Math.floor(wh0.002))) throw Error("Person could not be detected clearly. Please use a photo where the person is visible against the background.");
-actx.putImageData(alphaImage,0,0);
-const subjectCanvas=document.createElement("canvas");subjectCanvas.width=w;subjectCanvas.height=h;
-const sctx=subjectCanvas.getContext("2d");sctx.drawImage(loaded,0,0,w,h);
-// Correct compositing: destination-in retains the photo only where the mask is opaque.
-sctx.globalCompositeOperation="destination-in";sctx.drawImage(alphaCanvas,0,0,w,h);sctx.globalCompositeOperation="source-over";
-const colors={"White":"#ffffff","Blue":"#007bff","Light Blue":"#add8e6","Green":"#00a650","Black":"#000000"};
-c=document.createElement("canvas");c.width=w;c.height=h;const outctx=c.getContext("2d");
-outctx.fillStyle=colors[val("bgcolor","White")]||"#ffffff";outctx.fillRect(0,0,w,h);
-outctx.drawImage(subjectCanvas,0,0,w,h);
-const target=Number(val("bgTargetSize","")||0),unit=val("bgTargetUnit","KB"),targetBytes=target>0?target*(unit==="MB"?1048576:1024):0;let quality=.92;blob=await canvasBlob(c,"image/jpeg",quality);if(targetBytes>0){while(blob.size>targetBytes&&quality>.12){quality=Math.max(.12,quality-.06);blob=await canvasBlob(c,"image/jpeg",quality)}if(blob.size<targetBytes){let q=quality;while(blob.size<targetBytes&&q<.98){q=Math.min(.98,q+.02);const next=await canvasBlob(c,"image/jpeg",q);if(next.size>targetBytes)break;blob=next;quality=q}}if(Math.abs(blob.size-targetBytes)>targetBytes*.12)outputNote=" Requested KB/MB size is approximate; image pixel dimensions were preserved."}name=safeStem(f.name)+"_background.jpg";if(segmenter.close)segmenter.close();}addResult({title:"Result Preview",blob,name,originalFile:f,compare:true});setStatus(type==="bgremove"?"Background changed. Check the face, hair and clothing in the preview before downloading.":"Done. Review the preview and actual file size, then download when ready."+outputNote)}
-else if(["jpgpdf","scanpdf"].includes(type)){if(!window.PDFLib)throw Error("PDF library could not load. Check internet and retry.");const doc=await PDFLib.PDFDocument.create(),ims=[];for(const f of fs){const bytes=await f.arrayBuffer();let im;if(f.type==="image/png"||/.png$/i.test(f.name))im=await doc.embedPng(bytes);else{try{im=await doc.embedJpg(bytes)}catch{const c=await makeCanvas(f);im=await doc.embedJpg(await(await canvasBlob(c,"image/jpeg",.92)).arrayBuffer())}}ims.push(im)}if(!ims.length)throw Error("Select valid image files.");const layout=val("pdfLayout","One photo per page"),a4=[595.28,841.89],side=val("photoLayout","Fit side by side")==="Fit side by side";if(layout==="One photo per page"){for(const im of ims){if(val("pageSize","Fit page to photo")==="A4"){const page=doc.addPage(a4),s=Math.min(a4[0]/im.width,a4[1]/im.height),w=im.widths,h=im.heights;page.drawImage(im,{x:(a4[0]-w)/2,y:(a4[1]-h)/2,width:w,height:h})}else{const page=doc.addPage([im.width,im.height]);page.drawImage(im,{x:0,y:0,width:im.width,height:im.height})}}}else{const margin=24,gap=12;let pw,ph;if(val("pageSize","Fit page to photo")==="A4"){pw=a4[0];ph=a4[1]}else if(side){pw=ims.reduce((s,x)=>s+x.width,0)+gap*(ims.length-1)+2margin;ph=Math.max(...ims.map(x=>x.height))+2margin}else{pw=Math.max(...ims.map(x=>x.width))+2margin;ph=ims.reduce((s,x)=>s+x.height,0)+gap(ims.length-1)+2margin}const page=doc.addPage([pw,ph]);if(side){const total=ims.reduce((s,x)=>s+x.width,0)+gap(ims.length-1),scale=Math.min(1,(pw-2margin)/total,(ph-2margin)/Math.max(...ims.map(x=>x.height)));let x=(pw-totalscale)/2;for(const im of ims){const w=im.widthscale,h=im.heightscale;page.drawImage(im,{x,y:(ph-h)/2,width:w,height:h});x+=w+gapscale}}else{const total=ims.reduce((s,x)=>s+x.height,0)+gap*(ims.length-1),scale=Math.min(1,(ph-2margin)/total,(pw-2margin)/Math.max(...ims.map(x=>x.width)));let y=ph-(ph-totalscale)/2;for(const im of ims){const w=im.widthscale,h=im.heightscale;y-=h;page.drawImage(im,{x:(pw-w)/2,y,width:w,height:h});y-=gapscale}}}const blob=new Blob([await doc.save()],{type:"application/pdf"});addResult({title:"Created PDF Preview",blob,name:type==="scanpdf"?"scanned-document.pdf":"images.pdf",kind:"pdf"});setStatus("PDF created. Review the preview and file size, then tap Download PDF.")}
+function embedImage(doc,file){return file.type==="image/png"||/\.png$/i.test(file.name)?doc.embedPng(file._bytes):doc.embedJpg(file._bytes)}
+async function processTool(){if(!current)return;const fs=Array.from(filesEl.files||[]);if(!fs.length){setStatus("Please select your file first.");return}const type=current[3];runBtn.disabled=true;clearResults();setStatus("Processing…");try{
+if(["targetImage","increaseImage","signature","govresize"].includes(type)){const list=type==="govresize"?fs.slice(0,2):[fs[0]];if(type==="govresize"&&fs.length<2)throw Error("Select photo and signature images together.");for(let i=0;i<list.length;i++){const f=list[i],blob=await resizedBlob(f,Number(val("targetKB",200)),Number(val("maxKB",300)),Number(val("width",0))||undefined,Number(val("height",0))||undefined,val("format","JPEG"));addResult({title:type==="govresize"?(i===0?"Resized Photo":"Resized Signature"):"Resized Image Preview",blob,name:safeStem(f.name)+"_resized."+(val("format","JPEG")==="PNG"?"png":"jpg"),originalFile:f,compare:true})}setStatus("Resize complete. Check the preview and actual output size, then tap Download Image. Exact target sizes cannot be guaranteed.")}
+else if(["jpgpng","pngjpg","crop","passport","bgremove"].includes(type)){const f=fs[0],im=await loadImage(f);let c,blob,name;if(type==="jpgpng"||type==="pngjpg"){c=await makeCanvas(f);blob=await canvasBlob(c,type==="jpgpng"?"image/png":"image/jpeg",.92);name=safeStem(f.name)+(type==="jpgpng"?".png":".jpg")}else if(type==="crop"){const w=Math.min(Number(val("width",400)),im.width),h=Math.min(Number(val("height",400)),im.height);c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,0,0,w,h,0,0,w,h);blob=await canvasBlob(c,"image/png");name="cropped.png"}else if(type==="passport"){const w=Number(val("width",413)),h=Number(val("height",531));c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d"),colors={"White":"#fff","Light blue":"#d9ecff","Light grey":"#eee"};ctx.fillStyle=colors[val("bgcolor","White")];ctx.fillRect(0,0,w,h);const s=Math.max(w/im.width,h/im.height),dw=im.width*s,dh=im.height*s;ctx.drawImage(im,(w-dw)/2,(h-dh)/2,dw,dh);blob=await canvasBlob(c,"image/jpeg",.92);name="passport-photo.jpg"}else{c=await makeCanvas(f);const ctx=c.getContext("2d"),d=ctx.getImageData(0,0,c.width,c.height),colors={"White":[255,255,255],"Blue":[0,0,255],"Green":[0,255,0],"Black":[0,0,0]},t=colors[val("bgcolor","White")];for(let i=0;i<d.data.length;i+=4){const dist=Math.abs(d.data[i]-t[0])+Math.abs(d.data[i+1]-t[1])+Math.abs(d.data[i+2]-t[2]);if(dist<65)d.data[i+3]=0}ctx.putImageData(d,0,0);blob=await canvasBlob(c,"image/png");name="background-removed.png"}addResult({title:"Result Preview",blob,name,originalFile:f,compare:true});setStatus("Done. Review the preview and actual file size, then download when ready.")}
+else if(["jpgpdf","scanpdf"].includes(type)){if(!window.PDFLib)throw Error("PDF library could not load. Check internet and retry.");const doc=await PDFLib.PDFDocument.create(),ims=[];for(const f of fs){const bytes=await f.arrayBuffer();let im;if(f.type==="image/png"||/\.png$/i.test(f.name))im=await doc.embedPng(bytes);else{try{im=await doc.embedJpg(bytes)}catch{const c=await makeCanvas(f);im=await doc.embedJpg(await(await canvasBlob(c,"image/jpeg",.92)).arrayBuffer())}}ims.push(im)}if(!ims.length)throw Error("Select valid image files.");const layout=val("pdfLayout","One photo per page"),a4=[595.28,841.89],side=val("photoLayout","Fit side by side")==="Fit side by side";if(layout==="One photo per page"){for(const im of ims){if(val("pageSize","Fit page to photo")==="A4"){const page=doc.addPage(a4),s=Math.min(a4[0]/im.width,a4[1]/im.height),w=im.width*s,h=im.height*s;page.drawImage(im,{x:(a4[0]-w)/2,y:(a4[1]-h)/2,width:w,height:h})}else{const page=doc.addPage([im.width,im.height]);page.drawImage(im,{x:0,y:0,width:im.width,height:im.height})}}}else{const margin=24,gap=12;let pw,ph;if(val("pageSize","Fit page to photo")==="A4"){pw=a4[0];ph=a4[1]}else if(side){pw=ims.reduce((s,x)=>s+x.width,0)+gap*(ims.length-1)+2*margin;ph=Math.max(...ims.map(x=>x.height))+2*margin}else{pw=Math.max(...ims.map(x=>x.width))+2*margin;ph=ims.reduce((s,x)=>s+x.height,0)+gap*(ims.length-1)+2*margin}const page=doc.addPage([pw,ph]);if(side){const total=ims.reduce((s,x)=>s+x.width,0)+gap*(ims.length-1),scale=Math.min(1,(pw-2*margin)/total,(ph-2*margin)/Math.max(...ims.map(x=>x.height)));let x=(pw-total*scale)/2;for(const im of ims){const w=im.width*scale,h=im.height*scale;page.drawImage(im,{x,y:(ph-h)/2,width:w,height:h});x+=w+gap*scale}}else{const total=ims.reduce((s,x)=>s+x.height,0)+gap*(ims.length-1),scale=Math.min(1,(ph-2*margin)/total,(pw-2*margin)/Math.max(...ims.map(x=>x.width)));let y=ph-(ph-total*scale)/2;for(const im of ims){const w=im.width*scale,h=im.height*scale;y-=h;page.drawImage(im,{x:(pw-w)/2,y,width:w,height:h});y-=gap*scale}}}const blob=new Blob([await doc.save()],{type:"application/pdf"});addResult({title:"Created PDF Preview",blob,name:type==="scanpdf"?"scanned-document.pdf":"images.pdf",kind:"pdf"});setStatus("PDF created. Review the preview and file size, then tap Download PDF.")}
 else if(type==="mergepdf"){if(!window.PDFLib)throw Error("PDF library could not load.");const doc=await PDFLib.PDFDocument.create();for(const f of fs){const src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),pages=await doc.copyPages(src,src.getPageIndices());pages.forEach(p=>doc.addPage(p))}const blob=new Blob([await doc.save()],{type:"application/pdf"});addResult({title:"Merged PDF Preview",blob,name:"merged.pdf",kind:"pdf"});setStatus("PDFs merged. Preview and download when ready.")}
 else if(type==="compresspdf"){if(!window.PDFLib)throw Error("PDF library could not load.");const doc=await PDFLib.PDFDocument.load(await fs[0].arrayBuffer()),blob=new Blob([await doc.save({useObjectStreams:true})],{type:"application/pdf"});addResult({title:"PDF Preview",blob,name:"compressed.pdf",kind:"pdf",note:"Basic re-save; size reduction is not guaranteed"});setStatus("PDF processed. Review and download when ready.")}
 else if(type==="pdfjpg"){if(!window.pdfjsLib)throw Error("PDF library could not load.");const pdf=await pdfjsLib.getDocument({data:await fs[0].arrayBuffer()}).promise;if(pdf.numPages>20)throw Error("For safety, up to 20 pages can be converted at once.");for(let n=1;n<=pdf.numPages;n++){const page=await pdf.getPage(n),vp=page.getViewport({scale:Math.min(3,Math.max(1,Number(val("scale",1.5))))}),c=document.createElement("canvas");c.width=vp.width;c.height=vp.height;await page.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;const blob=await canvasBlob(c,"image/jpeg",.92);addResult({title:"Page "+n+" Preview",blob,name:"page-"+n+".jpg"})}setStatus("Pages converted. Download each image using its button.")}
