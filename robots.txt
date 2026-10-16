@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rss-pdf-image-tools.pages.dev/sitemap.xml
