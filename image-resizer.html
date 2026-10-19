@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1769ed">
+
+<title>Image Resizer to KB Online – Free Photo Size Reducer | RSS QuickTools</title>
+
+<meta name="description" content="Resize image to a target KB size online for free. Reduce JPG photo size, choose image dimensions, preview the result and download it on your mobile or computer.">
+
+<link rel="canonical" href="https://rss-pdf-image-tools.pages.dev/image-resizer.html">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f6ff;color:#17264b;line-height:1.6}
+header{background:linear-gradient(120deg,#123caa,#1769ed,#7339db);color:white;padding:18px 15px}
+.header-inner{max-width:1000px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:23px;font-weight:900}
+.logo span{color:#ffdc65}
+header a{color:white;text-decoration:none}
+header small{display:block;font-size:12px;color:#e4ecff}
+nav{background:white;padding:12px 16px;border-bottom:1px solid #e1e7f5}
+nav a{color:#1754bd;text-decoration:none;font-weight:bold}
+main{max-width:900px;margin:25px auto;padding:0 14px}
+.hero,.box,.info{background:white;border-radius:20px;padding:22px;margin-bottom:18px;box-shadow:0 6px 24px #153b8010}
+.hero{background:linear-gradient(125deg,#fff,#e8f0ff,#f5eaff);text-align:center}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.2;color:#1749b8;margin:8px 0 12px}
+h2{font-size:22px;line-height:1.35;color:#1749b8}
+p{color:#52617d}
+label{display:block;font-weight:bold;margin:14px 0 6px}
+input,select{width:100%;padding:12px;border:1px solid #cfd9ed;border-radius:10px;font-size:16px;background:white}
+button,.button{display:inline-block;border:0;border-radius:11px;padding:13px 17px;font-size:15px;font-weight:bold;cursor:pointer;text-decoration:none;text-align:center}
+.primary{background:linear-gradient(110deg,#1769ed,#6638db);color:white;width:100%;margin-top:16px}
+.secondary{background:#eaf0ff;color:#1749b8}
+.download{background:#13853b;color:white;width:100%;margin-top:12px}
+.filebox{padding:18px;background:#f6f8ff;border:2px dashed #a8bff0;border-radius:15px;text-align:center}
+.filebox input{margin-top:10px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#preview{display:block;max-width:100%;max-height:360px;margin:16px auto;object-fit:contain;border-radius:10px}
+#result{overflow-wrap:anywhere}
+.status{padding:12px;border-radius:10px;background:#edf3ff;margin-top:14px;overflow-wrap:anywhere}
+.hidden{display:none!important}
+ul,ol{padding-left:23px;color:#52617d}
+li{margin:7px 0}
+footer{text-align:center;padding:25px 14px;color:#64718a;font-size:13px}
+footer a{color:#1754bd}
+@media(max-width:500px){
+ main{margin:15px auto}
+ .hero,.box,.info{padding:17px;border-radius:16px}
+ .controls{grid-template-columns:1fr}
+ h2{font-size:20px}
+}
+</style>
+</head>
+
+<body>
+<header>
+ <div class="header-inner">
+  <a href="https://rss-pdf-image-tools.pages.dev/" class="logo"><span>RSS</span> QuickTools</a>
+  <a href="https://rss-pdf-image-tools.pages.dev/" class="button secondary">All Tools</a>
+ </div>
+ <div class="header-inner" style="margin-top:8px">
+  <small>Free Online PDF, Photo &amp; Signature Tools</small>
+ </div>
+</header>
+
+<nav>
+ <div style="max-width:1000px;margin:auto">
+  <a href="https://rss-pdf-image-tools.pages.dev/">Home</a> › Image Resizer
+ </div>
+</nav>
+
+<main>
+<section class="hero">
+ <h1>Image Resizer to KB Online</h1>
+ <p>Reduce your photo file size, choose a target size in KB, preview the result and download your resized image for free.</p>
+</section>
+
+<section class="box">
+ <h2>📷 Resize Your Image</h2>
+ <p>Select a JPG, PNG or WebP image from your phone or computer.</p>
+
+ <div class="filebox">
+  <strong>Choose Your Image</strong>
+  <input type="file" id="file" accept="image/jpeg,image/png,image/webp">
+ </div>
+
+ <div id="originalInfo" class="status hidden"></div>
+ <img id="preview" class="hidden" alt="Preview of selected image">
+
+ <div class="controls">
+  <div>
+   <label for="target">Target size (KB)</label>
+   <input id="target" type="number" min="1" max="50000" value="100">
+  </div>
+  <div>
+   <label for="maximum">Maximum size (KB)</label>
+   <input id="maximum" type="number" min="1" max="50000" value="200">
+  </div>
+  <div>
+   <label for="width">Width (pixels, optional)</label>
+   <input id="width" type="number" min="1" max="12000" placeholder="Original width">
+  </div>
+  <div>
+   <label for="height">Height (pixels, optional)</label>
+   <input id="height" type="number" min="1" max="12000" placeholder="Original height">
+  </div>
+  <div>
+   <label for="format">Output format</label>
+   <select id="format">
+    <option value="image/jpeg">JPG / JPEG</option>
+    <option value="image/png">PNG</option>
+   </select>
+  </div>
+ </div>
+
+ <button id="process" class="primary">Resize Image</button>
+ <button id="reset" class="secondary" style="width:100%;margin-top:10px">Choose Another Image</button>
+
+ <div id="status" class="status" role="status" aria-live="polite">Choose an image to get started.</div>
+
+ <div id="result" class="hidden">
+  <h2>✅ Resized Image Preview</h2>
+  <img id="outputPreview" alt="Resized image preview" style="display:block;max-width:100%;max-height:360px;object-fit:contain;margin:15px auto">
+  <p id="outputInfo"></p>
+  <a id="download" class="button download" download="resized-image.jpg">⬇ Download Resized Image</a>
+ </div>
+</section>
+
+<section class="info">
+ <h2>How to Resize an Image to KB</h2>
+ <ol>
+  <li>Choose a photo from your mobile or computer.</li>
+  <li>Enter the target file size in KB.</li>
+  <li>Optionally enter the output width and height.</li>
+  <li>Select JPG or PNG format.</li>
+  <li>Tap Resize Image and check the preview.</li>
+  <li>Download the result if you are satisfied.</li>
+ </ol>
+</section>
+
+<section class="info">
+ <h2>Why Use RSS QuickTools Image Resizer?</h2>
+ <ul>
+  <li>Free image resizing in your browser.</li>
+  <li>Works on mobile phones, tablets and computers.</li>
+  <li>Preview the result before downloading.</li>
+  <li>No account or sign-up required.</li>
+  <li>Your selected image is processed locally in your browser by this tool.</li>
+ </ul>
+</section>
+
+<section class="info">
+ <h2>Frequently Asked Questions</h2>
+ <h3>Can I resize a photo to 50 KB?</h3>
+ <p>Yes. Enter 50 in the target size field. The final size depends on the image, its dimensions and the selected format.</p>
+
+ <h3>Will the image always have the exact target size?</h3>
+ <p>No. Image compression cannot guarantee an exact file size for every image. The tool displays the actual output size so you can check it.</p>
+
+ <h3>Does resizing reduce image quality?</h3>
+ <p>Reducing file size or dimensions can affect image quality. Check the preview before downloading or submitting your image.</p>
+
+ <h3>Are my photos uploaded to a server?</h3>
+ <p>This tool processes the selected image locally in your browser. It does not intentionally upload your selected image to our server.</p>
+</section>
+
+<section class="info">
+ <h2>Explore More Free Tools</h2>
+ <p><a href="https://rss-pdf-image-tools.pages.dev/">Visit RSS QuickTools for more free PDF, photo and signature tools.</a></p>
+ <p><a href="privacy.html">Privacy Policy</a> · <a href="about.html">About Us</a> · <a href="contact.html">Contact Us</a></p>
+</section>
+</main>
+
+<footer>
+ <strong>RSS QuickTools</strong><br>
+ Free Online PDF, Photo &amp; Signature Tools<br>
+ © 2026 RSS QuickTools
+</footer>
+
+<script>
+"use strict";
+
+const fileInput = document.getElementById("file");
+const processBtn = document.getElementById("process");
+const statusBox = document.getElementById("status");
+const preview = document.getElementById("preview");
+const originalInfo = document.getElementById("originalInfo");
+const result = document.getElementById("result");
+const outputPreview = document.getElementById("outputPreview");
+const outputInfo = document.getElementById("outputInfo");
+const download = document.getElementById("download");
+
+let selectedImage = null;
+let previewUrl = null;
+let outputUrl = null;
+
+function showStatus(message) {
+ statusBox.textContent = message;
+}
+
+function formatBytes(bytes) {
+ if (bytes >= 1024 * 1024) {
+  return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+ }
+ return (bytes / 1024).toFixed(2) + " KB";
+}
+
+function canvasBlob(canvas, type, quality) {
+ return new Promise((resolve, reject) => {
+  canvas.toBlob(blob => {
+   if (blob) resolve(blob);
+   else reject(new Error("Could not create the output image."));
+  }, type, quality);
+ });
+}
+
+fileInput.addEventListener("change", () => {
+ const file = fileInput.files && fileInput.files[0];
+
+ selectedImage = null;
+ preview.classList.add("hidden");
+ originalInfo.classList.add("hidden");
+ result.classList.add("hidden");
+
+ if (previewUrl) URL.revokeObjectURL(previewUrl);
+ if (outputUrl) URL.revokeObjectURL(outputUrl);
+ previewUrl = null;
+ outputUrl = null;
+
+ if (!file) return;
+
+ if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+  showStatus("Please select a JPG, PNG or WebP image.");
+  fileInput.value = "";
+  return;
+ }
+
+ const url = URL.createObjectURL(file);
+ const image = new Image();
+
+ image.onload = () => {
+  selectedImage = {file, image};
+  previewUrl = url;
+  preview.src = url;
+  preview.classList.remove("hidden");
+  originalInfo.textContent =
+   "Original size: " + formatBytes(file.size) +
+   " · Dimensions: " + image.naturalWidth + " × " + image.naturalHeight + " pixels";
+  originalInfo.classList.remove("hidden");
+
+  document.getElementById("width").placeholder = image.naturalWidth;
+  document.getElementById("height").placeholder = image.naturalHeight;
+
+  showStatus("Image ready. Choose your target size and tap Resize Image.");
+ };
+
+ image.onerror = () => {
+  URL.revokeObjectURL(url);
+  showStatus("Could not open this image. Please choose another file.");
+ };
+
+ image.src = url;
+});
+
+processBtn.addEventListener("click", async () => {
+ if (!selectedImage) {
+  showStatus("Please choose an image first.");
+  return;
+ }
+
+ const targetKB = Number(document.getElementById("target").value);
+ const maximumKB = Number(document.getElementById("maximum").value);
+ const widthValue = document.getElementById("width").value.trim();
+ const heightValue = document.getElementById("height").value.trim();
+ const outputType = document.getElementById("format").value;
+
+ if (!Number.isFinite(targetKB) || targetKB <= 0 ||
+     !Number.isFinite(maximumKB) || maximumKB <= 0) {
+  showStatus("Enter valid target and maximum sizes.");
+  return;
+ }
+
+ if (targetKB > maximumKB) {
+  showStatus("Target size should not be greater than maximum size.");
+  return;
+ }
+
+ if (targetKB > 50000 || maximumKB > 50000) {
+  showStatus("Please enter a size up to 50000 KB.");
+  return;
+ }
+
+ const source = selectedImage.image;
+ let width = widthValue ? Number(widthValue) : source.naturalWidth;
+ let height = heightValue ? Number(heightValue) : source.naturalHeight;
+
+ if (!Number.isInteger(width) || !Number.isInteger(height) ||
+     width < 1 || height < 1 || width > 12000 || height > 12000) {
+  showStatus("Enter valid dimensions between 1 and 12000 pixels.");
+  return;
+ }
+
+ processBtn.disabled = true;
+ processBtn.textContent = "Processing...";
+ result.classList.add("hidden");
+
+ try {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+
+  if (!context) throw new Error("Canvas is not supported in this browser.");
+
+  const maxBytes = maximumKB * 1024;
+  const targetBytes = targetKB * 1024;
+  let blob = null;
+  let quality = 0.92;
+  let scale = 1;
+
+  // JPG supports quality-based compression. PNG uses lossless encoding,
+  // so its final size may not reach the requested target.
+  for (let attempt = 0; attempt < 18; attempt++) {
+   canvas.width = Math.max(1, Math.round(width * scale));
+   canvas.height = Math.max(1, Math.round(height * scale));
+
+   context.fillStyle = "#ffffff";
+   context.fillRect(0, 0, canvas.width, canvas.height);
+   context.drawImage(source, 0, 0, canvas.width, canvas.height);
+
+   blob = await canvasBlob(
+    canvas,
+    outputType,
+    outputType === "image/jpeg" ? quality : undefined
+   );
+
+   if (blob.size <= maxBytes && blob.size <= targetBytes) break;
+
+   if (outputType === "image/jpeg" && quality > 0.18) {
+    quality = Math.max(0.18, quality - 0.08);
+   } else {
+    scale *= 0.85;
+   }
+
+   if (scale < 0.08) break;
+  }
+
+  if (!blob) throw new Error("Could not generate the resized image.");
+
+  if (outputUrl) URL.revokeObjectURL(outputUrl);
+  outputUrl = URL.createObjectURL(blob);
+
+  outputPreview.src = outputUrl;
+  download.href = outputUrl;
+  download.download = outputType === "image/png"
+   ? "resized-image.png"
+   : "resized-image.jpg";
+
+  outputInfo.textContent =
+   "Output size: " + formatBytes(blob.size) +
+   " · Dimensions: " + canvas.width + " × " + canvas.height +
+   " pixels";
+
+  result.classList.remove("hidden");
+
+  if (blob.size <= maxBytes && blob.size <= targetBytes) {
+   showStatus("Success! Your image meets the requested size. Check the preview before downloading.");
+  } else if (blob.size <= maxBytes) {
+   showStatus("Image resized, but the exact target size could not be reached. The output is within your maximum size.");
+  } else {
+   showStatus("The image could not be reduced below your maximum size. Try smaller dimensions or a higher maximum size.");
+  }
+
+ } catch (error) {
+  showStatus("Error: " + (error.message || "Could not resize the image."));
+ } finally {
+  processBtn.disabled = false;
+  processBtn.textContent = "Resize Image";
+ }
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+ fileInput.value = "";
+ selectedImage = null;
+
+ if (previewUrl) URL.revokeObjectURL(previewUrl);
+ if (outputUrl) URL.revokeObjectURL(outputUrl);
+
+ previewUrl = null;
+ outputUrl = null;
+
+ preview.removeAttribute("src");
+ outputPreview.removeAttribute("src");
+ preview.classList.add("hidden");
+ originalInfo.classList.add("hidden");
+ result.classList.add("hidden");
+
+ document.getElementById("width").value = "";
+ document.getElementById("height").value = "";
+
+ showStatus("Choose an image to get started.");
+});
+</script>
+</body>
+</html>
